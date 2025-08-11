@@ -1,0 +1,16 @@
+:root {
+  /* === Paleta (ajuste os HEX aqui quando tiver os oficiais) === */
+  --primary-700: #0a35d1; /* azul royal */
+  --primary-800: #0829a8;
+  --primary-900: #071f8a;
+  --primary-950: #06186f;
+
+  --accent-cyan: #44c3ee; /* gradiente do “losango” */
+  --accent-teal: #66e0c2;
+
+  --ink: #ffffff;
+  --muted: #c7d2fe;
+
+  --card: #0b1b78;
+  --card-border: #1a2aa8;
+}
