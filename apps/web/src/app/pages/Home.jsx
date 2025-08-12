@@ -38,7 +38,6 @@ export default function Home() {
       <section id="features" className="features">
         <div className="container">
           <p className="kicker">Por que UniSpin</p>
-          <h2 style={{ margin: "6px 0 18px" }}>Tudo o que você precisa, em um só lugar</h2>
           <div className="grid">
             <FeatureCard title="Conteúdo modular" desc="Trilhas e aulas curtas com checkpoints." />
             <FeatureCard title="Integrações" desc="Supabase, APIs externas e autenticação simples." />
