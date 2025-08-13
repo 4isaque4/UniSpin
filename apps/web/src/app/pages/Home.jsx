@@ -39,7 +39,7 @@ export default function Home() {
         <div className="container">
           <p className="kicker">Por que UniSpin</p>
           <div className="grid">
-            <FeatureCard title="Conteúdo modular" desc="Trilhas e aulas curtas com checkpoints." />
+            <FeatureCard title="Conteúdo modular" desc="Trilhas e aulas com checkpoints." />
             <FeatureCard title="Integrações" desc="Supabase, APIs externas e autenticação simples." />
             <FeatureCard title="Performance" desc="Frontend estático via CDN e otimizações de build." />
           </div>
