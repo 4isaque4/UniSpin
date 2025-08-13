@@ -1,15 +1,21 @@
-const API_URL = import.meta.env.VITE_API_URL;
+const BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
 
-export async function api(path, { method = "GET", body, headers } = {}) {
-  const res = await fetch(`${API_URL}${path}`, {
-    method,
-    headers: { "Content-Type": "application/json", ...(headers || {}) },
-    body: body ? JSON.stringify(body) : undefined,
-    credentials: "include"
+async function request(path, options = {}) {
+  const res = await fetch(`${BASE}${path}`, {
+    headers: { "Content-Type": "application/json", ...(options.headers || {}) },
+    ...options,
   });
-  if (!res.ok) {
-    const msg = await res.text();
-    throw new Error(msg || `HTTP ${res.status}`);
-  }
-  return res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(`API ${res.status}: ${await res.text()}`);
+  const ct = res.headers.get("content-type") || "";
+  return ct.includes("application/json") ? res.json() : res.text();
 }
+
+/* exemplos de endpoints futuros */
+export const api = {
+  health: () => request("/health"),
+  listTrilhas: () => request("/trilhas"),
+  listVideos: () => request("/videos"),
+  getVideo: (id) => request(`/videos/${id}`),
+};
+
+export default api;
