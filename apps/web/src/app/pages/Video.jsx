@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 
 
 const MOCK = {
-  "intro-react": { titulo: "Introdução ao React", embed: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+  "intro-react": { titulo: "Certificação 1 - Apresentação SPIN", embed: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
   "hooks-usestate": { titulo: "useState na prática", embed: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
   "roteamento": { titulo: "Roteamento com React Router", embed: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
 };
