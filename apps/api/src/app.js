@@ -9,7 +9,7 @@ import routes from "./routes/index.js";
 dotenv.config();
 
 const app = express();
-app.set("trust proxy", 1);
+app.set("trust proxy", true);
 
 // CORS
 const allowedOrigins = (process.env.CORS_ORIGIN || "https://uni-spin-web.vercel.app,http://localhost:5173")

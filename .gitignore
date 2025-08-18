@@ -1,7 +1,7 @@
 ﻿# deps
 node_modules/
 **/node_modules/
-node_modules/
+.node_modules/
 
 
 # builds
@@ -27,4 +27,5 @@ yarn-debug.log*
 .vscode/
 coverage/
 
-UniSpin.rar
+.UniSpin.rar
+.env.zip
