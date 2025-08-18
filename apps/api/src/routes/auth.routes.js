@@ -1,6 +1,6 @@
 // apps/api/src/routes/auth.routes.js
 import { Router } from "express";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { findByEmail, findById, setPassword } from "../repositories/user.repo.js";
 
