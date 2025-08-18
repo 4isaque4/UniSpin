@@ -43,6 +43,15 @@ app.use((req, res, next) => {
   next();
 });
 
+// apps/api/src/app.js  (depois de app.use(express.json()))
+app.use((err, _req, res, next) => {
+  if (err?.type === "entity.parse.failed") {
+    return res.status(400).json({ error: "invalid_json", message: "Body JSON inválido" });
+  }
+  next(err);
+});
+
+
 // 2) cors oficial (sem callback; usa array)
 app.use(
   cors({
