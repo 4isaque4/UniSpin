@@ -1,6 +1,8 @@
 ﻿# deps
 node_modules/
 **/node_modules/
+node_modules/
+
 
 # builds
 dist/
@@ -24,3 +26,5 @@ yarn-debug.log*
 .DS_Store
 .vscode/
 coverage/
+
+UniSpin.rar
