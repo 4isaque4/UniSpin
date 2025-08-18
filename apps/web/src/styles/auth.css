@@ -9,4 +9,32 @@
     width: 18px;
     height: 18px;
   }
+
+  /* Spinner no botão */
+.auth-btn[aria-busy="true"] {
+  position: relative;
+}
+.auth-btn[aria-busy="true"]::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,.65);
+  border-top-color: transparent;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  animation: auth-spin .8s linear infinite;
+}
+@keyframes auth-spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+/* Melhor acessibilidade visual quando desabilitado */
+.auth-field input:disabled { opacity: .75; background: #f4f6f8; }
+.auth-pass-toggle:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Ícones do botão de senha */
+.auth-pass-toggle { display: inline-flex; align-items: center; justify-content: center; color: #fff; }
+.auth-pass-toggle svg { width: 18px; height: 18px; }
+
   
