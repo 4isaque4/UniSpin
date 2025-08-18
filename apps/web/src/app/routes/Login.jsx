@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../features/auth/AuthContext.jsx";
 import "../../styles/auth.css";
 
-// Ícones (SVG inline, sem libs)
 function IconEye(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
@@ -25,16 +24,13 @@ function IconEyeOff(props) {
   );
 }
 
-async function safeJson(res) {
-  try { return await res.clone().json(); } catch { return null; }
-}
+async function safeJson(res) { try { return await res.clone().json(); } catch { return null; } }
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function Login() {
   const nav = useNavigate();
   const [params] = useSearchParams();
   const next = params.get("next") || "/trilhas";
-
   const { setUser } = useAuth();
 
   const [email, setEmail] = useState("");
@@ -49,16 +45,8 @@ export default function Login() {
   async function onSubmit(e) {
     e.preventDefault();
     setErr("");
-
-    // Validações rápidas de UX
-    if (!emailRegex.test(email)) {
-      setErr("Informe um e-mail válido.");
-      return;
-    }
-    if (!password || password.length < 4) {
-      setErr("Informe sua senha.");
-      return;
-    }
+    if (!emailRegex.test(email)) { setErr("Informe um e-mail válido."); return; }
+    if (!password || password.length < 4) { setErr("Informe sua senha."); return; }
 
     setLoading(true);
     try {
@@ -71,14 +59,12 @@ export default function Login() {
 
       if (!r.ok) {
         const data = await safeJson(r);
-        // mapeia erros comuns vindos da API, mantém fallback amigável
         const map = {
           invalid_credentials: "E-mail ou senha inválidos.",
           unauthorized: "Sessão inválida. Faça login novamente.",
-          rate_limited: "Muitas tentativas. Aguarde um pouco e tente de novo.",
+          rate_limited: "Muitas tentativas. Aguarde e tente de novo.",
         };
-        const msg = map[data?.error] || data?.message || "E-mail ou senha inválidos.";
-        setErr(msg);
+        setErr(map[data?.error] || data?.message || "E-mail ou senha inválidos.");
         return;
       }
 
@@ -97,15 +83,9 @@ export default function Login() {
     <section className="auth">
       <div className="auth-card" role="region" aria-labelledby="auth-title">
         <h1 id="auth-title" className="auth-title">Entrar</h1>
-        <p className="auth-subtitle">
-          Acesse a plataforma da <strong>Spin Engenharia</strong>.
-        </p>
+        <p className="auth-subtitle">Acesse a plataforma da <strong>Spin Engenharia</strong>.</p>
 
-        {err && (
-          <div className="auth-error" role="alert" aria-live="assertive">
-            {err}
-          </div>
-        )}
+        {err && <div className="auth-error" role="alert" aria-live="assertive">{err}</div>}
 
         <form className="auth-form" onSubmit={onSubmit} noValidate>
           <label className="auth-field">
@@ -150,19 +130,12 @@ export default function Login() {
             </div>
           </label>
 
-          <button
-            className="auth-btn"
-            type="submit"
-            disabled={loading}
-            aria-busy={loading ? "true" : "false"}
-          >
+          <button className="auth-btn" type="submit" disabled={loading} aria-busy={loading ? "true" : "false"}>
             {loading ? "Entrando..." : "Entrar"}
           </button>
         </form>
 
-        <p className="auth-muted">
-          Esqueceu a senha? Fale com o administrador.
-        </p>
+        <p className="auth-muted">Esqueceu a senha? Fale com o administrador.</p>
       </div>
     </section>
   );
