@@ -36,6 +36,19 @@ const corsConfig = {
 };
 
 app.use((req, res, next) => { res.header("Vary", "Origin"); next(); });
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  const ok = origin && whitelist.some(re => re.test(origin));
+  if (ok) {
+    res.header("Access-Control-Allow-Origin", origin);
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.header("Vary", "Origin");
+  }
+  if (req.method === "OPTIONS") return res.sendStatus(204);
+  next();
+});
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig)); // PRE-FLIGHT global
 
