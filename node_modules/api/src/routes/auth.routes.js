@@ -16,40 +16,50 @@ const cookieOpts = {
 };
 
 r.post("/set-password", async (req, res) => {
-  const { email, newPassword } = req.body || {};
-  if (!email || !newPassword) return res.status(400).json({ error: "invalid_body" });
+  try {
+    const { email, newPassword } = req.body || {};
+    if (!email || !newPassword) return res.status(400).json({ error: "invalid_body" });
 
-  const u = await findByEmail(email.toLowerCase().trim());
-  if (!u) return res.status(404).json({ error: "user_not_found" });
+    const u = await findByEmail(email.toLowerCase().trim());
+    if (!u) return res.status(404).json({ error: "user_not_found" });
 
-  const hash = await bcrypt.hash(newPassword, 12);
-  await setPassword(u.id, hash);
-  res.json({ ok: true });
+    const hash = await bcrypt.hash(newPassword, 12);
+    await setPassword(u.id, hash);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error("Erro em /set-password:", err);
+    res.status(500).json({ error: "internal_error", message: "Falha ao definir a senha" });
+  }
 });
 
 r.post("/login", async (req, res) => {
-  const { email, password } = req.body || {};
-  if (!email || !password) return res.status(400).json({ error: "invalid_body" });
+  try {
+    const { email, password } = req.body || {};
+    if (!email || !password) return res.status(400).json({ error: "invalid_body" });
 
-  const u = await findByEmail(email.toLowerCase().trim());
-  if (!u || !u.password_hash) return res.status(401).json({ error: "invalid_credentials" });
+    const u = await findByEmail(email.toLowerCase().trim());
+    if (!u || !u.password_hash) return res.status(401).json({ error: "invalid_credentials" });
 
-  const ok = await bcrypt.compare(password, u.password_hash);
-  if (!ok) return res.status(401).json({ error: "invalid_credentials" });
+    const ok = await bcrypt.compare(password, u.password_hash);
+    if (!ok) return res.status(401).json({ error: "invalid_credentials" });
 
-  if (!process.env.JWT_SECRET) {
-    return res.status(500).json({ error: "server_misconfig", message: "JWT_SECRET not set" });
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({ error: "server_misconfig", message: "JWT_SECRET not set" });
+    }
+
+    const token = jwt.sign(
+      { id: u.id, email: u.email, role: u.role },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES || "2d" }
+    );
+
+    res
+      .cookie("token", token, cookieOpts)
+      .json({ id: u.id, name: u.name, email: u.email, role: u.role });
+  } catch (err) {
+    console.error("Erro em /login:", err);
+    res.status(500).json({ error: "internal_error", message: "Erro ao autenticar" });
   }
-
-  const token = jwt.sign(
-    { id: u.id, email: u.email, role: u.role },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRES || "2d" }
-  );
-
-  res
-    .cookie("token", token, cookieOpts)
-    .json({ id: u.id, name: u.name, email: u.email, role: u.role });
 });
 
 r.post("/logout", (req, res) => {
@@ -65,7 +75,8 @@ r.get("/me", async (req, res) => {
     const me = await findById(payload.id);
     if (!me) return res.status(401).json({ error: "unauthorized" });
     res.json(me);
-  } catch {
+  } catch (err) {
+    console.error("Erro em /me:", err);
     res.status(401).json({ error: "invalid_token" });
   }
 });
