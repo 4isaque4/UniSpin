@@ -12,22 +12,39 @@ const cookieOpts = {
   sameSite: isProd ? "none" : "lax",
   secure: isProd,
   path: "/",
-  maxAge: 1000 * 60 * 60 * 24 * 2
+  maxAge: 1000 * 60 * 60 * 24 * 2,
 };
 
 r.post("/set-password", async (req, res) => {
   try {
     const { email, newPassword } = req.body || {};
-    if (!email || !newPassword) return res.status(400).json({ error: "invalid_body" });
+    if (!email || !newPassword) {
+      console.warn("[set-password] Requisição inválida", req.body);
+      return res.status(400).json({ error: "invalid_body" });
+    }
 
+    console.log(`[set-password] Requisição recebida para: ${email}`);
     const u = await findByEmail(email.toLowerCase().trim());
-    if (!u) return res.status(404).json({ error: "user_not_found" });
+
+    if (!u) {
+      console.warn("[set-password] Usuário não encontrado:", email);
+      return res.status(404).json({ error: "user_not_found" });
+    }
+
+    console.log("[set-password] Usuário encontrado:", u.id);
 
     const hash = await bcrypt.hash(newPassword, 12);
+    console.log("[set-password] Hash da nova senha gerado.");
+
     await setPassword(u.id, hash);
+    console.log("[set-password] Senha atualizada com sucesso.");
+
     res.json({ ok: true });
   } catch (err) {
-    console.error("Erro em /set-password:", err);
+    console.error("[set-password] Erro interno:", {
+      message: err.message,
+      stack: err.stack,
+    });
     res.status(500).json({ error: "internal_error", message: "Falha ao definir a senha" });
   }
 });
@@ -57,7 +74,10 @@ r.post("/login", async (req, res) => {
       .cookie("token", token, cookieOpts)
       .json({ id: u.id, name: u.name, email: u.email, role: u.role });
   } catch (err) {
-    console.error("Erro em /login:", err);
+    console.error("[login] Erro interno:", {
+      message: err.message,
+      stack: err.stack,
+    });
     res.status(500).json({ error: "internal_error", message: "Erro ao autenticar" });
   }
 });
@@ -76,7 +96,10 @@ r.get("/me", async (req, res) => {
     if (!me) return res.status(401).json({ error: "unauthorized" });
     res.json(me);
   } catch (err) {
-    console.error("Erro em /me:", err);
+    console.error("[me] Erro interno:", {
+      message: err.message,
+      stack: err.stack,
+    });
     res.status(401).json({ error: "invalid_token" });
   }
 });

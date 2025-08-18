@@ -1,9 +1,12 @@
-﻿import { query } from "./db.js";
+﻿// CONTEÚDO DO USER.REPO.JS (usa query do db.js)
+import { query } from "./db.js";
+
+const FIELDS = 'id, name, email, role, password_hash';
 
 export async function findByEmail(email) {
   const { rows } = await query(
-    'select id, name, email, role, password_hash from "User" where email = $1 limit 1',
-    [email]
+    'select ' + FIELDS + ' from "User" where lower(email) = lower($1) limit 1',
+    [String(email).trim()]
   );
   return rows[0] || null;
 }
@@ -17,5 +20,10 @@ export async function findById(id) {
 }
 
 export async function setPassword(id, hash) {
-  await query('update "User" set password_hash = $1 where id = $2', [hash, id]);
+  const { rowCount } = await query(
+    'update "User" set password_hash = $1 where id = $2',
+    [hash, id]
+  );
+  if (rowCount === 0) throw new Error("user_not_found_on_update");
+  return true;
 }
