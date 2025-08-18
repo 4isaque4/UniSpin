@@ -1,0 +1,12 @@
+.auth-pass-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;              /* ícone branco no fundo azul */
+  }
+  
+  .auth-pass-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+  
