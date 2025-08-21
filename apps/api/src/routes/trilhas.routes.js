@@ -1,9 +1,13 @@
 import { Router } from "express";
+import { requireAuth } from "../middlewares/auth.js";
+import { query } from "../repositories/db.js";
 
-const router = Router();
+const r = Router();
 
-router.get("/", (req, res) => {
-  res.json({ message: "Trilhas routes working" });
+// Protegida: precisa de Authorization: Bearer <token>
+r.get("/", requireAuth, async (_req, res) => {
+  const { rows } = await query('select id, name, description from "Trilha" order by created_at desc');
+  res.json(rows);
 });
 
-export default router;
+export default r;
