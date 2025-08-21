@@ -1,13 +1,24 @@
-import jwt from "jsonwebtoken";
+// apps/api/src/middlewares/auth.js
+import { createClient } from "@supabase/supabase-js";
 
-export function authRequired(req, res, next) {
-  const token = req.cookies?.token;
-  if (!token) return res.status(401).json({ error: "unauthorized" });
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE, {
+  auth: { persistSession: false, autoRefreshToken: false }
+});
+
+// Lê "Authorization: Bearer <token>" e valida no Supabase
+export async function requireAuth(req, res, next) {
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = payload; // { id, email, role }
+    const auth = req.headers.authorization || "";
+    const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
+    if (!token) return res.status(401).json({ error: "unauthorized" });
+
+    const { data, error } = await supabase.auth.getUser(token);
+    if (error || !data?.user) return res.status(401).json({ error: "unauthorized" });
+
+    req.user = data.user;
     next();
-  } catch {
-    return res.status(401).json({ error: "invalid_token" });
+  } catch (e) {
+    console.error("[requireAuth] error:", e);
+    res.status(401).json({ error: "unauthorized" });
   }
 }

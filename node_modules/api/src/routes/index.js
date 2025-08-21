@@ -6,7 +6,6 @@ import videos from "./videos.routes.js";
 
 const router = Router();
 
-router.use("/auth", auth);
 router.use("/trilhas", trilhas);
 router.use("/videos", videos);
 // router.use("/progresso", progresso);

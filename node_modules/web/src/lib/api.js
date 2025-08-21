@@ -1,29 +1,19 @@
 // apps/web/src/lib/api.js
-const BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+import { supabase } from "./supabase";
 
-async function request(path, options = {}) {
-  const res = await fetch(`${BASE}${path}`, {
-    credentials: "include",                           
-    headers: { "Content-Type": "application/json", ...(options.headers || {}) },
-    ...options,
-  });
-  if (!res.ok) throw new Error(`API ${res.status}: ${await res.text()}`);
-  const ct = res.headers.get("content-type") || "";
-  return ct.includes("application/json") ? res.json() : res.text();
+const API = import.meta.env.VITE_API_URL;
+
+export async function apiFetch(path, options = {}) {
+  const { data: { session } } = await supabase.auth.getSession();
+  const headers = new Headers(options.headers || {});
+  headers.set("Content-Type", "application/json");
+
+  // Se houver sessão, envia o token
+  if (session?.access_token) {
+    headers.set("Authorization", `Bearer ${session.access_token}`);
+  }
+
+  const res = await fetch(`${API}${path}`, { ...options, headers, credentials: "omit" });
+  // (omit) porque agora não usamos cookies entre domínios
+  return res;
 }
-
-export const api = {
-  health: () => request("/health"),
-  listTrilhas: () => request("/trilhas"),
-  listVideos: () => request("/videos"),
-  getVideo: (id) => request(`/videos/${id}`),
-  // se já existir no back:
-  me: () => request("/auth/me"),
-  setPassword: (email, newPassword) =>
-    request("/auth/set-password", {
-      method: "POST",
-      body: JSON.stringify({ email, newPassword }),
-    }),
-};
-
-export default api;
