@@ -4,6 +4,10 @@ import { createClient } from "@supabase/supabase-js";
 // Lê "Authorization: Bearer <token>" e valida no Supabase
 export async function requireAuth(req, res, next) {
   try {
+    // Debug: verificar se as variáveis estão sendo lidas
+    console.log("[requireAuth] SUPABASE_URL:", process.env.SUPABASE_URL ? "Configurada" : "NÃO CONFIGURADA");
+    console.log("[requireAuth] SUPABASE_SERVICE_ROLE_KEY:", process.env.SUPABASE_SERVICE_ROLE_KEY ? "Configurada" : "NÃO CONFIGURADA");
+    
     // Criar cliente Supabase apenas quando necessário
     const supabase = createClient(
       process.env.SUPABASE_URL, 
