@@ -1,13 +1,18 @@
 // apps/api/src/middlewares/auth.js
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
-  auth: { persistSession: false, autoRefreshToken: false }
-});
-
 // Lê "Authorization: Bearer <token>" e valida no Supabase
 export async function requireAuth(req, res, next) {
   try {
+    // Criar cliente Supabase apenas quando necessário
+    const supabase = createClient(
+      process.env.SUPABASE_URL, 
+      process.env.SUPABASE_SERVICE_ROLE_KEY, 
+      {
+        auth: { persistSession: false, autoRefreshToken: false }
+      }
+    );
+
     const auth = req.headers.authorization || "";
     const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
     
