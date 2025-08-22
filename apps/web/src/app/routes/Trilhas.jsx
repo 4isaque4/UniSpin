@@ -6,7 +6,9 @@ export default function Trilhas() {
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    api("/trilhas").then(setData).catch(e => setErr(e.message));
+    api("/trilhas")
+      .then(setData)
+      .catch(e => setErr(e.message));
   }, []);
 
   if (err) return <p>Erro: {err}</p>;
