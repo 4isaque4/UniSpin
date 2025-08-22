@@ -24,6 +24,6 @@ export default function AuthProvider({ children }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const value = { user, session, loading, setUser, setSession };
+  const value = { user, session, loading: loading, ready: !loading, setUser, setSession };
   return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
 }
