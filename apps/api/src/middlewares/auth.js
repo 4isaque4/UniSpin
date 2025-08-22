@@ -9,6 +9,8 @@ export async function requireAuth(req, res, next) {
     console.log("[requireAuth] SUPABASE_SERVICE_ROLE_KEY:", process.env.SUPABASE_SERVICE_ROLE_KEY ? "Configurada" : "NÃO CONFIGURADA");
     
     // Criar cliente Supabase apenas quando necessário
+    console.log("[requireAuth] Tentando criar cliente Supabase...");
+    
     const supabase = createClient(
       process.env.SUPABASE_URL, 
       process.env.SUPABASE_SERVICE_ROLE_KEY, 
@@ -16,6 +18,8 @@ export async function requireAuth(req, res, next) {
         auth: { persistSession: false, autoRefreshToken: false }
       }
     );
+    
+    console.log("[requireAuth] Cliente Supabase criado com sucesso");
 
     const auth = req.headers.authorization || "";
     const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
