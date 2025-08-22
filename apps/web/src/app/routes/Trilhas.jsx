@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { api } from "../../lib/api";
+import { apiFetch } from "../../lib/api";
 
 export default function Trilhas() {
   const [data, setData] = useState([]);
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    api("/trilhas").then(setData).catch(e => setErr(e.message));
+    apiFetch("/trilhas")
+      .then((res) => res.json())
+      .then(setData)
+      .catch((e) => setErr(e.message));
   }, []);
 
   if (err) return <p>Erro: {err}</p>;
