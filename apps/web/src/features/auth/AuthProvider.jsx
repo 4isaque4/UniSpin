@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
-import { AuthCtx } from "./auth-context.js";
+import { AuthCtx } from "./auth-context.jsx";
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
