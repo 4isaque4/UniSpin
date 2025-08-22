@@ -6,8 +6,18 @@ export default function Trilhas() {
   const [err, setErr] = useState("");
 
   useEffect(() => {
+    if (!import.meta.env.VITE_API_URL) {
+      setErr("API não configurada. Verifique as variáveis de ambiente.");
+      return;
+    }
+    
     apiFetch("/trilhas")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Erro ${res.status}: ${res.statusText}`);
+        }
+        return res.json();
+      })
       .then(setData)
       .catch(e => setErr(e.message));
   }, []);

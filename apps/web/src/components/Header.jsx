@@ -1,7 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
-// Se o seu projeto usa 'AuthContext.jsx', mantenha esta linha.
-// Se for 'auth-context.js', troque o import abaixo.
 import { useAuth } from "../features/auth/AuthContext.jsx";
+import { supabase } from "../lib/supabase";
 import Logo from "./Logo.jsx";
 
 const navStyle = ({ isActive }) => ({
@@ -18,10 +17,7 @@ export default function Header() {
 
   async function onLogout() {
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
-        method: "POST",
-        credentials: "include",
-      });
+      await supabase.auth.signOut();
       setUser(null);
       // Evita depender de useNavigate: redireciona limpo
       window.location.assign("/");
