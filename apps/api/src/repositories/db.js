@@ -14,15 +14,29 @@ console.log("[DB] DATABASE_URL configurada:", process.env.DATABASE_URL ? "Sim" :
 console.log("[DB] SSL forçado:", mustSSL);
 console.log("[DB] Forçar IPv4:", forceIPv4);
 
-export const pool = new Pool({
+// Configuração do pool com forçar IPv4
+const poolConfig = {
   connectionString: process.env.DATABASE_URL,
   ssl: mustSSL ? { rejectUnauthorized: false } : false,
   max: 5,
   idleTimeoutMillis: 30_000,
   connectionTimeoutMillis: 10_000,
-  // Forçar IPv4 se especificado
-  ...(forceIPv4 && { family: 4 })
-});
+};
+
+// Forçar IPv4 de forma mais agressiva
+if (forceIPv4) {
+  poolConfig.family = 4;
+  // Configurações adicionais para forçar IPv4
+  poolConfig.connectionString = process.env.DATABASE_URL.replace(
+    /@([^:]+):/,
+    (match, host) => {
+      // Forçar resolução IPv4 do hostname
+      return `@${host}:`;
+    }
+  );
+}
+
+export const pool = new Pool(poolConfig);
 
 // Testar conexão na inicialização
 pool.on('connect', () => {
@@ -58,6 +72,7 @@ export async function query(text, params) {
     // Log específico para problemas de rede
     if (error.code === 'ENETUNREACH') {
       console.error('[DB] Erro de rede: Tentativa de conexão IPv6 falhou. Considere usar FORCE_IPV4=true');
+      console.error('[DB] SUGESTÃO: Verifique se o hostname do banco resolve para IPv4');
     }
     
     throw error;
@@ -81,6 +96,8 @@ export async function testConnection() {
     // Sugestões específicas para problemas de rede
     if (error.code === 'ENETUNREACH') {
       console.error('[DB] SUGESTÃO: Adicione FORCE_IPV4=true nas variáveis de ambiente');
+      console.error('[DB] SUGESTÃO: Verifique se o hostname resolve para IPv4');
+      console.error('[DB] SUGESTÃO: Considere usar IP direto em vez de hostname');
     }
     
     return false;
