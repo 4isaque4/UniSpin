@@ -54,12 +54,8 @@ app.use(routes);
 // Middleware de tratamento de erros (deve ser o último)
 app.use(errorHandler);
 
-// Start
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, async () => {
-  console.log(`API on :${PORT}`);
-  
-  // Testar conexão com banco
+// Testar conexão com banco (será chamado pelo server.js)
+export const testDatabaseConnection = async () => {
   console.log("Testando conexão com banco de dados...");
   const dbConnected = await testConnection();
   if (dbConnected) {
@@ -67,6 +63,7 @@ app.listen(PORT, async () => {
   } else {
     console.log("Falha na conexão com banco");
   }
-});
+  return dbConnected;
+};
 
 export default app;
