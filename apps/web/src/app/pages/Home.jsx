@@ -8,15 +8,15 @@ export default function Home() {
       <section className="hero">
         <div className="container heroGrid">
           <div>
-            <span className="eyebrow">Plataforma educacional</span>
+            <span className="eyebrow">Plataforma corporativa</span>
             <h1>Aprender, criar e compartilhar — no ritmo da inovação.</h1>
             <p className="lead">
-              A UniSpin centraliza cursos, projetos e comunidade em uma experiência rápida, responsiva e acessível.
-              Construída com uma base moderna e pensada para escalar com você.
+              A UniSpin centraliza treinamentos, projetos e conhecimento em uma experiência rápida, responsiva e acessível.
+              Construída com uma base moderna para nossa equipe.
             </p>
             <div className="pill">
-              <a className="btn" href="#cta">Começar agora</a>
-              <a className="btn secondary" href="#demo">Ver demonstração</a>
+              <a className="btn" href="#features">Conhecer recursos</a>
+              <a className="btn secondary" href="#features">Ver funcionalidades</a>
             </div>
           </div>
 
@@ -49,8 +49,7 @@ export default function Home() {
       {/* CTA */}
       <section id="cta" className="ctaStrip">
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
-          <h3 style={{ margin: 0 }}>Pronto pra girar o conhecimento?</h3>
-          <a className="btn" href="#">Criar conta</a>
+          <h3 style={{ margin: 0 }}>Plataforma UniSpin</h3>
         </div>
       </section>
     </>
