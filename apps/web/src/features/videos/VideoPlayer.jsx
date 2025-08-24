@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getVideoById, getNextVideo, getPreviousVideo } from '../../data/playlist.js';
-import './VideoPlayer.css';
+import '../../styles/VideoPlayer.css';
 
 export default function VideoPlayer() {
   const { videoId } = useParams();
@@ -36,12 +36,6 @@ export default function VideoPlayer() {
       <div className="video-header">
         <div className="video-breadcrumb">
           <Link to="/" className="breadcrumb-link">Home</Link>
-          <span className="breadcrumb-separator">/</span>
-          <Link to="/trilhas" className="breadcrumb-link">Trilhas</Link>
-          <span className="breadcrumb-separator">/</span>
-          <Link to={`/trilhas/${video.trilhaId}`} className="breadcrumb-link">
-            {video.trilhaName?.split(':')[0]}
-          </Link>
           <span className="breadcrumb-separator">/</span>
           <span className="breadcrumb-current">{video.title}</span>
         </div>
