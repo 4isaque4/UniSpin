@@ -9,14 +9,18 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     (async () => {
+      console.log("AuthProvider - verificando sessão inicial...");
       const { data: { session } } = await supabase.auth.getSession();
+      console.log("AuthProvider - sessão inicial:", session);
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
+      console.log("AuthProvider - estado inicial definido, user:", session?.user ?? null);
     })();
 
     const { data: { subscription } } =
       supabase.auth.onAuthStateChange((_event, session) => {
+        console.log("AuthProvider - mudança de estado de autenticação:", _event, session);
         setSession(session);
         setUser(session?.user ?? null);
       });
@@ -25,5 +29,6 @@ export default function AuthProvider({ children }) {
   }, []);
 
   const value = { user, session, loading: loading, ready: !loading, setUser, setSession };
+  console.log("AuthProvider - valor do contexto:", value);
   return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
 }

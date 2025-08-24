@@ -10,9 +10,12 @@ const navStyle = ({ isActive }) => ({
 export default function Header() {
   const { user } = useAuth();
 
+  // Usuários não autenticados vão para login, usuários autenticados vão para videos
   const trilhasTo = user ? "/trilhas" : "/login";
   const videosTo = user ? "/videos" : "/login";
   const ctaTo = user ? "/videos" : "/login";
+
+  console.log("Header - user:", user, "ctaTo:", ctaTo);
 
   return (
     <header className="header">

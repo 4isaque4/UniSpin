@@ -30,6 +30,7 @@ export default function Login() {
       }
 
       console.log("Login bem-sucedido:", data);
+      console.log("Navegando para /videos...");
       navigate("/videos");
     } catch (error) {
       console.error("Erro capturado:", error);

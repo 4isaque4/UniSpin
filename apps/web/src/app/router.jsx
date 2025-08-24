@@ -14,10 +14,12 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
 
+      // Rotas para usuários não autenticados
       { element: <GuestRoute />, children: [
         { path: "/login", element: <Login /> },
       ]},
 
+      // Rotas para usuários autenticados
       { element: <ProtectedRoute />, children: [
         { path: "/trilhas", element: <Trilhas /> },
         { path: "/videos", element: <Videos /> },
