@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Logo from "./Logo.jsx";
 
 const navStyle = ({ isActive }) => ({
@@ -17,6 +17,8 @@ export default function Header() {
 
         <nav style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <NavLink to="/" end style={navStyle} className="btn secondary">Home</NavLink>
+          <NavLink to="/videos" style={navStyle} className="btn secondary">Vídeos</NavLink>
+          <Link to="/videos" className="btn">Acessar plataforma</Link>
         </nav>
       </div>
     </header>
