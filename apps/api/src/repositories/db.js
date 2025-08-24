@@ -1,100 +1,50 @@
-﻿// CONTEÚDO DO DB.JS (Pool + query)
-import pg from "pg";
-import dns from "dns";
-import { promisify } from "util";
-const { Pool } = pg;
+﻿// apps/api/src/repositories/db.js
+import { Pool } from 'pg';
+import dns from 'dns/promises';
 
 const mustSSL =
-  process.env.FORCE_DB_SSL === "true" ||
-  (process.env.DATABASE_URL || "").includes("supabase");
+  process.env.FORCE_DB_SSL === 'true' ||
+  (process.env.DATABASE_URL || '').includes('supabase');
 
-// Forçar IPv4 se especificado
-const forceIPv4 = process.env.FORCE_IPV4 === "true";
+const forceIPv4 = process.env.FORCE_IPV4 === 'true';
 
 console.log("[DB] Configurando pool de conexão...");
 console.log("[DB] DATABASE_URL configurada:", process.env.DATABASE_URL ? "Sim" : "Não");
 console.log("[DB] SSL forçado:", mustSSL);
 console.log("[DB] Forçar IPv4:", forceIPv4);
 
-// Função para resolver hostname para IPv4
-async function resolveHostnameToIPv4(hostname) {
+async function resolveDatabaseUrl(rawUrl) {
   try {
-    const resolve4 = promisify(dns.resolve4);
-    const addresses = await resolve4(hostname);
-    return addresses[0]; // Retorna o primeiro IPv4
-  } catch (error) {
-    console.log(`[DB] Hostname ${hostname} não resolve para IPv4: ${error.message}`);
-    return null;
-  }
-}
-
-// Função para resolver hostname para IPv6
-async function resolveHostnameToIPv6(hostname) {
-  try {
-    const resolve6 = promisify(dns.resolve6);
-    const addresses = await resolve6(hostname);
-    return addresses[0]; // Retorna o primeiro IPv6
-  } catch (error) {
-    console.log(`[DB] Hostname ${hostname} não resolve para IPv6: ${error.message}`);
-    return null;
-  }
-}
-
-// Função para verificar se é IPv6
-function isIPv6(address) {
-  return address.includes(':');
-}
-
-// Função para obter a melhor DATABASE_URL
-async function getBestDatabaseUrl() {
-  const databaseUrl = process.env.DATABASE_URL;
-  const hostnameMatch = databaseUrl.match(/@([^:]+):/);
-  
-  if (!hostnameMatch) return databaseUrl;
-  
-  const hostname = hostnameMatch[1];
-  console.log(`[DB] Resolvendo hostname: ${hostname}`);
-  
-  // Tentar IPv4 primeiro
-  if (forceIPv4) {
-    const ipv4Address = await resolveHostnameToIPv4(hostname);
-    if (ipv4Address) {
-      const modifiedUrl = databaseUrl.replace(hostname, ipv4Address);
-      console.log(`[DB] Usando IPv4: ${ipv4Address}`);
-      return modifiedUrl;
+    const url = new URL(rawUrl);
+    console.log(`[DB] Resolvendo hostname: ${url.hostname}`);
+    
+    const records = await dns.lookup(url.hostname, { all: true });
+    
+    const ipv4 = records.find(r => r.family === 4);
+    const ipv6 = records.find(r => r.family === 6);
+    
+    console.log(`[DB] IPv4 encontrado: ${ipv4?.address || 'Não'}`);
+    console.log(`[DB] IPv6 encontrado: ${ipv6?.address || 'Não'}`);
+    
+    if ((forceIPv4 && ipv4) || ipv4) {
+      url.hostname = ipv4.address;
+      console.log(`[DB] Usando IPv4: ${ipv4.address}`);
+    } else if (ipv6) {
+      url.hostname = `[${ipv6.address}]`;
+      console.log(`[DB] Usando IPv6: [${ipv6.address}]`);
+    } else {
+      console.log(`[DB] Usando hostname original: ${url.hostname}`);
     }
+    
+    const finalUrl = url.toString();
+    console.log(`[DB] URL final: ${finalUrl.replace(/:[^:@]*@/, ':***@')}`);
+    
+    return finalUrl;
+  } catch (error) {
+    console.error(`[DB] Erro ao resolver hostname:`, error.message);
+    console.log(`[DB] Usando DATABASE_URL original`);
+    return rawUrl;
   }
-  
-  // Se IPv4 falhar, tentar IPv6
-  const ipv6Address = await resolveHostnameToIPv6(hostname);
-  if (ipv6Address) {
-    // IPv6 precisa estar entre colchetes na URL PostgreSQL
-    const formattedIPv6 = `[${ipv6Address}]`;
-    const modifiedUrl = databaseUrl.replace(hostname, formattedIPv6);
-    console.log(`[DB] Usando IPv6: ${formattedIPv6}`);
-    return modifiedUrl;
-  }
-  
-  // Se nada funcionar, usar hostname original
-  console.log(`[DB] Usando hostname original: ${hostname}`);
-  return databaseUrl;
-}
-
-// Configuração do pool
-let poolConfig = {
-  ssl: mustSSL ? { rejectUnauthorized: false } : false,
-  max: 5,
-  idleTimeoutMillis: 30_000,
-  connectionTimeoutMillis: 10_000,
-};
-
-// Configurar família de IP baseado no que está disponível
-if (forceIPv4) {
-  poolConfig.family = 4;
-  console.log("[DB] Configuração family: 4 aplicada");
-} else {
-  // Permitir tanto IPv4 quanto IPv6
-  console.log("[DB] Permitindo IPv4 e IPv6");
 }
 
 let pool;
@@ -102,12 +52,15 @@ let pool;
 // Função para inicializar o pool
 async function initializePool() {
   try {
-    const databaseUrl = await getBestDatabaseUrl();
-    poolConfig.connectionString = databaseUrl;
+    const connectionString = await resolveDatabaseUrl(process.env.DATABASE_URL);
     
-    console.log(`[DB] URL final de conexão: ${databaseUrl.replace(/:[^:@]*@/, ':***@')}`);
-    
-    pool = new Pool(poolConfig);
+    pool = new Pool({
+      connectionString,
+      ssl: mustSSL ? { rejectUnauthorized: false } : undefined,
+      max: 5,
+      idleTimeoutMillis: 30_000,
+      connectionTimeoutMillis: 10_000,
+    });
     
     // Eventos do pool
     pool.on('connect', () => {
@@ -169,10 +122,9 @@ export async function query(text, params) {
   }
 }
 
-// Função para testar conexão
 export async function testConnection() {
   try {
-    const result = await query('SELECT NOW()');
+    const result = await query('SELECT 1');
     console.log('[DB] Teste de conexão bem-sucedido:', result.rows[0]);
     return true;
   } catch (error) {
