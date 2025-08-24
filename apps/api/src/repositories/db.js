@@ -40,6 +40,11 @@ async function resolveHostnameToIPv6(hostname) {
   }
 }
 
+// Função para verificar se é IPv6
+function isIPv6(address) {
+  return address.includes(':');
+}
+
 // Função para obter a melhor DATABASE_URL
 async function getBestDatabaseUrl() {
   const databaseUrl = process.env.DATABASE_URL;
@@ -63,8 +68,10 @@ async function getBestDatabaseUrl() {
   // Se IPv4 falhar, tentar IPv6
   const ipv6Address = await resolveHostnameToIPv6(hostname);
   if (ipv6Address) {
-    const modifiedUrl = databaseUrl.replace(hostname, ipv6Address);
-    console.log(`[DB] Usando IPv6: ${ipv6Address}`);
+    // IPv6 precisa estar entre colchetes na URL PostgreSQL
+    const formattedIPv6 = `[${ipv6Address}]`;
+    const modifiedUrl = databaseUrl.replace(hostname, formattedIPv6);
+    console.log(`[DB] Usando IPv6: ${formattedIPv6}`);
     return modifiedUrl;
   }
   
@@ -97,6 +104,8 @@ async function initializePool() {
   try {
     const databaseUrl = await getBestDatabaseUrl();
     poolConfig.connectionString = databaseUrl;
+    
+    console.log(`[DB] URL final de conexão: ${databaseUrl.replace(/:[^:@]*@/, ':***@')}`);
     
     pool = new Pool(poolConfig);
     
