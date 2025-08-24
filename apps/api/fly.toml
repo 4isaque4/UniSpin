@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for unispin on 2024-08-24T17:00:00Z
+# fly.toml app configuration file generated for unispin on 2025-08-24T17:21:10-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,9 +7,10 @@ app = "unispin"
 primary_region = "gru"
 
 [build]
+  dockerfile = 'Dockerfile'
 
 [env]
-  PORT = "3000"
+  PORT = '3000'
 
 [http_service]
   internal_port = 3000
@@ -17,16 +18,14 @@ primary_region = "gru"
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"]
+  processes = ['app']
 
-[[http_service.checks]]
-  grace_period = "10s"
-  interval = "30s"
-  method = "GET"
-  timeout = "5s"
-  path = "/health"
+  [[http_service.checks]]
+    interval = '30s'
+    timeout = '5s'
+    grace_period = '10s'
+    method = 'GET'
+    path = '/health'
 
 [[vm]]
-  cpu_kind = "shared"
-  cpus = 1
-  memory_mb = 256
+  size = 'shared-cpu-1x'

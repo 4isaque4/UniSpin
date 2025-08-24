@@ -56,7 +56,6 @@ export default function Home() {
     </>
   );
 }
-
 const PREVIEW_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='650'>
   <defs>
     <linearGradient id='bg' x1='0' x2='1' y1='0' y2='1'>
@@ -81,3 +80,4 @@ const PREVIEW_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height
   <text x='320' y='190' fill='white' style='font:700 56px system-ui, -apple-system, Segoe UI, Roboto'>UniSpin</text>
   <text x='320' y='240' fill='#c7d2fe' style='font:400 20px system-ui, -apple-system, Segoe UI, Roboto'>Página inicial — estática e responsiva</text>
 </svg>`;
+
