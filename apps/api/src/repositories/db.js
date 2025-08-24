@@ -1,5 +1,7 @@
 ﻿// CONTEÚDO DO DB.JS (Pool + query)
 import pg from "pg";
+import dns from "dns";
+import { promisify } from "util";
 const { Pool } = pg;
 
 const mustSSL =
@@ -14,9 +16,41 @@ console.log("[DB] DATABASE_URL configurada:", process.env.DATABASE_URL ? "Sim" :
 console.log("[DB] SSL forçado:", mustSSL);
 console.log("[DB] Forçar IPv4:", forceIPv4);
 
+// Função para resolver hostname para IPv4
+async function resolveHostnameToIPv4(hostname) {
+  try {
+    const resolve4 = promisify(dns.resolve4);
+    const addresses = await resolve4(hostname);
+    return addresses[0]; // Retorna o primeiro IPv4
+  } catch (error) {
+    console.error(`[DB] Erro ao resolver IPv4 para ${hostname}:`, error.message);
+    return null;
+  }
+}
+
+// Função para modificar DATABASE_URL para usar IP direto
+async function getIPv4DatabaseUrl() {
+  if (!forceIPv4) return process.env.DATABASE_URL;
+  
+  const databaseUrl = process.env.DATABASE_URL;
+  const hostnameMatch = databaseUrl.match(/@([^:]+):/);
+  
+  if (!hostnameMatch) return databaseUrl;
+  
+  const hostname = hostnameMatch[1];
+  const ipv4Address = await resolveHostnameToIPv4(hostname);
+  
+  if (ipv4Address) {
+    const modifiedUrl = databaseUrl.replace(hostname, ipv4Address);
+    console.log(`[DB] DATABASE_URL modificada para usar IP IPv4: ${ipv4Address}`);
+    return modifiedUrl;
+  }
+  
+  return databaseUrl;
+}
+
 // Configuração do pool com forçar IPv4
-const poolConfig = {
-  connectionString: process.env.DATABASE_URL,
+let poolConfig = {
   ssl: mustSSL ? { rejectUnauthorized: false } : false,
   max: 5,
   idleTimeoutMillis: 30_000,
@@ -26,38 +60,60 @@ const poolConfig = {
 // Forçar IPv4 de forma mais agressiva
 if (forceIPv4) {
   poolConfig.family = 4;
-  // Configurações adicionais para forçar IPv4
-  poolConfig.connectionString = process.env.DATABASE_URL.replace(
-    /@([^:]+):/,
-    (match, host) => {
-      // Forçar resolução IPv4 do hostname
-      return `@${host}:`;
-    }
-  );
+  console.log("[DB] Configuração family: 4 aplicada");
 }
 
-export const pool = new Pool(poolConfig);
+let pool;
 
-// Testar conexão na inicialização
-pool.on('connect', () => {
-  console.log('[DB] Nova conexão estabelecida');
-});
+// Função para inicializar o pool
+async function initializePool() {
+  try {
+    const databaseUrl = await getIPv4DatabaseUrl();
+    poolConfig.connectionString = databaseUrl;
+    
+    pool = new Pool(poolConfig);
+    
+    // Eventos do pool
+    pool.on('connect', () => {
+      console.log('[DB] Nova conexão estabelecida');
+    });
+    
+    pool.on('error', (err) => {
+      console.error('[DB] Erro no pool:', err);
+    });
+    
+    pool.on('acquire', () => {
+      console.log('[DB] Conexão adquirida do pool');
+    });
+    
+    pool.on('release', () => {
+      console.log('[DB] Conexão liberada para o pool');
+    });
+    
+    console.log('[DB] Pool inicializado com sucesso');
+    return pool;
+  } catch (error) {
+    console.error('[DB] Erro ao inicializar pool:', error);
+    throw error;
+  }
+}
 
-pool.on('error', (err) => {
-  console.error('[DB] Erro no pool:', err);
-});
+// Inicializar pool imediatamente
+initializePool().catch(console.error);
 
-pool.on('acquire', () => {
-  console.log('[DB] Conexão adquirida do pool');
-});
-
-pool.on('release', () => {
-  console.log('[DB] Conexão liberada para o pool');
-});
+export { pool };
 
 export async function query(text, params) {
   let client;
   try {
+    if (!pool) {
+      console.log('[DB] Pool não inicializado, aguardando...');
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (!pool) {
+        throw new Error('Pool não foi inicializado');
+      }
+    }
+    
     console.log('[DB] Tentando conectar ao banco...');
     client = await pool.connect();
     console.log('[DB] Conexão estabelecida, executando query:', text.substring(0, 50) + '...');
@@ -68,13 +124,6 @@ export async function query(text, params) {
     return result;
   } catch (error) {
     console.error('[DB] Erro na query:', error);
-    
-    // Log específico para problemas de rede
-    if (error.code === 'ENETUNREACH') {
-      console.error('[DB] Erro de rede: Tentativa de conexão IPv6 falhou. Considere usar FORCE_IPV4=true');
-      console.error('[DB] SUGESTÃO: Verifique se o hostname do banco resolve para IPv4');
-    }
-    
     throw error;
   } finally {
     if (client) {
@@ -92,14 +141,6 @@ export async function testConnection() {
     return true;
   } catch (error) {
     console.error('[DB] Teste de conexão falhou:', error);
-    
-    // Sugestões específicas para problemas de rede
-    if (error.code === 'ENETUNREACH') {
-      console.error('[DB] SUGESTÃO: Adicione FORCE_IPV4=true nas variáveis de ambiente');
-      console.error('[DB] SUGESTÃO: Verifique se o hostname resolve para IPv4');
-      console.error('[DB] SUGESTÃO: Considere usar IP direto em vez de hostname');
-    }
-    
     return false;
   }
 }
