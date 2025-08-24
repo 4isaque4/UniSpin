@@ -5,8 +5,17 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import routes from "./routes/index.js";
+import { errorHandler } from "./middlewares/error.js";
+import { testConnection } from "./repositories/db.js";
+import { validateEnv } from "./config/env.js";
 
 dotenv.config();
+
+// Validar variáveis de ambiente
+if (!validateEnv()) {
+  console.error("Falha na validação das variáveis de ambiente. Encerrando aplicação.");
+  process.exit(1);
+}
 
 const app = express();
 app.set("trust proxy", 1);
@@ -42,8 +51,22 @@ app.get("/health", (_req, res) => res.status(200).send("ok"));
 // Rotas
 app.use(routes);
 
+// Middleware de tratamento de erros (deve ser o último)
+app.use(errorHandler);
+
 // Start
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`API on :${PORT}`));
+app.listen(PORT, async () => {
+  console.log(`API on :${PORT}`);
+  
+  // Testar conexão com banco
+  console.log("Testando conexão com banco de dados...");
+  const dbConnected = await testConnection();
+  if (dbConnected) {
+    console.log("Conexão com banco estabelecida");
+  } else {
+    console.log("Falha na conexão com banco");
+  }
+});
 
 export default app;
