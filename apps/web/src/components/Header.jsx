@@ -17,6 +17,7 @@ export default function Header() {
 
         <nav style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <NavLink to="/" end style={navStyle} className="btn secondary">Home</NavLink>
+          <NavLink to="/trilhas" style={navStyle} className="btn secondary">Trilhas</NavLink>
           <NavLink to="/videos" style={navStyle} className="btn secondary">Vídeos</NavLink>
           <Link to="/videos" className="btn">Acessar plataforma</Link>
         </nav>

@@ -1,7 +1,5 @@
 import FeatureCard from "../../components/FeatureCard.jsx";
 import Logo from "../../components/Logo.jsx";
-import { Link } from 'react-router-dom';
-import { playlistData } from '../../data/playlist.js';
 
 export default function Home() {
   return (
@@ -44,55 +42,6 @@ export default function Home() {
             <FeatureCard title="Conteúdo modular" desc="Trilhas e aulas com checkpoints." />
             <FeatureCard title="Integrações" desc="Supabase, APIs externas e autenticação simples." />
             <FeatureCard title="Performance" desc="Frontend estático via CDN e otimizações de build." />
-          </div>
-        </div>
-      </section>
-
-      {/* PLAYLIST SECTION */}
-      <section id="playlist" className="features">
-        <div className="container">
-          <p className="kicker">Playlist UniSpin</p>
-          <h2>Vídeos Institucionais e Treinamentos</h2>
-          <p className="lead" style={{ textAlign: 'center', marginBottom: '40px' }}>
-            Conheça a UniSpin através de nossos vídeos institucionais e treinamentos corporativos
-          </p>
-          
-          <div className="grid">
-            {playlistData.trilhas.map((trilha) => (
-              <div key={trilha.id} className="card" style={{ borderColor: trilha.color }}>
-                <div className="cardHeader">
-                  <span style={{ fontSize: '2rem' }}>{trilha.icon}</span>
-                  <h3>{trilha.name}</h3>
-                </div>
-                <p>{trilha.description}</p>
-                <div style={{ marginTop: '20px' }}>
-                  <span className="badge">{trilha.videos.length} vídeos</span>
-                </div>
-                
-                <div style={{ marginTop: '20px' }}>
-                  {trilha.videos.slice(0, 2).map((video) => (
-                    <Link 
-                      key={video.id} 
-                      to={`/video/${video.id}`}
-                      className="btn secondary"
-                      style={{ 
-                        display: 'block', 
-                        marginBottom: '10px',
-                        textDecoration: 'none',
-                        textAlign: 'center'
-                      }}
-                    >
-                      {video.title}
-                    </Link>
-                  ))}
-                  {trilha.videos.length > 2 && (
-                    <div style={{ textAlign: 'center', color: '#666', fontSize: '0.9rem' }}>
-                      +{trilha.videos.length - 2} vídeos mais
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
