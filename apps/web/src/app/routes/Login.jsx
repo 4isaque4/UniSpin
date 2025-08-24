@@ -42,57 +42,56 @@ export default function Login() {
 
   return (
     <main className="auth">
-      <div className="container">
-        <div className="authCard">
-          <h2>Entrar na UniSpin</h2>
-          
-          {error && (
-            <div className="error" style={{ color: "#ff6b6b", marginBottom: "16px", padding: "12px", background: "rgba(255,107,107,0.1)", borderRadius: "8px" }}>
-              <strong>Erro:</strong> {error}
-            </div>
-          )}
+      <div className="auth-card">
+        <h2 className="auth-title">Entrar na UniSpin</h2>
+        <p className="auth-subtitle">Acesse sua conta para continuar</p>
+        
+        {error && (
+          <div className="auth-error">
+            <strong>Erro:</strong> {error}
+          </div>
+        )}
 
-          <form onSubmit={handleSubmit}>
-            <div className="formGroup">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="seu.email@unispin.com"
-              />
-            </div>
-
-            <div className="formGroup">
-              <label htmlFor="password">Senha</label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                placeholder="Sua senha"
-              />
-            </div>
-
-            <button type="submit" className="btn" disabled={loading}>
-              {loading ? "Entrando..." : "Entrar"}
-            </button>
-          </form>
-
-          <div style={{ marginTop: "24px", textAlign: "center" }}>
-            <Link to="/" className="btn secondary">
-              Voltar ao início
-            </Link>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="auth-field">
+            <span>Email</span>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="seu.email@unispin.com"
+            />
           </div>
 
-          <div style={{ marginTop: "16px", fontSize: "12px", color: "#666", textAlign: "center" }}>
-            <p>Credenciais de teste:</p>
-            <p>Email: admin@spinengenharia.com</p>
-            <p>Senha: (verificar no banco)</p>
+          <div className="auth-field">
+            <span>Senha</span>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Sua senha"
+            />
           </div>
+
+          <button type="submit" className="auth-btn" disabled={loading} aria-busy={loading}>
+            {loading ? "Entrando..." : "Entrar"}
+          </button>
+        </form>
+
+        <div style={{ marginTop: "24px", textAlign: "center" }}>
+          <Link to="/" className="btn secondary">
+            Voltar ao início
+          </Link>
+        </div>
+
+        <div className="auth-muted">
+          <p>Credenciais de teste:</p>
+          <p>Email: admin@spinengenharia.com</p>
+          <p>Senha: (verificar no banco)</p>
         </div>
       </div>
     </main>
