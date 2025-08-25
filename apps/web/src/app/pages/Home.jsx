@@ -5,85 +5,62 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="hero">
-        <div className="container heroGrid">
-          <div>
-            <span className="eyebrow">Plataforma corporativa</span>
-            <h1>Aprender, criar e compartilhar — no ritmo da inovação.</h1>
-            <p className="lead">
-              A UniSpin centraliza treinamentos, projetos e conhecimento em uma experiência rápida, responsiva e acessível.
-              Construída com uma base moderna para nossa equipe.
-            </p>
-            <div className="pill">
-              <a className="btn" href="#features">Conhecer recursos</a>
-              <a className="btn secondary" href="#features">Ver funcionalidades</a>
-            </div>
-          </div>
-
-          <div>
-            <div className="heroCard">
-              <div className="badge">
-                <span style={{ 
-                  fontSize: "16px", 
-                  marginRight: "6px",
-                  color: "#3B82F6"
-                }}>✦</span>
-                <span>Preview</span>
-              </div>
-              {/* mock de "preview" em SVG embutido */}
-              <img
-                alt="Prévia da UniSpin"
-                src={`data:image/svg+xml;utf8,${encodeURIComponent(PREVIEW_SVG)}`}
-                style={{ width: "100%", marginTop: 12, borderRadius: 12 }}
-              />
-            </div>
+        <div className="container" style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}>
+          <span className="eyebrow">Plataforma corporativa</span>
+          <h1>Aprender, criar e compartilhar — no ritmo da inovação.</h1>
+          <p className="lead">
+            A UniSpin centraliza treinamentos, projetos e conhecimento em uma experiência rápida, responsiva e acessível.
+            Construída com uma base moderna para nossa equipe.
+          </p>
+          <div className="pill" style={{ justifyContent: "center", gap: "16px" }}>
+            <a className="btn" href="#features">Conhecer recursos</a>
+            <a className="btn secondary" href="#features">Ver funcionalidades</a>
           </div>
         </div>
       </section>
 
       {/* FEATURES */}
       <section id="features" className="features">
-        <div className="container">
+        <div className="container" style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <p className="kicker">Por que UniSpin</p>
-          <div className="grid">
-            <FeatureCard title="Conteúdo modular" desc="Trilhas e aulas com checkpoints." />
-            <FeatureCard title="Integrações" desc="Supabase, APIs externas e autenticação simples." />
-            <FeatureCard title="Performance" desc="Frontend estático via CDN e otimizações de build." />
+          <div className="grid" style={{ 
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "32px",
+            marginTop: "40px"
+          }}>
+            <FeatureCard 
+              title="Trilhas de Certificação" 
+              desc="Série completa de  vídeos para certificação em Action.NET da SPIN Engenharia de Automação." 
+            />
+            <FeatureCard 
+              title="Progresso Personalizado" 
+              desc="Acompanhe seu avanço com sistema de tracking e barra de progresso para cada trilha." 
+            />
+            <FeatureCard 
+              title="Conteúdo Técnico" 
+              desc="Treinamentos especializados em SCADA, automação industrial e ferramentas Action.NET." 
+            />
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <section id="cta" className="ctaStrip">
-        <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+        <div className="container" style={{ 
+          display: "flex", 
+          alignItems: "center", 
+          justifyContent: "center", 
+          gap: "16px", 
+          flexWrap: "wrap",
+          textAlign: "center"
+        }}>
           <h3 style={{ margin: 0 }}>Plataforma UniSpin</h3>
+          <p style={{ margin: "8px 0 0 0", opacity: 0.8 }}>
+            Treinamentos corporativos para sua equipe
+          </p>
         </div>
       </section>
     </>
   );
 }
-
-const PREVIEW_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='650'>
-  <defs>
-    <linearGradient id='bg' x1='0' x2='1' y1='0' y2='1'>
-      <stop offset='0' stop-color='#0a35d1'/>
-      <stop offset='1' stop-color='#06186f'/>
-    </linearGradient>
-    <linearGradient id='a' x1='0' x2='1' y1='0' y2='1'>
-      <stop offset='0' stop-color='#44c3ee'/>
-      <stop offset='1' stop-color='#66e0c2'/>
-    </linearGradient>
-  </defs>
-  <rect width='100%' height='100%' fill='url(#bg)'/>
-  <g transform='translate(120,120)'>
-    <rect width='108' height='108' rx='18' fill='rgba(255,255,255,.08)' stroke='rgba(255,255,255,.2)'/>
-    <g transform='translate(54,54) rotate(45)'>
-      <rect x='-18' y='-30' rx='8' ry='8' width='36' height='36' fill='url(#a)'/>
-      <rect x='-30' y='-18' rx='8' ry='8' width='36' height='36' fill='url(#a)'/>
-      <rect x='-6'  y='-18' rx='8' ry='8' width='36' height='36' fill='url(#a)'/>
-      <rect x='-18' y='-6'  rx='8' ry='8' width='36' height='36' fill='url(#a)'/>
-    </g>
-  </g>
-  <text x='320' y='190' fill='white' style='font:700 56px system-ui, -apple-system, Segoe UI, Roboto'>UniSpin</text>
-  <text x='320' y='240' fill='#c7d2fe' style='font:400 20px system-ui, -apple-system, Segoe UI, Roboto'>Página inicial — estática e responsiva</text>
-</svg>`;
 
