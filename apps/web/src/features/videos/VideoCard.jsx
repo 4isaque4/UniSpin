@@ -7,7 +7,7 @@ export default function VideoCard({ video, showContext = false }) {
       {/* Thumbnail e Duração */}
       <div className="video-thumbnail-container">
         <img 
-          src={`https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg`}
+          src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
           alt={video.titulo}
           className="video-thumbnail"
         />

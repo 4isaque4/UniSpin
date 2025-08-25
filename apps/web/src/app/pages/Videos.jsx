@@ -3,22 +3,70 @@ import VideoCard from "../../features/videos/VideoCard.jsx";
 
 const MOCK_VIDEOS = [
   { 
-    id: "intro-react", 
-    titulo: "Certificação 1 - Apresentação SPIN", 
-    duracao: "5:30",
-    descricao: "Primeiro vídeo da série do treinamento para certificação em Action.NET"
+    id: "5x6pCc8xUDk", 
+    titulo: "Vídeo 1 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Primeiro vídeo da série de treinamentos UniSpin"
   },
   { 
-    id: "hooks-usestate", 
-    titulo: "useState na prática", 
-    duracao: "9:31",
-    descricao: "Aprendendo a usar o hook useState do React"
+    id: "vRMNHAvUrvs", 
+    titulo: "Vídeo 2 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Segundo vídeo da série de treinamentos UniSpin"
   },
   { 
-    id: "roteamento", 
-    titulo: "Roteamento com React Router", 
-    duracao: "11:05",
-    descricao: "Como implementar roteamento em aplicações React"
+    id: "RenjvRMXPHg", 
+    titulo: "Vídeo 3 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Terceiro vídeo da série de treinamentos UniSpin"
+  },
+  { 
+    id: "kS-76E2vLss", 
+    titulo: "Vídeo 4 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Quarto vídeo da série de treinamentos UniSpin"
+  },
+  { 
+    id: "Yge9ayUUFoo", 
+    titulo: "Vídeo 5 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Quinto vídeo da série de treinamentos UniSpin"
+  },
+  { 
+    id: "tg35dYFJsH0", 
+    titulo: "Vídeo 6 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Sexto vídeo da série de treinamentos UniSpin"
+  },
+  { 
+    id: "Zrq8Gnmspaw", 
+    titulo: "Vídeo 7 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Sétimo vídeo da série de treinamentos UniSpin"
+  },
+  { 
+    id: "wYFWtV_Uv0c", 
+    titulo: "Vídeo 8 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Oitavo vídeo da série de treinamentos UniSpin"
+  },
+  { 
+    id: "gDgoMQ_-U0U", 
+    titulo: "Vídeo 9 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Nono vídeo da série de treinamentos UniSpin"
+  },
+  { 
+    id: "UwdINYOCHZ4", 
+    titulo: "Vídeo 10 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Décimo vídeo da série de treinamentos UniSpin"
+  },
+  { 
+    id: "-sSdhGooQzQ", 
+    titulo: "Vídeo 11 - Treinamento UniSpin", 
+    duracao: "00:00",
+    descricao: "Décimo primeiro vídeo da série de treinamentos UniSpin"
   },
 ];
 
@@ -42,7 +90,7 @@ export default function Videos() {
 
         <div style={{ marginTop: "40px", textAlign: "center" }}>
           <p style={{ color: "#666", marginBottom: "16px" }}>
-            Mais vídeos serão adicionados conforme necessário
+            Série completa de 11 vídeos de treinamento UniSpin
           </p>
           <Link to="/" className="btn secondary">
             Voltar ao início

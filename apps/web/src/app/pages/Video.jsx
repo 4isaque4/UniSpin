@@ -1,23 +1,71 @@
 import { useParams, Link } from "react-router-dom";
 
 const MOCK = {
-  "intro-react": { 
-    titulo: "Certificação 1 - Apresentação SPIN", 
-    embed: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    descricao: "Primeiro vídeo da série do treinamento para certificação em Action.NET. Este vídeo apresenta os conceitos fundamentais e prepara você para os módulos avançados.",
-    duracao: "5:30"
+  "5x6pCc8xUDk": { 
+    titulo: "Vídeo 1 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/5x6pCc8xUDk",
+    descricao: "Primeiro vídeo da série de treinamentos UniSpin. Este vídeo apresenta os conceitos fundamentais e prepara você para os módulos avançados.",
+    duracao: "00:00"
   },
-  "hooks-usestate": { 
-    titulo: "useState na prática", 
-    embed: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    descricao: "Aprendendo a usar o hook useState do React de forma prática e eficiente.",
-    duracao: "9:31"
+  "vRMNHAvUrvs": { 
+    titulo: "Vídeo 2 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/vRMNHAvUrvs",
+    descricao: "Segundo vídeo da série de treinamentos UniSpin. Continuação dos conceitos fundamentais.",
+    duracao: "00:00"
   },
-  "roteamento": { 
-    titulo: "Roteamento com React Router", 
-    embed: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    descricao: "Como implementar roteamento em aplicações React de forma profissional.",
-    duracao: "11:05"
+  "RenjvRMXPHg": { 
+    titulo: "Vídeo 3 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/RenjvRMXPHg",
+    descricao: "Terceiro vídeo da série de treinamentos UniSpin. Aprofundamento nos conceitos.",
+    duracao: "00:00"
+  },
+  "kS-76E2vLss": { 
+    titulo: "Vídeo 4 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/kS-76E2vLss",
+    descricao: "Quarto vídeo da série de treinamentos UniSpin. Aplicação prática dos conceitos.",
+    duracao: "00:00"
+  },
+  "Yge9ayUUFoo": { 
+    titulo: "Vídeo 5 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/Yge9ayUUFoo",
+    descricao: "Quinto vídeo da série de treinamentos UniSpin. Exercícios práticos.",
+    duracao: "00:00"
+  },
+  "tg35dYFJsH0": { 
+    titulo: "Vídeo 6 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/tg35dYFJsH0",
+    descricao: "Sexto vídeo da série de treinamentos UniSpin. Casos de uso reais.",
+    duracao: "00:00"
+  },
+  "Zrq8Gnmspaw": { 
+    titulo: "Vídeo 7 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/Zrq8Gnmspaw",
+    descricao: "Sétimo vídeo da série de treinamentos UniSpin. Melhores práticas.",
+    duracao: "00:00"
+  },
+  "wYFWtV_Uv0c": { 
+    titulo: "Vídeo 8 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/wYFWtV_Uv0c",
+    descricao: "Oitavo vídeo da série de treinamentos UniSpin. Otimizações e performance.",
+    duracao: "00:00"
+  },
+  "gDgoMQ_-U0U": { 
+    titulo: "Vídeo 9 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/gDgoMQ_-U0U",
+    descricao: "Nono vídeo da série de treinamentos UniSpin. Debugging e troubleshooting.",
+    duracao: "00:00"
+  },
+  "UwdINYOCHZ4": { 
+    titulo: "Vídeo 10 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/UwdINYOCHZ4",
+    descricao: "Décimo vídeo da série de treinamentos UniSpin. Deploy e produção.",
+    duracao: "00:00"
+  },
+  "-sSdhGooQzQ": { 
+    titulo: "Vídeo 11 - Treinamento UniSpin", 
+    embed: "https://www.youtube.com/embed/-sSdhGooQzQ",
+    descricao: "Décimo primeiro vídeo da série de treinamentos UniSpin. Conclusão e próximos passos.",
+    duracao: "00:00"
   },
 };
 
