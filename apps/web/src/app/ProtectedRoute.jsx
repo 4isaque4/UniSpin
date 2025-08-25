@@ -1,7 +1,7 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../features/auth/AuthContext.jsx";
 
-export default function ProtectedRoute({ children }) {
+export default function ProtectedRoute() {
   const { user, loading } = useAuth();
 
   // Log para debug
@@ -19,5 +19,5 @@ export default function ProtectedRoute({ children }) {
   }
 
   console.log("ProtectedRoute - usuário autenticado, renderizando conteúdo");
-  return children;
+  return <Outlet />;
 }

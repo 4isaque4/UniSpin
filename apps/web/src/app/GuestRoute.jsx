@@ -1,7 +1,7 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../features/auth/AuthContext.jsx";
 
-export default function GuestRoute({ children }) {
+export default function GuestRoute() {
   const { user, loading } = useAuth();
 
   // Log para debug
@@ -19,5 +19,5 @@ export default function GuestRoute({ children }) {
   }
 
   console.log("GuestRoute - usuário não autenticado, renderizando login");
-  return children;
+  return <Outlet />;
 }
