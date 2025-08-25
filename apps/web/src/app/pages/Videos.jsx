@@ -80,11 +80,11 @@ export default function Videos() {
           Série completa de treinamentos para certificação em Action.NET da UniSpin
         </p>
 
-        <div className="grid">
+        <div className="grid videos-grid">
           {MOCK_VIDEOS.map(v => (
-            <Link key={v.id} to={`/videos/${v.id}`} style={{ textDecoration: "none" }}>
+            <div key={v.id} style={{ width: "100%", maxWidth: "400px" }}>
               <VideoCard video={v} />
-            </Link>
+            </div>
           ))}
         </div>
 

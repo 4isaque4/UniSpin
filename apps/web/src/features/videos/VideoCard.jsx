@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto } from "../../data/trilhas.js";
 import { useState } from "react";
 import YouTubeThumbnail from "../../components/YouTubeThumbnail.jsx";
+import "../../styles/VideoCard.css";
 
 export default function VideoCard({ video, showContext = false }) {
   const [isCompleto, setIsCompleto] = useState(() => isVideoCompleto("action-net-certificacao", video.id));
@@ -30,76 +31,75 @@ export default function VideoCard({ video, showContext = false }) {
 
   return (
     <div className="video-card">
-      <div className="video-thumbnail-container">
-        <YouTubeThumbnail
-          videoId={video.id}
-          alt={video.titulo}
-          className="video-thumbnail"
-        />
-        <span className="video-duration">{video.duracao}</span>
-        
-        {/* Indicador de conclusão */}
-        {isCompleto && (
-          <div style={{
-            position: "absolute",
-            top: "8px",
-            right: "8px",
-            backgroundColor: "#10b981",
+      <Link to={`/videos/${video.id}`} style={{ textDecoration: "none" }}>
+        <div className="video-thumbnail-container">
+          <YouTubeThumbnail
+            videoId={video.id}
+            alt={video.titulo}
+            className="video-thumbnail"
+          />
+          <span className="video-duration">{video.duracao}</span>
+          
+          {/* Indicador de conclusão */}
+          {isCompleto && (
+            <div style={{
+              position: "absolute",
+              top: "8px",
+              right: "8px",
+              backgroundColor: "#10b981",
+              color: "white",
+              borderRadius: "50%",
+              width: "24px",
+              height: "24px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "12px",
+              fontWeight: "bold"
+            }}>
+              ✓
+            </div>
+          )}
+        </div>
+
+        <div className="video-info">
+          <h3 className="video-title">{video.titulo}</h3>
+          {showContext && (
+            <p className="video-context">
+              Treinamento Action.NET - {video.titulo}
+            </p>
+          )}
+          <p className="video-description">{video.descricao}</p>
+        </div>
+      </Link>
+      
+      {/* Botão de conclusão */}
+      <div style={{ 
+        padding: "0 16px 16px 16px"
+      }}>
+        <button
+          onClick={toggleCompleto}
+          disabled={isUpdating}
+          style={{
+            width: "100%",
+            padding: "10px 16px",
+            backgroundColor: isCompleto ? "#ef4444" : "#10b981",
             color: "white",
-            borderRadius: "50%",
-            width: "24px",
-            height: "24px",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            fontSize: "14px",
+            fontWeight: "600",
+            transition: "all 0.2s ease",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: "12px",
-            fontWeight: "bold"
-          }}>
-            ✓
-          </div>
-        )}
-      </div>
-
-      <div className="video-info">
-        <h3 className="video-title">{video.titulo}</h3>
-        {showContext && (
-          <p className="video-context">
-            Treinamento Action.NET - {video.titulo}
-          </p>
-        )}
-        <p className="video-description">{video.descricao}</p>
-        
-        {/* Botão de conclusão */}
-        <div style={{ 
-          display: "flex", 
-          gap: "8px", 
-          marginTop: "12px",
-          alignItems: "center"
-        }}>
-          <Link to={`/videos/${video.id}`} className="btn" style={{ flex: 1 }}>
-            Assistir Vídeo
-          </Link>
-          
-          <button
-            onClick={toggleCompleto}
-            disabled={isUpdating}
-            style={{
-              padding: "8px 12px",
-              backgroundColor: isCompleto ? "#ef4444" : "#10b981",
-              color: "white",
-              border: "none",
-              borderRadius: "6px",
-              cursor: "pointer",
-              fontSize: "12px",
-              fontWeight: "600",
-              transition: "all 0.2s ease",
-              minWidth: "80px"
-            }}
-            title={isCompleto ? "Marcar como não assistido" : "Marcar como assistido"}
-          >
-            {isUpdating ? "..." : (isCompleto ? "Desmarcar" : "Concluído")}
-          </button>
-        </div>
+            gap: "8px"
+          }}
+          title={isCompleto ? "Marcar como não assistido" : "Marcar como assistido"}
+        >
+          {isUpdating ? "..." : (isCompleto ? "✓ Vídeo Concluído" : "○ Marcar como Concluído")}
+        </button>
       </div>
     </div>
   );
