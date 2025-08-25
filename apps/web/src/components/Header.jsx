@@ -13,20 +13,20 @@ export default function Header() {
     <header className="nav">
       <div className="container">
         <Link to="/" className="logo">
-          {/* Logo da SPIN simplificada */}
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            {/* Diamante da SPIN */}
+          {/* Logo da SPIN elegante */}
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            {/* Diamante da SPIN otimizado */}
             <div style={{ 
-              width: "40px", 
-              height: "40px", 
+              width: "48px", 
+              height: "48px", 
               position: "relative",
               display: "flex",
               alignItems: "center",
               justifyContent: "center"
             }}>
               <div style={{
-                width: "36px",
-                height: "36px",
+                width: "44px",
+                height: "44px",
                 transform: "rotate(45deg)",
                 position: "relative"
               }}>
@@ -35,51 +35,56 @@ export default function Header() {
                   position: "absolute",
                   top: "0",
                   left: "0",
-                  width: "18px",
-                  height: "18px",
-                  backgroundColor: "#87CEEB",
-                  borderRadius: "3px"
+                  width: "22px",
+                  height: "22px",
+                  backgroundColor: "#60A5FA",
+                  borderRadius: "4px",
+                  boxShadow: "0 2px 8px rgba(96, 165, 250, 0.3)"
                 }}></div>
                 {/* Quadrado superior direito - azul médio */}
                 <div style={{
                   position: "absolute",
                   top: "0",
                   right: "0",
-                  width: "18px",
-                  height: "18px",
-                  backgroundColor: "#4A90E2",
-                  borderRadius: "3px"
+                  width: "22px",
+                  height: "22px",
+                  backgroundColor: "#3B82F6",
+                  borderRadius: "4px",
+                  boxShadow: "0 2px 8px rgba(59, 130, 246, 0.3)"
                 }}></div>
                 {/* Quadrado inferior esquerdo - azul médio */}
                 <div style={{
                   position: "absolute",
                   bottom: "0",
                   left: "0",
-                  width: "18px",
-                  height: "18px",
-                  backgroundColor: "#4A90E2",
-                  borderRadius: "3px"
+                  width: "22px",
+                  height: "22px",
+                  backgroundColor: "#3B82F6",
+                  borderRadius: "4px",
+                  boxShadow: "0 2px 8px rgba(59, 130, 246, 0.3)"
                 }}></div>
                 {/* Quadrado inferior direito - azul escuro */}
                 <div style={{
                   position: "absolute",
                   bottom: "0",
                   right: "0",
-                  width: "18px",
-                  height: "18px",
-                  backgroundColor: "#2E5BBA",
-                  borderRadius: "3px"
+                  width: "22px",
+                  height: "22px",
+                  backgroundColor: "#1E40AF",
+                  borderRadius: "4px",
+                  boxShadow: "0 2px 8px rgba(30, 64, 175, 0.3)"
                 }}></div>
-                {/* Centro branco */}
+                {/* Centro branco com brilho */}
                 <div style={{
                   position: "absolute",
                   top: "50%",
                   left: "50%",
-                  width: "8px",
-                  height: "8px",
+                  width: "10px",
+                  height: "10px",
                   backgroundColor: "white",
-                  borderRadius: "2px",
-                  transform: "translate(-50%, -50%)"
+                  borderRadius: "3px",
+                  transform: "translate(-50%, -50%)",
+                  boxShadow: "0 0 12px rgba(255, 255, 255, 0.8)"
                 }}></div>
               </div>
             </div>
@@ -87,20 +92,21 @@ export default function Header() {
             {/* Texto da logo */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
               <span style={{ 
-                fontSize: "28px", 
-                fontWeight: "700", 
-                color: "#2E5BBA",
-                lineHeight: "1"
+                fontSize: "32px", 
+                fontWeight: "800", 
+                color: "#1E40AF",
+                lineHeight: "1",
+                letterSpacing: "-0.5px"
               }}>
                 spin
               </span>
               <span style={{ 
-                fontSize: "11px", 
-                fontWeight: "500", 
-                color: "#87CEEB",
+                fontSize: "12px", 
+                fontWeight: "600", 
+                color: "#60A5FA",
                 lineHeight: "1",
                 textTransform: "uppercase",
-                letterSpacing: "1px"
+                letterSpacing: "1.2px"
               }}>
                 Engenharia de Automação
               </span>
@@ -108,22 +114,43 @@ export default function Header() {
           </div>
         </Link>
 
-        <nav style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-          <NavLink to="/" style={{ color: "#E2E8F0", textDecoration: "none", fontWeight: "500" }}>
+        <nav style={{ display: "flex", alignItems: "center", gap: "28px" }}>
+          <NavLink to="/" style={{ 
+            color: "#E2E8F0", 
+            textDecoration: "none", 
+            fontWeight: "500",
+            fontSize: "15px",
+            transition: "color 0.2s ease"
+          }}>
             Home
           </NavLink>
-          <NavLink to={trilhasTo} style={{ color: "#E2E8F0", textDecoration: "none", fontWeight: "500" }}>
+          <NavLink to={trilhasTo} style={{ 
+            color: "#E2E8F0", 
+            textDecoration: "none", 
+            fontWeight: "500",
+            fontSize: "15px",
+            transition: "color 0.2s ease"
+          }}>
             Trilhas
           </NavLink>
-          <NavLink to={videosTo} style={{ color: "#E2E8F0", textDecoration: "none", fontWeight: "500" }}>
+          <NavLink to={videosTo} style={{ 
+            color: "#E2E8F0", 
+            textDecoration: "none", 
+            fontWeight: "500",
+            fontSize: "15px",
+            transition: "color 0.2s ease"
+          }}>
             Vídeos
           </NavLink>
           <Link to={ctaTo} className="btn" style={{ 
             backgroundColor: "#10B981",
             border: "none",
-            padding: "12px 24px",
-            borderRadius: "8px",
-            fontWeight: "600"
+            padding: "14px 28px",
+            borderRadius: "10px",
+            fontWeight: "600",
+            fontSize: "15px",
+            boxShadow: "0 4px 12px rgba(16, 185, 129, 0.3)",
+            transition: "all 0.2s ease"
           }}>
             Acessar plataforma
           </Link>
