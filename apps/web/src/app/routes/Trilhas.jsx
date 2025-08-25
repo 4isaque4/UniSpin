@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { apiFetch } from "../../lib/api";
+import TrilhaList from "../../components/TrilhaList.jsx";
 
 export default function Trilhas() {
   const [data, setData] = useState([]);
@@ -26,38 +28,30 @@ export default function Trilhas() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h2>Carregando trilhas...</h2>
-      <p>Por favor, aguarde...</p>
-    </div>
-  );
-
-  if (err) return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h2>Erro ao carregar trilhas</h2>
-      <p style={{ color: '#ff6b6b', marginBottom: '20px' }}>Erro: {err}</p>
-      <div style={{ fontSize: '14px', opacity: 0.8 }}>
-        <p>Possíveis causas:</p>
-        <ul style={{ textAlign: 'left', display: 'inline-block' }}>
-          <li>API não configurada (verifique VITE_API_URL)</li>
-          <li>Servidor backend não está rodando</li>
-          <li>Problema de conectividade</li>
-        </ul>
-      </div>
-    </div>
-  );
-
   return (
-    <div>
-      <h1>Trilhas</h1>
-      <ul>
-        {data.map(t => (
-          <li key={t.id}>
-            <strong>{t.name}</strong> — {t.description || "sem descrição"}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <main className="features">
+      <div className="container">
+        <p className="kicker">Trilhas de Aprendizado</p>
+        <h2 style={{ margin: "6px 0 18px" }}>Trilhas Disponíveis</h2>
+        <p style={{ marginBottom: "32px", color: "#666", textAlign: "center" }}>
+          Escolha uma trilha para começar sua jornada de aprendizado
+        </p>
+
+        <TrilhaList 
+          trilhasAPI={data} 
+          loading={loading} 
+          error={err} 
+        />
+
+        <div style={{ marginTop: "40px", textAlign: "center" }}>
+          <p style={{ color: "#666", marginBottom: "16px" }}>
+            Trilhas personalizadas para seu desenvolvimento profissional
+          </p>
+          <Link to="/" className="btn secondary">
+            Voltar ao início
+          </Link>
+        </div>
+      </div>
+    </main>
   );
 }

@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 import './VideoCard.css';
 
 export default function VideoCard({ video, showContext = false }) {
+  const handleImageError = (e) => {
+    // Fallback para quando a thumbnail não carregar
+    e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjM0I4MkY2Ii8+CjxwYXRoIGQ9Ik0xNjAgOTBDMTYwIDg5LjQ0NzcgMTYwLjQ0OCA4OSAxNjEgODlDMTYxLjU1MiA4OSAxNjIgODkuNDQ3NyAxNjIgOTBDMTYyIDkwLjU1MjMgMTYxLjU1MiA5MSAxNjEgOTFDMTYwLjQ0OCA5MSAxNjAgOTAuNTUyMyAxNjAgOTBaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K';
+  };
+
   return (
     <div className="video-card">
       {/* Thumbnail e Duração */}
@@ -10,6 +15,7 @@ export default function VideoCard({ video, showContext = false }) {
           src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
           alt={video.titulo}
           className="video-thumbnail"
+          onError={handleImageError}
         />
         <span className="video-duration">{video.duracao}</span>
         
@@ -34,14 +40,14 @@ export default function VideoCard({ video, showContext = false }) {
             {/* Contexto adicional */}
             <div className="video-context-section">
               <h4>📚 Contexto</h4>
-              <p>Treinamento corporativo da UniSpin para desenvolvimento profissional.</p>
+              <p>Treinamento corporativo da UniSpin para certificação em Action.NET.</p>
             </div>
 
             {/* Objetivos de aprendizado */}
             <div className="video-context-section">
               <h4>🎯 O que você vai aprender</h4>
               <ul className="learning-objectives">
-                <li>Conceitos fundamentais da tecnologia</li>
+                <li>Conceitos fundamentais do Action.NET</li>
                 <li>Práticas recomendadas</li>
                 <li>Aplicação em projetos reais</li>
               </ul>
@@ -50,13 +56,13 @@ export default function VideoCard({ video, showContext = false }) {
             {/* Pré-requisitos */}
             <div className="video-context-section">
               <h4>📋 Pré-requisitos</h4>
-              <p>Conhecimento básico em programação e interesse em aprender.</p>
+              <p>Conhecimento básico em programação e interesse em Action.NET.</p>
             </div>
 
             {/* Resultado esperado */}
             <div className="video-context-section">
               <h4>🚀 Resultado esperado</h4>
-              <p>Ao final deste treinamento, você estará preparado para aplicar os conceitos aprendidos.</p>
+              <p>Ao final deste treinamento, você estará preparado para a certificação em Action.NET.</p>
             </div>
           </div>
         ) : (
