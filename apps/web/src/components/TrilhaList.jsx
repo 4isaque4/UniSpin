@@ -29,7 +29,12 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
   }
 
   return (
-    <div className="grid">
+    <div style={{ 
+      display: "flex", 
+      flexDirection: "column", 
+      alignItems: "center",
+      gap: "24px"
+    }}>
       {/* Trilhas locais (hardcoded) */}
       {TRILHAS.map(trilha => (
         <TrilhaCard key={trilha.id} trilha={trilha} />
@@ -37,7 +42,11 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
 
       {/* Trilhas da API (se existirem) */}
       {trilhasAPI.map(trilha => (
-        <div key={trilha.id} className="card">
+        <div key={trilha.id} className="card" style={{ 
+          maxWidth: "400px", 
+          width: "100%",
+          textAlign: "center"
+        }}>
           <h3 style={{ margin: "4px 0 4px 0", fontSize: "1.05rem" }}>
             {trilha.name}
           </h3>

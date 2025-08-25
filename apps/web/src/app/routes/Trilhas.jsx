@@ -28,14 +28,32 @@ export default function Trilhas() {
       .finally(() => setLoading(false));
   }, []);
 
-  return (
+  if (loading) return (
     <main className="features">
       <div className="container">
-        <p className="kicker">Trilhas de Aprendizado</p>
-        <h2 style={{ margin: "6px 0 18px" }}>Trilhas Disponíveis</h2>
-        <p style={{ marginBottom: "32px", color: "#666", textAlign: "center" }}>
-          Escolha uma trilha para começar sua jornada de aprendizado
-        </p>
+        <TrilhaList loading={loading} />
+      </div>
+    </main>
+  );
+
+  if (err) return (
+    <main className="features">
+      <div className="container">
+        <TrilhaList error={err} />
+      </div>
+    </main>
+  );
+
+  return (
+    <main className="features">
+      <div className="container" style={{ maxWidth: "800px", margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: "40px" }}>
+          <p className="kicker">Trilhas de Aprendizado</p>
+          <h2 style={{ margin: "6px 0 18px", fontSize: "2.5rem" }}>Trilhas Disponíveis</h2>
+          <p style={{ marginBottom: "32px", color: "#666", fontSize: "1.1rem", lineHeight: "1.6" }}>
+            Escolha uma trilha para começar sua jornada de aprendizado
+          </p>
+        </div>
 
         <TrilhaList 
           trilhasAPI={data} 
@@ -44,7 +62,7 @@ export default function Trilhas() {
         />
 
         <div style={{ marginTop: "40px", textAlign: "center" }}>
-          <p style={{ color: "#666", marginBottom: "16px" }}>
+          <p style={{ color: "#666", marginBottom: "16px", fontSize: "1rem" }}>
             Trilhas personalizadas para seu desenvolvimento profissional
           </p>
           <Link to="/" className="btn secondary">
