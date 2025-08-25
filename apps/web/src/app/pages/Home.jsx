@@ -1,5 +1,4 @@
 import FeatureCard from "../../components/FeatureCard.jsx";
-import Logo from "../../components/Logo.jsx";
 
 export default function Home() {
   return (
@@ -22,7 +21,14 @@ export default function Home() {
 
           <div>
             <div className="heroCard">
-              <div className="badge"><Logo size={18} /><span>Preview</span></div>
+              <div className="badge">
+                <span style={{ 
+                  fontSize: "16px", 
+                  marginRight: "6px",
+                  color: "#3B82F6"
+                }}>✦</span>
+                <span>Preview</span>
+              </div>
               {/* mock de "preview" em SVG embutido */}
               <img
                 alt="Prévia da UniSpin"
