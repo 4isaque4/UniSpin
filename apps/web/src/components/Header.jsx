@@ -90,7 +90,7 @@ export default function Header() {
             </div>
             
             {/* Texto da logo */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
               <span style={{ 
                 fontSize: "32px", 
                 fontWeight: "800", 
