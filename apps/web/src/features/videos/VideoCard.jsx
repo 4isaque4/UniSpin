@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto } from "../../data/trilhas.js";
 import { useState } from "react";
-import YouTubeThumbnail from "../../components/YouTubeThumbnail.jsx";
 import "../../styles/VideoCard.css";
 
 export default function VideoCard({ video, showContext = false }) {
   const [isCompleto, setIsCompleto] = useState(() => isVideoCompleto("action-net-certificacao", video.id));
   const [isUpdating, setIsUpdating] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const toggleCompleto = async () => {
     setIsUpdating(true);
@@ -29,15 +29,36 @@ export default function VideoCard({ video, showContext = false }) {
     }
   };
 
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <div className="video-card">
       <Link to={`/videos/${video.id}`} style={{ textDecoration: "none" }}>
         <div className="video-thumbnail-container">
-          <YouTubeThumbnail
-            videoId={video.id}
-            alt={video.titulo}
-            className="video-thumbnail"
-          />
+          {!imageError ? (
+            <img 
+              src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+              alt={video.titulo}
+              className="video-thumbnail"
+              onError={handleImageError}
+            />
+          ) : (
+            <div 
+              className="video-thumbnail"
+              style={{
+                backgroundColor: "#3B82F6",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white",
+                fontSize: "48px"
+              }}
+            >
+              ▶️
+            </div>
+          )}
           <span className="video-duration">{video.duracao}</span>
           
           {/* Indicador de conclusão */}

@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { apiFetch } from "../../lib/api";
 import TrilhaList from "../../components/TrilhaList.jsx";
+import { useAuth } from "../../features/auth/AuthContext.jsx";
 
 export default function Trilhas() {
+  const { user, loading } = useAuth();
   const [data, setData] = useState([]);
   const [err, setErr] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [apiLoading, setApiLoading] = useState(false);
 
   useEffect(() => {
+    // Só executa se houver usuário autenticado
+    if (!user) return;
+
     if (!import.meta.env.VITE_API_URL) {
       setErr("API não configurada. Verifique as variáveis de ambiente.");
-      setLoading(false);
       return;
     }
     
-    setLoading(true);
+    setApiLoading(true);
     apiFetch("/trilhas")
       .then((res) => {
         if (!res.ok) {
@@ -25,24 +29,25 @@ export default function Trilhas() {
       })
       .then(setData)
       .catch(e => setErr(e.message))
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => setApiLoading(false));
+  }, [user]);
 
-  if (loading) return (
-    <main className="features">
-      <div className="container">
-        <TrilhaList loading={loading} />
-      </div>
-    </main>
-  );
+  // Se ainda está carregando, aguarda
+  if (loading) {
+    return (
+      <main className="features">
+        <div className="container" style={{ textAlign: "center", padding: "40px" }}>
+          <h2>Carregando...</h2>
+          <p>Verificando autenticação...</p>
+        </div>
+      </main>
+    );
+  }
 
-  if (err) return (
-    <main className="features">
-      <div className="container">
-        <TrilhaList error={err} />
-      </div>
-    </main>
-  );
+  // Se não há usuário, redireciona para login
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <main className="features">
@@ -57,7 +62,7 @@ export default function Trilhas() {
 
         <TrilhaList 
           trilhasAPI={data} 
-          loading={loading} 
+          loading={apiLoading} 
           error={err} 
         />
 
