@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto } from "../../data/trilhas.js";
 import { useState, useEffect } from "react";
+import BrandIcon from "../../components/BrandIcon.jsx";
 
 const MOCK = {
   "5x6pCc8xUDk": { 
@@ -164,8 +165,16 @@ export default function Video() {
           {/* Informações e controles */}
           <div>
             <div className="card" style={{ marginBottom: "24px" }}>
-              <h3 style={{ margin: "0 0 16px 0", color: "#3B82F6" }}>
-                📚 Informações do Vídeo
+              <h3
+                style={{
+                  margin: "0 0 16px 0",
+                  color: "#3B82F6",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px"
+                }}
+              >
+                <BrandIcon /> Informações do Vídeo
               </h3>
               
               <div style={{ marginBottom: "16px" }}>
@@ -238,8 +247,9 @@ export default function Video() {
                     textAlign: "center",
                     padding: "10px 16px",
                     fontSize: "14px",
-                    backgroundColor: "#6B7280",
-                    border: "1px solid #6B7280"
+                    backgroundColor: "#60A5FA",
+                    border: "1px solid #60A5FA",
+                    color: "white"
                   }}
                 >
                   Ver Trilha
