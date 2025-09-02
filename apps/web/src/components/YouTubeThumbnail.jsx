@@ -39,7 +39,7 @@ export default function YouTubeThumbnail({ videoId, alt, className, style }) {
         }}
         title={alt}
       >
-        ▶️
+        ▶
       </div>
     );
   }

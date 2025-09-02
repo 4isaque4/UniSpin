@@ -10,7 +10,7 @@ export const TRILHAS = [
     categoria: "SCADA & Automação",
     cor: "#3B82F6",
     rota: "/videos",
-    icone: "📚",
+    icone: "certification",
     videos: [
       "5x6pCc8xUDk", // Certificação 1
       "vRMNHAvUrvs", // Certificação 2

@@ -205,7 +205,7 @@ export default function Video() {
                   "Atualizando..."
                 ) : (
                   <>
-                    {isCompleto ? "✓ Vídeo Concluído" : "○ Marcar como Concluído"}
+                    {isCompleto ? "Vídeo Concluído" : "Marcar como Concluído"}
                   </>
                 )}
               </button>
@@ -214,7 +214,7 @@ export default function Video() {
             {/* Navegação entre vídeos */}
             <div className="card">
               <h4 style={{ margin: "0 0 16px 0", color: "#3B82F6" }}>
-                🎯 Navegação
+                Navegação
               </h4>
               
               <div style={{ display: "flex", gap: "8px" }}>

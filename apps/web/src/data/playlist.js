@@ -12,7 +12,7 @@ export const playlistData = {
       name: "Módulo 1: Introdução e Conceitos Básicos",
       description: "Fundamentos essenciais para começar sua jornada de aprendizado",
       color: "#3B82F6",
-      icon: "🎯",
+      icon: "target",
       overview: "Este módulo estabelece as bases fundamentais, apresentando conceitos essenciais e preparando você para os módulos avançados.",
       videos: [
         {
@@ -55,7 +55,7 @@ export const playlistData = {
       name: "Módulo 2: Funcionalidades Principais",
       description: "Recursos e funcionalidades essenciais do sistema",
       color: "#10B981",
-      icon: "⚡",
+      icon: "lightning",
       overview: "Aprenda as funcionalidades principais que você usará diariamente, com exemplos práticos e casos de uso reais.",
       videos: [
         {
@@ -100,7 +100,7 @@ Senha: s`,
       name: "Módulo 3: Recursos Avançados",
       description: "Técnicas e recursos avançados para usuários experientes",
       color: "#8B5CF6",
-      icon: "🚀",
+      icon: "rocket",
       overview: "Domine recursos avançados e técnicas especializadas para otimizar seu trabalho e resolver problemas complexos.",
       videos: [
         {

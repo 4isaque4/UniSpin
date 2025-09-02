@@ -5,6 +5,63 @@ export default function TrilhaCard({ trilha }) {
   const progresso = calcularProgressoTrilha(trilha.id);
   const videosCompletados = getVideosCompletados(trilha.id);
 
+  // Função para criar ícones de trilha
+  const getTrilhaIcon = (iconType) => {
+    switch (iconType) {
+      case "certification":
+        return (
+          <div style={{
+            width: "28px",
+            height: "28px",
+            background: "linear-gradient(135deg, #3B82F6, #1E40AF)",
+            borderRadius: "8px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+            boxShadow: "0 2px 8px rgba(59, 130, 246, 0.3)"
+          }}>
+            <div style={{
+              width: "16px",
+              height: "16px",
+              background: "white",
+              borderRadius: "3px",
+              position: "relative"
+            }}>
+              <div style={{
+                position: "absolute",
+                top: "3px",
+                left: "3px",
+                width: "10px",
+                height: "10px",
+                background: "#3B82F6",
+                borderRadius: "2px"
+              }}></div>
+            </div>
+          </div>
+        );
+      default:
+        return (
+          <div style={{
+            width: "28px",
+            height: "28px",
+            background: "linear-gradient(135deg, #3B82F6, #1E40AF)",
+            borderRadius: "8px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}>
+            <div style={{
+              width: "16px",
+              height: "16px",
+              background: "white",
+              borderRadius: "3px"
+            }}></div>
+          </div>
+        );
+    }
+  };
+
   return (
     <div className="card" style={{ 
       border: `2px solid ${trilha.cor}`,
@@ -39,15 +96,18 @@ export default function TrilhaCard({ trilha }) {
       </div>
 
       {/* Título da trilha */}
-      <h3 style={{ 
-        margin: "0 0 8px 0", 
-        fontSize: "20px", 
-        fontWeight: "700",
-        color: "#1f2937",
-        textShadow: "0 1px 2px rgba(0, 0, 0, 0.1)"
-      }}>
-        {trilha.icone} {trilha.titulo}
-      </h3>
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
+        {getTrilhaIcon(trilha.icone)}
+        <h3 style={{ 
+          margin: "0", 
+          fontSize: "20px", 
+          fontWeight: "700",
+          color: "#1f2937",
+          textShadow: "0 1px 2px rgba(0, 0, 0, 0.1)"
+        }}>
+          {trilha.titulo}
+        </h3>
+      </div>
 
       {/* Descrição */}
       <p style={{ 
