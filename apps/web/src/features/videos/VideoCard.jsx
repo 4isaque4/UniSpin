@@ -53,10 +53,11 @@ export default function VideoCard({ video, showContext = false }) {
                 alignItems: "center",
                 justifyContent: "center",
                 color: "white",
-                fontSize: "48px"
+                fontSize: "24px",
+                fontWeight: "bold"
               }}
             >
-              ▶️
+              ▶
             </div>
           )}
           <span className="video-duration">{video.duracao}</span>
@@ -119,7 +120,7 @@ export default function VideoCard({ video, showContext = false }) {
           }}
           title={isCompleto ? "Marcar como não assistido" : "Marcar como assistido"}
         >
-          {isUpdating ? "..." : (isCompleto ? "✓ Vídeo Concluído" : "○ Marcar como Concluído")}
+          {isUpdating ? "..." : (isCompleto ? "Vídeo Concluído" : "Marcar como Concluído")}
         </button>
       </div>
     </div>

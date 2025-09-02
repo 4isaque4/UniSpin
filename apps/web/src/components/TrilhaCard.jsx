@@ -43,7 +43,8 @@ export default function TrilhaCard({ trilha }) {
         margin: "0 0 8px 0", 
         fontSize: "20px", 
         fontWeight: "700",
-        color: "#fff"
+        color: "#1f2937",
+        textShadow: "0 1px 2px rgba(0, 0, 0, 0.1)"
       }}>
         {trilha.icone} {trilha.titulo}
       </h3>
@@ -51,9 +52,10 @@ export default function TrilhaCard({ trilha }) {
       {/* Descrição */}
       <p style={{ 
         margin: "0 0 16px 0", 
-        color: "#c7d2fe", 
+        color: "#374151", 
         lineHeight: "1.5",
-        fontSize: "14px"
+        fontSize: "14px",
+        fontWeight: "500"
       }}>
         {trilha.descricao}
       </p>
@@ -65,9 +67,9 @@ export default function TrilhaCard({ trilha }) {
         alignItems: "center",
         marginBottom: "20px"
       }}>
-        <div style={{ display: "flex", gap: "16px", fontSize: "12px", color: "#aab4ff" }}>
-          <span>📹 {trilha.quantidadeVideos} vídeos</span>
-          <span>⏱️ {trilha.duracaoTotal}</span>
+        <div style={{ display: "flex", gap: "16px", fontSize: "12px", color: "#4B5563", fontWeight: "600" }}>
+          <span>{trilha.quantidadeVideos} vídeos</span>
+          <span>{trilha.duracaoTotal}</span>
         </div>
         <span style={{ 
           padding: "4px 8px", 
@@ -89,10 +91,10 @@ export default function TrilhaCard({ trilha }) {
           alignItems: "center",
           marginBottom: "8px"
         }}>
-          <span style={{ fontSize: "12px", color: "#aab4ff" }}>
+          <span style={{ fontSize: "12px", color: "#4B5563", fontWeight: "600" }}>
             Progresso: {videosCompletados.length}/{trilha.quantidadeVideos} vídeos
           </span>
-          <span style={{ fontSize: "12px", color: "#aab4ff", fontWeight: "600" }}>
+          <span style={{ fontSize: "12px", color: "#1F2937", fontWeight: "700" }}>
             {progresso}%
           </span>
         </div>
@@ -101,7 +103,7 @@ export default function TrilhaCard({ trilha }) {
         <div style={{
           width: "100%",
           height: "8px",
-          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          backgroundColor: "rgba(0, 123, 255, 0.1)",
           borderRadius: "4px",
           overflow: "hidden"
         }}>
@@ -127,7 +129,7 @@ export default function TrilhaCard({ trilha }) {
           border: "none"
         }}
       >
-        {progresso === 100 ? "🎉 Trilha Concluída!" : "Começar Trilha"}
+        {progresso === 100 ? "Trilha Concluída!" : "Começar Trilha"}
       </Link>
     </div>
   );

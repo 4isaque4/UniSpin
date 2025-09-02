@@ -116,40 +116,43 @@ export default function Header() {
 
         <nav style={{ display: "flex", alignItems: "center", gap: "28px" }}>
           <NavLink to="/" style={{ 
-            color: "#E2E8F0", 
+            color: "#1F2937", 
             textDecoration: "none", 
-            fontWeight: "500",
+            fontWeight: "700",
             fontSize: "15px",
-            transition: "color 0.2s ease"
+            transition: "color 0.2s ease",
+            textShadow: "0 1px 2px rgba(255, 255, 255, 0.8)"
           }}>
             Home
           </NavLink>
           <NavLink to={trilhasTo} style={{ 
-            color: "#E2E8F0", 
+            color: "#1F2937", 
             textDecoration: "none", 
-            fontWeight: "500",
+            fontWeight: "700",
             fontSize: "15px",
-            transition: "color 0.2s ease"
+            transition: "color 0.2s ease",
+            textShadow: "0 1px 2px rgba(255, 255, 255, 0.8)"
           }}>
             Trilhas
           </NavLink>
           <NavLink to={videosTo} style={{ 
-            color: "#E2E8F0", 
+            color: "#1F2937", 
             textDecoration: "none", 
-            fontWeight: "500",
+            fontWeight: "700",
             fontSize: "15px",
-            transition: "color 0.2s ease"
+            transition: "color 0.2s ease",
+            textShadow: "0 1px 2px rgba(255, 255, 255, 0.8)"
           }}>
             Vídeos
           </NavLink>
           <Link to={ctaTo} className="btn" style={{ 
-            backgroundColor: "#10B981",
+            backgroundColor: "#6B7280",
             border: "none",
             padding: "14px 28px",
             borderRadius: "10px",
             fontWeight: "600",
             fontSize: "15px",
-            boxShadow: "0 4px 12px rgba(16, 185, 129, 0.3)",
+            boxShadow: "0 4px 12px rgba(107, 114, 128, 0.3)",
             transition: "all 0.2s ease"
           }}>
             Acessar plataforma

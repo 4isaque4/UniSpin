@@ -1,19 +1,21 @@
 .video-card {
-  background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(191, 219, 254, 0.9));
+  border: 2px solid rgba(59, 130, 246, 0.6);
+  border-radius: 24px;
   overflow: hidden;
   transition: all 0.3s ease;
   position: relative;
   /* Definir tamanho máximo para evitar cards muito grandes */
   max-width: 100%;
   height: auto;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.25);
 }
 
 .video-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  border-color: rgba(255,255,255,.2);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.35);
+  border-color: rgba(59, 130, 246, 0.8);
+  border-radius: 28px;
 }
 
 /* Thumbnail Container */
@@ -69,21 +71,22 @@
 .video-title {
   font-size: 16px; /* Reduzir tamanho da fonte */
   font-weight: 700;
-  color: white;
+  color: #1f2937;
   margin: 0 0 8px 0; /* Reduzir margem */
   line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .video-description {
-  color: #c9d3ff;
+  color: #374151;
   font-size: 13px; /* Reduzir tamanho da fonte */
   line-height: 1.4;
   margin: 0 0 12px 0; /* Reduzir margem */
-  opacity: 0.9;
+  font-weight: 500;
   display: -webkit-box;
   -webkit-line-clamp: 3; /* Limitar a 3 linhas */
   -webkit-box-orient: vertical;
@@ -99,13 +102,13 @@
 .video-context-section {
   margin: 16px 0;
   padding: 16px;
-  background: rgba(255,255,255,.03);
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(147, 197, 253, 0.15));
+  border-radius: 16px;
   border-left: 3px solid var(--accent-color, #3B82F6);
 }
 
 .video-context-section h4 {
-  color: white;
+  color: #1f2937;
   font-size: 14px;
   font-weight: 600;
   margin: 0 0 8px 0;
@@ -115,7 +118,7 @@
 }
 
 .video-context-section p {
-  color: #c9d3ff;
+  color: #6b7280;
   font-size: 13px;
   line-height: 1.5;
   margin: 0;
@@ -128,7 +131,7 @@
 }
 
 .learning-objectives li {
-  color: #c9d3ff;
+  color: #6b7280;
   font-size: 13px;
   line-height: 1.5;
   margin: 4px 0;
@@ -173,20 +176,20 @@
 
 .view-module-button {
   background: transparent;
-  color: #c9d3ff;
+  color: #6b7280;
   text-decoration: none;
   padding: 12px 20px;
   border-radius: 8px;
   font-weight: 600;
   text-align: center;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,.2);
+  border: 1px solid rgba(0, 123, 255, 0.2);
 }
 
 .view-module-button:hover {
-  background: rgba(255,255,255,.05);
-  border-color: rgba(255,255,255,.3);
-  color: white;
+  background: rgba(0, 123, 255, 0.05);
+  border-color: rgba(0, 123, 255, 0.3);
+  color: #2563eb;
 }
 
 /* Responsividade */

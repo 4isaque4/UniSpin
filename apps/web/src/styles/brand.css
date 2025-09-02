@@ -5,12 +5,12 @@
   --primary-900: #071f8a;
   --primary-950: #06186f;
 
-  --accent-cyan: #44c3ee; /* gradiente do “losango” */
+  --accent-cyan: #44c3ee; /* gradiente do "losango" */
   --accent-teal: #66e0c2;
 
-  --ink: #ffffff;
-  --muted: #c7d2fe;
+  --ink: #1f2937;
+  --muted: #6b7280;
 
-  --card: #0b1b78;
-  --card-border: #1a2aa8;
+  --card: #ffffff;
+  --card-border: #e5e7eb;
 }

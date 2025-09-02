@@ -13,7 +13,6 @@ export default function Home() {
             Construída com uma base moderna para nossa equipe.
           </p>
           <div className="pill" style={{ justifyContent: "center", gap: "16px" }}>
-            <a className="btn" href="#features">Conhecer recursos</a>
             <a className="btn secondary" href="#features">Ver funcionalidades</a>
           </div>
         </div>
@@ -30,15 +29,23 @@ export default function Home() {
           }}>
             <FeatureCard 
               title="Trilhas de Certificação" 
-              desc="Série completa de  vídeos para certificação em Action.NET da SPIN Engenharia de Automação." 
+              desc="Série completa de  vídeos para certificação em Action.NET da SPIN Engenharia de Automação."
+              iconType="certification"
             />
             <FeatureCard 
               title="Progresso Personalizado" 
-              desc="Acompanhe seu avanço com sistema de tracking e barra de progresso para cada trilha." 
+              desc="Acompanhe seu avanço com sistema de tracking e barra de progresso para cada trilha."
+              iconType="progress"
             />
             <FeatureCard 
               title="Conteúdo Técnico" 
-              desc="Treinamentos especializados em SCADA, automação industrial e ferramentas Action.NET." 
+              desc="Treinamentos especializados em SCADA, automação industrial e ferramentas Action.NET."
+              iconType="technical"
+            />
+            <FeatureCard 
+              title="Recursos & Downloads" 
+              desc="Materiais complementares (manuais, e‑books, scripts de exemplo) para praticar e reforçar os contéudos."
+              iconType="resources"
             />
           </div>
         </div>
