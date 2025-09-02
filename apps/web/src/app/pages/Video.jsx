@@ -186,7 +186,7 @@ export default function Video() {
                 style={{
                   width: "100%",
                   padding: "12px",
-                  backgroundColor: isCompleto ? "#ef4444" : "#10b981",
+                  backgroundColor: isCompleto ? "#3B82F6" : "#10b981",
                   color: "white",
                   border: "none",
                   borderRadius: "8px",
@@ -221,14 +221,26 @@ export default function Video() {
                 <Link 
                   to="/videos" 
                   className="btn secondary" 
-                  style={{ flex: 1, textAlign: "center" }}
+                  style={{ 
+                    flex: 1, 
+                    textAlign: "center",
+                    padding: "10px 16px",
+                    fontSize: "14px"
+                  }}
                 >
                   Ver Todos os Vídeos
                 </Link>
                 <Link 
                   to="/trilhas" 
-                  className="btn" 
-                  style={{ flex: 1, textAlign: "center" }}
+                  className="btn secondary" 
+                  style={{ 
+                    flex: 1, 
+                    textAlign: "center",
+                    padding: "10px 16px",
+                    fontSize: "14px",
+                    backgroundColor: "#6B7280",
+                    border: "1px solid #6B7280"
+                  }}
                 >
                   Ver Trilha
                 </Link>

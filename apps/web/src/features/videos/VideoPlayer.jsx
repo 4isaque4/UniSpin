@@ -89,7 +89,7 @@ export default function VideoPlayer() {
 
             {video.learningObjectives && (
               <div className="context-section">
-                <h3>🎯 O que você vai aprender</h3>
+                <h3>O que você vai aprender</h3>
                 <ul className="learning-objectives-list">
                   {video.learningObjectives.map((objective, index) => (
                     <li key={index}>{objective}</li>

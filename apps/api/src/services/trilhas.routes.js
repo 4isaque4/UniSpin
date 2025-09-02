@@ -7,7 +7,14 @@ const r = Router();
 r.get("/", async (_req, res, next) => {
   try {
     const trilhas = await query(
-      `select id, name, description from "Trilha" order by created_at desc`
+      `select id, name, description from "Trilha" 
+       where lower(name) not like '%onboarding%' 
+       and lower(name) not like '%segurança%' 
+       and lower(name) not like '%ferramentas%' 
+       and lower(name) not like '%internas%'
+       and lower(description) not like '%normas básicas%'
+       and lower(description) not like '%visão geral das ferramentas%'
+       order by created_at desc`
     );
     res.json(trilhas);
   } catch (e) { next(e); }
