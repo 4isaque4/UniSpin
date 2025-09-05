@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../features/auth/AuthContext.jsx";
 
 export default function Header() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   // Usuários não autenticados vão para login, usuários autenticados vão para videos
   const trilhasTo = user ? "/trilhas" : "/login";
@@ -18,7 +18,7 @@ export default function Header() {
             <img
               src="/unispin-logo.svg"
               alt="Logo UniSpin"
-              style={{ width: "48px", height: "48px", display: "block" }}
+              style={{ width: "72px", height: "72px", display: "block" }}
             />
 
             {/* Texto da logo */}
@@ -77,18 +77,27 @@ export default function Header() {
           }}>
             Vídeos
           </NavLink>
-          <Link to={ctaTo} className="btn" style={{ 
-            backgroundColor: "#6B7280",
+          <Link to={ctaTo} className="btn" style={{
+            backgroundColor: "#2563EB",
             border: "none",
             padding: "14px 28px",
             borderRadius: "10px",
             fontWeight: "600",
             fontSize: "15px",
-            boxShadow: "0 4px 12px rgba(107, 114, 128, 0.3)",
+            boxShadow: "0 4px 12px rgba(37, 99, 235, 0.3)",
             transition: "all 0.2s ease"
           }}>
             Acessar plataforma
           </Link>
+          {user && (
+            <button
+              onClick={logout}
+              className="btn secondary"
+              style={{ padding: "14px 28px", borderRadius: "10px" }}
+            >
+              Sair
+            </button>
+          )}
         </nav>
       </div>
     </header>
