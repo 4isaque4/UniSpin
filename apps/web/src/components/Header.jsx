@@ -15,80 +15,12 @@ export default function Header() {
         <Link to="/" className="logo">
           {/* Logo da SPIN elegante */}
           <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-            {/* Diamante da SPIN otimizado */}
-            <div style={{ 
-              width: "48px", 
-              height: "48px", 
-              position: "relative",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-            }}>
-              <div style={{
-                width: "44px",
-                height: "44px",
-                transform: "rotate(45deg)",
-                position: "relative"
-              }}>
-                {/* Quadrado superior esquerdo - azul claro */}
-                <div style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  width: "22px",
-                  height: "22px",
-                  backgroundColor: "#60A5FA",
-                  borderRadius: "4px",
-                  boxShadow: "0 2px 8px rgba(96, 165, 250, 0.3)"
-                }}></div>
-                {/* Quadrado superior direito - azul médio */}
-                <div style={{
-                  position: "absolute",
-                  top: "0",
-                  right: "0",
-                  width: "22px",
-                  height: "22px",
-                  backgroundColor: "#3B82F6",
-                  borderRadius: "4px",
-                  boxShadow: "0 2px 8px rgba(59, 130, 246, 0.3)"
-                }}></div>
-                {/* Quadrado inferior esquerdo - azul médio */}
-                <div style={{
-                  position: "absolute",
-                  bottom: "0",
-                  left: "0",
-                  width: "22px",
-                  height: "22px",
-                  backgroundColor: "#3B82F6",
-                  borderRadius: "4px",
-                  boxShadow: "0 2px 8px rgba(59, 130, 246, 0.3)"
-                }}></div>
-                {/* Quadrado inferior direito - azul escuro */}
-                <div style={{
-                  position: "absolute",
-                  bottom: "0",
-                  right: "0",
-                  width: "22px",
-                  height: "22px",
-                  backgroundColor: "#1E40AF",
-                  borderRadius: "4px",
-                  boxShadow: "0 2px 8px rgba(30, 64, 175, 0.3)"
-                }}></div>
-                {/* Centro branco com brilho */}
-                <div style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  width: "10px",
-                  height: "10px",
-                  backgroundColor: "white",
-                  borderRadius: "3px",
-                  transform: "translate(-50%, -50%)",
-                  boxShadow: "0 0 12px rgba(255, 255, 255, 0.8)"
-                }}></div>
-              </div>
-            </div>
-            
+            <img
+              src="/unispin-logo.svg"
+              alt="Logo UniSpin"
+              style={{ width: "48px", height: "48px", display: "block" }}
+            />
+
             {/* Texto da logo */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
               <span style={{ 
