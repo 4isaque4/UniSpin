@@ -106,7 +106,7 @@ export default function VideoCard({ video, showContext = false }) {
           style={{
             width: "100%",
             padding: "10px 16px",
-            backgroundColor: isCompleto ? "#3B82F6" : "#10b981",
+            backgroundColor: isCompleto ? "#2563eb" : "#93c5fd",
             color: "white",
             border: "none",
             borderRadius: "8px",

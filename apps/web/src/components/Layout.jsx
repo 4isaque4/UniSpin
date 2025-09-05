@@ -10,9 +10,10 @@ export default function Layout() {
           maxWidth: 1200,
           margin: "24px auto",
           padding: "24px 16px",
-          background: "linear-gradient(135deg, #ffffff, #dbeafe)",
-          borderRadius: "32px",
-          boxShadow: "0 0 20px rgba(30,58,138,0.1)"
+          background: "linear-gradient(135deg, #dbeafe, #93c5fd)",
+          borderRadius: "48px",
+          border: "2px solid rgba(30,58,138,0.4)",
+          boxShadow: "0 0 30px rgba(30,58,138,0.15)"
         }}
       >
         <Outlet />

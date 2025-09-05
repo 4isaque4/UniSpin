@@ -77,18 +77,24 @@ export default function Header() {
           }}>
             Vídeos
           </NavLink>
-          <Link to={ctaTo} className="btn" style={{
-            backgroundColor: "#2563EB",
-            border: "none",
-            padding: "14px 28px",
-            borderRadius: "10px",
-            fontWeight: "600",
-            fontSize: "15px",
-            boxShadow: "0 4px 12px rgba(37, 99, 235, 0.3)",
-            transition: "all 0.2s ease"
-          }}>
-            Acessar plataforma
-          </Link>
+          {!user && (
+            <Link
+              to={ctaTo}
+              className="btn"
+              style={{
+                backgroundColor: "#2563EB",
+                border: "none",
+                padding: "14px 28px",
+                borderRadius: "10px",
+                fontWeight: "600",
+                fontSize: "15px",
+                boxShadow: "0 4px 12px rgba(37, 99, 235, 0.3)",
+                transition: "all 0.2s ease"
+              }}
+            >
+              Acessar plataforma
+            </Link>
+          )}
           {user && (
             <button
               onClick={logout}

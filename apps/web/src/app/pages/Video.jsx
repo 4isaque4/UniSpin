@@ -181,7 +181,7 @@ export default function Video() {
                 style={{
                   width: "100%",
                   padding: "12px",
-                  backgroundColor: isCompleto ? "#2563eb" : "#10b981",
+                  backgroundColor: isCompleto ? "#2563eb" : "#93c5fd",
                   color: "white",
                   border: "none",
                   borderRadius: "10px",

@@ -76,10 +76,9 @@ export default function Videos() {
     <main className="features">
       <div className="container">
         <p className="kicker">Vídeos</p>
-        <h2 style={{ margin: "6px 0 18px" }}>Catálogo de Treinamentos</h2>
-        <p style={{ marginBottom: "32px", color: "#666", textAlign: "center" }}>
+        <h2 style={{ margin: "6px 0 32px", textAlign: "center" }}>
           Série completa de treinamentos para certificação em Action.NET da UniSpin
-        </p>
+        </h2>
 
         <div className="grid videos-grid">
           {MOCK_VIDEOS.map(v => (
