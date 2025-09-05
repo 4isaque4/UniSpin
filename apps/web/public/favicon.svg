@@ -1,14 +1,14 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Diamante da SPIN -->
   <g transform="rotate(45 16 16)">
     <!-- Quadrado superior esquerdo - azul claro -->
-    <rect x="8" y="8" width="8" height="8" fill="#87CEEB" rx="1"/>
+    <rect x="8" y="8" width="8" height="8" fill="#60A5FA" rx="1"/>
     <!-- Quadrado superior direito - azul médio -->
-    <rect x="16" y="8" width="8" height="8" fill="#4A90E2" rx="1"/>
+    <rect x="16" y="8" width="8" height="8" fill="#3B82F6" rx="1"/>
     <!-- Quadrado inferior esquerdo - azul médio -->
-    <rect x="8" y="16" width="8" height="8" fill="#4A90E2" rx="1"/>
+    <rect x="8" y="16" width="8" height="8" fill="#3B82F6" rx="1"/>
     <!-- Quadrado inferior direito - azul escuro -->
-    <rect x="16" y="16" width="8" height="8" fill="#2E5BBA" rx="1"/>
+    <rect x="16" y="16" width="8" height="8" fill="#1E40AF" rx="1"/>
     <!-- Centro branco -->
     <rect x="14" y="14" width="4" height="4" fill="white" rx="0.5"/>
   </g>

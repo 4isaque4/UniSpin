@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../features/auth/AuthContext.jsx";
 
-export default function Header() {
-  const { user } = useAuth();
+  export default function Header() {
+    const { user, signOut } = useAuth();
 
   // Usuários não autenticados vão para login, usuários autenticados vão para videos
   const trilhasTo = user ? "/trilhas" : "/login";
@@ -12,39 +12,36 @@ export default function Header() {
   return (
     <header className="nav">
       <div className="container">
-        <Link to="/" className="logo">
-          {/* Logo da SPIN elegante */}
-          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-            <img
-              src="/unispin-logo.svg"
-              alt="Logo UniSpin"
-              style={{ width: "48px", height: "48px", display: "block" }}
-            />
-
-            {/* Texto da logo */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
-              <span style={{ 
-                fontSize: "32px", 
-                fontWeight: "800", 
-                color: "#1E40AF",
-                lineHeight: "1",
-                letterSpacing: "-0.5px"
-              }}>
-                spin
-              </span>
-              <span style={{ 
-                fontSize: "12px", 
-                fontWeight: "600", 
-                color: "#60A5FA",
-                lineHeight: "1",
-                textTransform: "uppercase",
-                letterSpacing: "1.2px"
-              }}>
-                Engenharia de Automação
-              </span>
+          <Link to="/" className="logo">
+            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+              <img src="/favicon.svg" alt="Logo SPIN" style={{ width: "64px", height: "64px" }} />
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "4px" }}>
+                <span
+                  style={{
+                    fontSize: "36px",
+                    fontWeight: "800",
+                    color: "var(--primary-700)",
+                    lineHeight: "1",
+                    letterSpacing: "-0.5px"
+                  }}
+                >
+                  spin
+                </span>
+                <span
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    color: "var(--accent-cyan)",
+                    lineHeight: "1",
+                    textTransform: "uppercase",
+                    letterSpacing: "1.2px"
+                  }}
+                >
+                  Engenharia de Automação
+                </span>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
 
         <nav style={{ display: "flex", alignItems: "center", gap: "28px" }}>
           <NavLink to="/" style={{ 
@@ -77,20 +74,43 @@ export default function Header() {
           }}>
             Vídeos
           </NavLink>
-          <Link to={ctaTo} className="btn" style={{ 
-            backgroundColor: "#6B7280",
-            border: "none",
-            padding: "14px 28px",
-            borderRadius: "10px",
-            fontWeight: "600",
-            fontSize: "15px",
-            boxShadow: "0 4px 12px rgba(107, 114, 128, 0.3)",
-            transition: "all 0.2s ease"
-          }}>
-            Acessar plataforma
-          </Link>
-        </nav>
-      </div>
-    </header>
-  );
-}
+            {!user ? (
+              <Link
+                to={ctaTo}
+                className="btn"
+                style={{
+                  backgroundColor: "var(--primary-700)",
+                  border: "none",
+                  padding: "14px 28px",
+                  borderRadius: "10px",
+                  fontWeight: "600",
+                  fontSize: "15px",
+                  boxShadow: "0 4px 12px rgba(30, 64, 175, 0.3)",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                Acessar plataforma
+              </Link>
+            ) : (
+              <button
+                className="btn"
+                onClick={signOut}
+                style={{
+                  backgroundColor: "var(--primary-700)",
+                  border: "none",
+                  padding: "14px 28px",
+                  borderRadius: "10px",
+                  fontWeight: "600",
+                  fontSize: "15px",
+                  boxShadow: "0 4px 12px rgba(30, 64, 175, 0.3)",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                Sair
+              </button>
+            )}
+          </nav>
+        </div>
+      </header>
+    );
+  }

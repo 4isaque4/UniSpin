@@ -42,10 +42,15 @@ export default function Home() {
               desc="Treinamentos especializados em SCADA, automação industrial e ferramentas Action.NET."
               iconType="technical"
             />
-            <FeatureCard 
-              title="Recursos & Downloads" 
+            <FeatureCard
+              title="Recursos & Downloads"
               desc="Materiais complementares (manuais, e‑books, scripts de exemplo) para praticar e reforçar os contéudos."
               iconType="resources"
+            />
+            <FeatureCard
+              title="Suporte & Comunidade"
+              desc="Canais de ajuda e espaço para interação entre os usuários."
+              iconType="community"
             />
           </div>
         </div>

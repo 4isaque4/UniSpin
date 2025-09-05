@@ -113,9 +113,9 @@ export default function FeatureCard({ title, desc, iconType = "default" }) {
             </div>
           </div>
         );
-      case "resources":
-        return (
-          <div style={{
+        case "resources":
+          return (
+            <div style={{
             width: "24px",
             height: "24px",
             background: "linear-gradient(135deg, #8B5CF6, #7C3AED)",
@@ -160,11 +160,34 @@ export default function FeatureCard({ title, desc, iconType = "default" }) {
                 borderRadius: "1px"
               }}></div>
             </div>
-          </div>
-        );
-      default:
-        return (
-          <div style={{
+            </div>
+          );
+        case "community":
+          return (
+            <div
+              style={{
+                width: "24px",
+                height: "24px",
+                background: "linear-gradient(135deg, #3B82F6, #1E40AF)",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <div
+                style={{
+                  width: "12px",
+                  height: "12px",
+                  background: "white",
+                  borderRadius: "50%"
+                }}
+              ></div>
+            </div>
+          );
+        default:
+          return (
+            <div style={{
             width: "24px",
             height: "24px",
             background: "linear-gradient(135deg, #3B82F6, #1E40AF)",

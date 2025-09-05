@@ -116,12 +116,6 @@ export default function Video() {
     }
   };
 
-  // Helper para obter próximo e anterior baseado na ordem do MOCK
-  const orderedIds = Object.keys(MOCK);
-  const currentIndex = orderedIds.indexOf(id);
-  const nextId = currentIndex >= 0 && currentIndex < orderedIds.length - 1 ? orderedIds[currentIndex + 1] : null;
-  const prevId = currentIndex > 0 ? orderedIds[currentIndex - 1] : null;
-
   return (
     <main className="features">
       <div className="container">
@@ -136,7 +130,6 @@ export default function Video() {
           </p>
         </div>
 
-        {/* Layout: player + navegação lateral */}
         <div style={{ 
           display: "grid", 
           gridTemplateColumns: "2fr 1fr", 
@@ -148,46 +141,67 @@ export default function Video() {
             <div style={{
               position: "relative",
               width: "100%",
-              paddingBottom: "56.25%", // 16:9
+              paddingBottom: "56.25%", // 16:9 aspect ratio
               backgroundColor: "#000",
-              borderRadius: "12px",
-              overflow: "hidden",
-              boxShadow: "0 10px 26px rgba(37,99,235,0.25)"
+              borderRadius: "8px",
+              overflow: "hidden"
             }}>
               <iframe
                 src={video.embed}
                 title={video.titulo}
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "none"
+                }}
                 allowFullScreen
               />
             </div>
-            {/* Informações do vídeo abaixo do player */}
-            <div className="card" style={{ marginTop: "20px", maxWidth: "100%" }}>
-              <h3 style={{ margin: "0 0 16px 0", color: "#1d4ed8", display: "flex", alignItems: "center", gap: "8px" }}>
+          </div>
+
+          {/* Informações e controles */}
+          <div>
+            <div className="card" style={{ marginBottom: "24px" }}>
+              <h3
+                style={{
+                  margin: "0 0 16px 0",
+                  color: "#3B82F6",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px"
+                }}
+              >
                 <BrandIcon /> Informações do Vídeo
               </h3>
+              
               <div style={{ marginBottom: "16px" }}>
                 <strong>Duração:</strong> {video.duracao}
               </div>
+              
               <div style={{ marginBottom: "20px" }}>
                 <strong>Descrição:</strong>
-                <p style={{ margin: "8px 0 0 0", fontSize: "14px", lineHeight: "1.6" }}>
+                <p style={{ margin: "8px 0 0 0", fontSize: "14px", lineHeight: "1.5" }}>
                   {video.descricao}
                 </p>
               </div>
+
+              {/* Botão de conclusão */}
               <button
                 onClick={toggleCompleto}
                 disabled={isUpdating}
                 style={{
                   width: "100%",
                   padding: "12px",
-                  backgroundColor: isCompleto ? "#2563eb" : "#10b981",
+                  backgroundColor: isCompleto ? "#3B82F6" : "#10b981",
                   color: "white",
                   border: "none",
-                  borderRadius: "10px",
+                  borderRadius: "8px",
                   cursor: "pointer",
                   fontSize: "14px",
-                  fontWeight: "700",
+                  fontWeight: "600",
                   transition: "all 0.2s ease",
                   display: "flex",
                   alignItems: "center",
@@ -196,44 +210,49 @@ export default function Video() {
                 }}
                 title={isCompleto ? "Marcar como não assistido" : "Marcar como assistido"}
               >
-                {isUpdating ? "Atualizando..." : (isCompleto ? "Vídeo Concluído" : "Marcar como Concluído")}
+                {isUpdating ? (
+                  "Atualizando..."
+                ) : (
+                  <>
+                    {isCompleto ? "Vídeo Concluído" : "Marcar como Concluído"}
+                  </>
+                )}
               </button>
             </div>
-          </div>
 
-          {/* Navegação entre vídeos */}
-          <div>
-            <div className="card" style={{ maxWidth: "100%" }}>
-              <h4 style={{ margin: "0 0 16px 0", color: "#1d4ed8" }}>Navegação</h4>
-              {/* Próximo vídeo com thumb */}
-              <div style={{ display: "grid", gap: "12px" }}>
-                <Link to="/videos" className="btn secondary" style={{ textAlign: "center" }}>
+            {/* Navegação entre vídeos */}
+            <div className="card">
+              <h4 style={{ margin: "0 0 16px 0", color: "#3B82F6" }}>
+                Navegação
+              </h4>
+              
+              <div style={{ display: "flex", gap: "8px" }}>
+                <Link 
+                  to="/videos" 
+                  className="btn secondary" 
+                  style={{ 
+                    flex: 1, 
+                    textAlign: "center",
+                    padding: "10px 16px",
+                    fontSize: "14px"
+                  }}
+                >
                   Ver Todos os Vídeos
                 </Link>
-                <div style={{ display: "grid", gap: "12px" }}>
-                  {nextId && MOCK[nextId] && (
-                    <Link to={`/videos/${nextId}`} style={{ textDecoration: "none" }}>
-                      <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-                        <img src={`https://img.youtube.com/vi/${nextId}/hqdefault.jpg`} alt="Próximo vídeo" style={{ width: "96px", height: "54px", borderRadius: "8px", objectFit: "cover" }} />
-                        <div>
-                          <div style={{ fontSize: "12px", color: "#64748b" }}>Próximo</div>
-                          <div style={{ fontWeight: 700, color: "#0f172a" }}>{MOCK[nextId].titulo}</div>
-                        </div>
-                      </div>
-                    </Link>
-                  )}
-                  {prevId && MOCK[prevId] && (
-                    <Link to={`/videos/${prevId}`} style={{ textDecoration: "none" }}>
-                      <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-                        <img src={`https://img.youtube.com/vi/${prevId}/hqdefault.jpg`} alt="Anterior" style={{ width: "96px", height: "54px", borderRadius: "8px", objectFit: "cover" }} />
-                        <div>
-                          <div style={{ fontSize: "12px", color: "#64748b" }}>Anterior</div>
-                          <div style={{ fontWeight: 700, color: "#0f172a" }}>{MOCK[prevId].titulo}</div>
-                        </div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
+                <Link 
+                  to="/trilhas" 
+                  className="btn secondary" 
+                  style={{ 
+                    flex: 1, 
+                    textAlign: "center",
+                    padding: "10px 16px",
+                    fontSize: "14px",
+                    backgroundColor: "#6B7280",
+                    border: "1px solid #6B7280"
+                  }}
+                >
+                  Ver Trilha
+                </Link>
               </div>
             </div>
           </div>

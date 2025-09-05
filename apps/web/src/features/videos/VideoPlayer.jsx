@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getVideoById, getNextVideo, getPreviousVideo } from '../../data/playlist.js';
+import BrandIcon from '../../components/BrandIcon.jsx';
 import '../../styles/VideoPlayer.css';
 import BrandIcon from '../../components/BrandIcon.jsx';
 
