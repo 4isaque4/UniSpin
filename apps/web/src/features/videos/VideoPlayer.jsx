@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getVideoById, getNextVideo, getPreviousVideo } from '../../data/playlist.js';
+import BrandIcon from '../../components/BrandIcon.jsx';
 import '../../styles/VideoPlayer.css';
 
 export default function VideoPlayer() {
@@ -83,7 +84,9 @@ export default function VideoPlayer() {
         {showContext && (
           <div className="video-context-sidebar">
             <div className="context-section">
-              <h3>📚 Contexto</h3>
+              <h3>
+                <BrandIcon /> Contexto
+              </h3>
               <p>{video.context}</p>
             </div>
 
@@ -99,18 +102,24 @@ export default function VideoPlayer() {
             )}
 
             <div className="context-section">
-              <h3>📋 Pré-requisitos</h3>
+              <h3>
+                <BrandIcon /> Pré-requisitos
+              </h3>
               <p>{video.prerequisites}</p>
             </div>
 
             <div className="context-section">
-              <h3>🚀 Resultado esperado</h3>
+              <h3>
+                <BrandIcon /> Resultado esperado
+              </h3>
               <p>{video.expectedOutcome}</p>
             </div>
 
             {/* Navegação entre vídeos */}
             <div className="video-navigation">
-              <h3>🎬 Navegação</h3>
+              <h3>
+                <BrandIcon /> Navegação
+              </h3>
               
               {previousVideo && (
                 <Link 
@@ -144,7 +153,9 @@ export default function VideoPlayer() {
 
       {/* Vídeos Relacionados */}
       <div className="related-videos">
-        <h3>📚 Outros vídeos deste módulo</h3>
+        <h3>
+          <BrandIcon /> Outros vídeos deste módulo
+        </h3>
         <div className="related-videos-grid">
           {/* Aqui você pode adicionar outros vídeos do mesmo módulo */}
         </div>

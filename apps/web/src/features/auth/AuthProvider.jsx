@@ -28,7 +28,13 @@ export default function AuthProvider({ children }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const value = { user, session, loading: loading, ready: !loading, setUser, setSession };
-  console.log("AuthProvider - valor do contexto:", value);
-  return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
+    const signOut = async () => {
+      await supabase.auth.signOut();
+      setUser(null);
+      setSession(null);
+    };
+
+    const value = { user, session, loading: loading, ready: !loading, setUser, setSession, signOut };
+    console.log("AuthProvider - valor do contexto:", value);
+    return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
 }

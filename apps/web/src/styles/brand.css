@@ -1,13 +1,15 @@
 :root {
-  /* === Paleta (ajuste os HEX aqui quando tiver os oficiais) === */
-  --primary-700: #0a35d1; /* azul royal */
-  --primary-800: #0829a8;
-  --primary-900: #071f8a;
-  --primary-950: #06186f;
+  /* === Paleta principal da SPIN (azuis oficiais) === */
+  --primary-600: #2563eb;
+  --primary-700: #1e40af;
+  --primary-800: #1e3a8a;
+  --primary-900: #172554;
 
-  --accent-cyan: #44c3ee; /* gradiente do "losango" */
+  /* === Tons de apoio === */
+  --accent-cyan: #60a5fa; /* gradiente do "losango" */
   --accent-teal: #66e0c2;
 
+  /* === Cores neutras === */
   --ink: #1f2937;
   --muted: #6b7280;
 

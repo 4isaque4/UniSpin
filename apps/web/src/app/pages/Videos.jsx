@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import VideoCard from "../../features/videos/VideoCard.jsx";
 
 const MOCK_VIDEOS = [
@@ -71,6 +72,11 @@ const MOCK_VIDEOS = [
 ];
 
 export default function Videos() {
+  const [search, setSearch] = useState("");
+  const filteredVideos = MOCK_VIDEOS.filter(v =>
+    v.titulo.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <main className="features">
       <div className="container">
@@ -80,8 +86,24 @@ export default function Videos() {
           Série completa de treinamentos para certificação em Action.NET da UniSpin
         </p>
 
+        <input
+          type="text"
+          placeholder="Buscar vídeos..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{
+            width: "100%",
+            maxWidth: "400px",
+            padding: "12px",
+            margin: "0 auto 32px",
+            borderRadius: "8px",
+            border: "2px solid rgba(59,130,246,0.6)",
+            display: "block"
+          }}
+        />
+
         <div className="grid videos-grid">
-          {MOCK_VIDEOS.map(v => (
+          {filteredVideos.map(v => (
             <div key={v.id} style={{ width: "100%", maxWidth: "400px" }}>
               <VideoCard video={v} />
             </div>
