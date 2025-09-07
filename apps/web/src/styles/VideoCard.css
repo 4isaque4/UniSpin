@@ -1,21 +1,19 @@
 .video-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(191, 219, 254, 0.9));
-  border: 2px solid rgba(59, 130, 246, 0.6);
-  border-radius: 24px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
-  /* Definir tamanho máximo para evitar cards muito grandes */
   max-width: 100%;
   height: auto;
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .video-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.35);
-  border-color: rgba(59, 130, 246, 0.8);
-  border-radius: 28px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 /* Thumbnail Container */
@@ -53,7 +51,7 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: var(--accent-color, #3B82F6);
+  background: var(--color-primary);
   color: white;
   padding: 4px 8px;
   border-radius: 6px;
@@ -69,52 +67,49 @@
 }
 
 .video-title {
-  font-size: 16px; /* Reduzir tamanho da fonte */
+  font-size: 16px;
   font-weight: 700;
-  color: #1f2937;
-  margin: 0 0 8px 0; /* Reduzir margem */
+  color: #374151;
+  margin: 0 0 8px 0;
   line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .video-description {
-  color: #374151;
-  font-size: 13px; /* Reduzir tamanho da fonte */
+  color: #6b7280;
+  font-size: 13px;
   line-height: 1.4;
-  margin: 0 0 12px 0; /* Reduzir margem */
-  font-weight: 500;
+  margin: 0 0 12px 0;
+  font-weight: 400;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limitar a 3 linhas */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 /* Video Context (modo detalhado) */
 .video-context {
-  margin: 12px 0; /* Reduzir margem */
+  margin: 12px 0;
   font-size: 12px;
+  color: #6b7280;
 }
 
 .video-context-section {
   margin: 16px 0;
   padding: 16px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(147, 197, 253, 0.15));
-  border-radius: 16px;
-  border-left: 3px solid var(--accent-color, #3B82F6);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .video-context-section h4 {
-  color: #1f2937;
+  color: #374151;
   font-size: 14px;
   font-weight: 600;
   margin: 0 0 8px 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .video-context-section p {
@@ -143,7 +138,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: var(--accent-color, #3B82F6);
+  color: var(--color-primary);
   font-weight: bold;
 }
 
@@ -156,22 +151,22 @@
 
 .watch-button {
   flex: 1;
-  background: var(--accent-color, #3B82F6);
+  background: var(--color-primary);
   color: white;
   text-decoration: none;
-  padding: 10px 16px; /* Reduzir padding */
+  padding: 10px 16px;
   border-radius: 8px;
   font-weight: 600;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   border: none;
   cursor: pointer;
-  font-size: 14px; /* Reduzir tamanho da fonte */
+  font-size: 14px;
 }
 
 .watch-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .view-module-button {
@@ -182,14 +177,14 @@
   border-radius: 8px;
   font-weight: 600;
   text-align: center;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 123, 255, 0.2);
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .view-module-button:hover {
-  background: rgba(0, 123, 255, 0.05);
-  border-color: rgba(0, 123, 255, 0.3);
-  color: #2563eb;
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #374151;
 }
 
 /* Responsividade */

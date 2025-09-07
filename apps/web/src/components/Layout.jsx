@@ -7,13 +7,10 @@ export default function Layout() {
       <Header />
       <main
         style={{
-          maxWidth: 1200,
-          margin: "24px auto",
-          padding: "24px 16px",
-          background: "linear-gradient(135deg, #dbeafe, #93c5fd)",
-          borderRadius: "48px",
-          border: "2px solid rgba(30,58,138,0.4)",
-          boxShadow: "0 0 30px rgba(30,58,138,0.15)"
+          margin: 0,
+          padding: 0,
+          background: "linear-gradient(180deg, rgba(174, 223, 242, 0.35), rgba(68, 210, 242, 0.28))",
+          minHeight: "calc(100vh - 80px)"
         }}
       >
         <Outlet />

@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto } from "../../data/trilhas.js";
 import { useState, useEffect } from "react";
-import BrandIcon from "../../components/BrandIcon.jsx";
 
 const MOCK = {
   "5x6pCc8xUDk": { 
@@ -88,8 +87,8 @@ export default function Video() {
     return (
       <main className="features">
         <div className="container">
-          <h2>Vídeo não encontrado</h2>
-          <p>O vídeo solicitado não foi encontrado.</p>
+          <h2 style={{ color: "#374151" }}>Vídeo não encontrado</h2>
+          <p style={{ color: "#6b7280" }}>O vídeo solicitado não foi encontrado.</p>
           <Link to="/videos" className="btn secondary">
             Voltar aos vídeos
           </Link>
@@ -130,8 +129,8 @@ export default function Video() {
             ← Voltar aos vídeos
           </Link>
           
-          <h1 style={{ margin: "0 0 8px 0", fontSize: "2rem" }}>{video.titulo}</h1>
-          <p style={{ margin: "0 0 16px 0", color: "#666" }}>
+          <h1 style={{ margin: "0 0 8px 0", fontSize: "2rem", color: "#374151" }}>{video.titulo}</h1>
+          <p style={{ margin: "0 0 16px 0", color: "#6b7280" }}>
             Duração: {video.duracao} | Treinamento Action.NET
           </p>
         </div>
@@ -163,15 +162,15 @@ export default function Video() {
             </div>
             {/* Informações do vídeo abaixo do player */}
             <div className="card" style={{ marginTop: "20px", maxWidth: "100%" }}>
-              <h3 style={{ margin: "0 0 16px 0", color: "#1d4ed8", display: "flex", alignItems: "center", gap: "8px" }}>
-                <BrandIcon /> Informações do Vídeo
+              <h3 style={{ margin: "0 0 16px 0", color: "#374151" }}>
+                Informações do Vídeo
               </h3>
               <div style={{ marginBottom: "16px" }}>
-                <strong>Duração:</strong> {video.duracao}
+                <strong style={{ color: "#374151" }}>Duração:</strong> <span style={{ color: "#6b7280" }}>{video.duracao}</span>
               </div>
               <div style={{ marginBottom: "20px" }}>
-                <strong>Descrição:</strong>
-                <p style={{ margin: "8px 0 0 0", fontSize: "14px", lineHeight: "1.6" }}>
+                <strong style={{ color: "#374151" }}>Descrição:</strong>
+                <p style={{ margin: "8px 0 0 0", fontSize: "14px", lineHeight: "1.6", color: "#6b7280" }}>
                   {video.descricao}
                 </p>
               </div>
@@ -181,7 +180,7 @@ export default function Video() {
                 style={{
                   width: "100%",
                   padding: "12px",
-                  backgroundColor: isCompleto ? "#2563eb" : "#0000CD",
+                  backgroundColor: isCompleto ? "var(--neutral-900)" : "var(--color-primary)",
                   color: "white",
                   border: "none",
                   borderRadius: "10px",
@@ -204,7 +203,7 @@ export default function Video() {
           {/* Navegação entre vídeos */}
           <div>
             <div className="card" style={{ maxWidth: "100%" }}>
-              <h4 style={{ margin: "0 0 16px 0", color: "#1d4ed8" }}>Navegação</h4>
+              <h4 style={{ margin: "0 0 16px 0", color: "#374151" }}>Navegação</h4>
               {/* Próximo vídeo com thumb */}
               <div style={{ display: "grid", gap: "12px" }}>
                 <Link to="/videos" className="btn secondary" style={{ textAlign: "center" }}>
@@ -216,8 +215,8 @@ export default function Video() {
                       <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
                         <img src={`https://img.youtube.com/vi/${nextId}/hqdefault.jpg`} alt="Próximo vídeo" style={{ width: "96px", height: "54px", borderRadius: "8px", objectFit: "cover" }} />
                         <div>
-                          <div style={{ fontSize: "12px", color: "#64748b" }}>Próximo</div>
-                          <div style={{ fontWeight: 700, color: "#0f172a" }}>{MOCK[nextId].titulo}</div>
+                          <div style={{ fontSize: "12px", color: "#6b7280" }}>Próximo</div>
+                          <div style={{ fontWeight: 700, color: "#374151" }}>{MOCK[nextId].titulo}</div>
                         </div>
                       </div>
                     </Link>
@@ -227,8 +226,8 @@ export default function Video() {
                       <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
                         <img src={`https://img.youtube.com/vi/${prevId}/hqdefault.jpg`} alt="Anterior" style={{ width: "96px", height: "54px", borderRadius: "8px", objectFit: "cover" }} />
                         <div>
-                          <div style={{ fontSize: "12px", color: "#64748b" }}>Anterior</div>
-                          <div style={{ fontWeight: 700, color: "#0f172a" }}>{MOCK[prevId].titulo}</div>
+                          <div style={{ fontSize: "12px", color: "#6b7280" }}>Anterior</div>
+                          <div style={{ fontWeight: 700, color: "#374151" }}>{MOCK[prevId].titulo}</div>
                         </div>
                       </div>
                     </Link>

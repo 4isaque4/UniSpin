@@ -48,7 +48,7 @@ export default function VideoCard({ video, showContext = false }) {
             <div 
               className="video-thumbnail"
               style={{
-                backgroundColor: "#3B82F6",
+                backgroundColor: "var(--color-primary)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -68,7 +68,7 @@ export default function VideoCard({ video, showContext = false }) {
               position: "absolute",
               top: "8px",
               right: "8px",
-              backgroundColor: "#3B82F6",
+              backgroundColor: "var(--color-primary)",
               color: "white",
               borderRadius: "50%",
               width: "24px",
@@ -78,7 +78,7 @@ export default function VideoCard({ video, showContext = false }) {
               justifyContent: "center",
               fontSize: "12px",
               fontWeight: "bold",
-              boxShadow: "0 2px 8px rgba(59, 130, 246, 0.4)"
+              boxShadow: "0 2px 8px rgba(68, 210, 242, 0.35)"
             }}>
               ✓
             </div>
@@ -106,7 +106,7 @@ export default function VideoCard({ video, showContext = false }) {
           style={{
             width: "100%",
             padding: "10px 16px",
-            backgroundColor: isCompleto ? "#2563eb" : "#93c5fd",
+            backgroundColor: isCompleto ? "var(--neutral-900)" : "var(--color-primary)",
             color: "white",
             border: "none",
             borderRadius: "8px",

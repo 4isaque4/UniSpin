@@ -1,14 +1,22 @@
 {
   "name": "plataforma-educacional",
   "private": true,
-  "workspaces": ["apps/*", "packages/*"],
-  
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev:web": "npm --workspace apps/web run dev",
-    "dev:api": "npm --workspace apps/api run dev",
-    "build:web": "npm --workspace apps/web run build",
-    "start:api": "npm --workspace apps/api start",
-    "lint": "echo \"add lint later\""
+  "dev:web": "npm --workspace apps/web run dev",
+  "dev:api": "npm --workspace apps/api run dev",
+  "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+  "build:web": "npm --workspace apps/web run build",
+  "start:api": "npm --workspace apps/api start",
+  "lint": "echo \"add lint later\""
   },
-  "engines": { "npm": ">=11.3.0" }
+  "engines": {
+    "npm": ">=11.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
 }

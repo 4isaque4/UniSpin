@@ -26,16 +26,16 @@ export default function Header() {
               <span style={{ 
                 fontSize: "32px", 
                 fontWeight: "800", 
-                color: "#1E40AF",
+                color: "#44d2f2",
                 lineHeight: "1",
                 letterSpacing: "-0.5px"
               }}>
-                spin
+                Unispin
               </span>
               <span style={{ 
                 fontSize: "12px", 
                 fontWeight: "600", 
-                color: "#60A5FA",
+                color: "#0d0d0d",
                 lineHeight: "1",
                 textTransform: "uppercase",
                 letterSpacing: "1.2px"

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import VideoCard from "../../features/videos/VideoCard.jsx";
-import { useState } from "react";
 
 const MOCK_VIDEOS = [
   { 
@@ -75,8 +74,8 @@ export default function Videos() {
   return (
     <main className="features">
       <div className="container">
-        <p className="kicker">Vídeos</p>
-        <h2 style={{ margin: "6px 0 32px", textAlign: "center" }}>
+        <p className="kicker" style={{ color: "#6b7280" }}>Vídeos</p>
+        <h2 style={{ margin: "6px 0 32px", textAlign: "center", color: "#374151" }}>
           Série completa de treinamentos para certificação em Action.NET da UniSpin
         </h2>
 
@@ -89,7 +88,7 @@ export default function Videos() {
         </div>
 
         <div style={{ marginTop: "40px", textAlign: "center" }}>
-          <p style={{ color: "#666", marginBottom: "16px" }}>
+          <p style={{ color: "#6b7280", marginBottom: "16px" }}>
             Série completa de 11 vídeos para certificação em Action.NET
           </p>
           <Link to="/" className="btn secondary">

@@ -7,15 +7,38 @@ const mustSSL =
   (process.env.DATABASE_URL || '').includes('supabase');
 
 const forceIPv4 = process.env.FORCE_IPV4 === 'true';
+const manualHostOverride = process.env.DB_HOST_OVERRIDE || process.env.SUPABASE_DB_HOST_IPV4;
 
 console.log("[DB] Configurando pool de conexão...");
 console.log("[DB] DATABASE_URL configurada:", process.env.DATABASE_URL ? "Sim" : "Não");
 console.log("[DB] SSL forçado:", mustSSL);
 console.log("[DB] Forçar IPv4:", forceIPv4);
+if (manualHostOverride) {
+  console.log("[DB] Override manual de host ativo:", manualHostOverride);
+}
 
 async function resolveDatabaseUrl(rawUrl) {
   try {
     const url = new URL(rawUrl);
+    if (manualHostOverride) {
+      // Normaliza IPv6: aceita com ou sem colchetes e remove colchetes para setar corretamente
+      const trimmed = manualHostOverride.trim();
+      const normalizedHost = (trimmed.startsWith('[') && trimmed.endsWith(']'))
+        ? trimmed.slice(1, -1)
+        : trimmed;
+
+      // Para serialização correta da URL, use url.host (host + port). Em IPv6 o host precisa de colchetes
+      const isIPv6 = normalizedHost.includes(':');
+      const hostForUrl = isIPv6 ? `[${normalizedHost}]` : normalizedHost;
+      url.host = url.port ? `${hostForUrl}:${url.port}` : hostForUrl;
+      console.log(`[DB] Usando override manual de host: ${normalizedHost}`);
+      const finalUrl = url.toString();
+      console.log(`[DB] URL final (override): ${finalUrl.replace(/:[^:@]*@/, ':***@')}`);
+      const check = new URL(finalUrl);
+      console.log(`[DB] Host efetivo: ${check.host} | Hostname efetivo: ${check.hostname} | Porta: ${check.port}`);
+      return finalUrl;
+    }
+
     console.log(`[DB] Resolvendo hostname: ${url.hostname}`);
     
     const records = await dns.lookup(url.hostname, { all: true });
@@ -55,6 +78,13 @@ async function initializePool() {
   try {
     const connectionString = await resolveDatabaseUrl(process.env.DATABASE_URL);
     
+    // Blindagem: evita que variáveis PG* do ambiente sobrescrevam a connectionString
+    delete process.env.PGHOST;
+    delete process.env.PGPORT;
+    delete process.env.PGUSER;
+    delete process.env.PGDATABASE;
+    delete process.env.PGPASSWORD;
+
     pool = new Pool({
       connectionString,
       ssl: mustSSL ? { rejectUnauthorized: false } : undefined,

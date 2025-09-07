@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 import routes from "./routes/index.js";
 import { errorHandler } from "./middlewares/error.js";
 import { testConnection } from "./repositories/db.js";
-import { validateEnv } from "./config/env.js";
+import { validateEnv, FRONTEND_ORIGINS } from "./config/env.js";
 
 dotenv.config();
 
@@ -20,14 +20,23 @@ if (!validateEnv()) {
 const app = express();
 app.set("trust proxy", 1);
 
-// CORS
-const allowedOrigins = (process.env.CORS_ORIGIN || "https://uni-spin-web.vercel.app,http://localhost:5173")
-  .split(",").map(s => s.trim()).filter(Boolean);
-
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
-}));
+// Fallback de CORS em desenvolvimento (DEVE vir antes de qualquer middleware)
+const isDev = (process.env.NODE_ENV || 'development') !== 'production';
+if (isDev) {
+  app.use((req, res, next) => {
+    const origin = req.headers.origin || "http://localhost:5173";
+    console.log(`[CORS] ${req.method} ${req.path} - Origin: ${origin}`);
+    res.header("Access-Control-Allow-Origin", origin);
+    res.header("Vary", "Origin");
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Authorization,Content-Type,authorization,content-type");
+    if (req.method === "OPTIONS") {
+      console.log(`[CORS] Respondendo OPTIONS com 204 - Headers: ${JSON.stringify(res.getHeaders())}`);
+      return res.sendStatus(204);
+    }
+    next();
+  });
+}
 
 // Middlewares comuns
 app.use(helmet());
@@ -44,7 +53,7 @@ app.use((err, _req, res, next) => {
 
 // Health
 app.get("/", (_req, res) => {
-  res.json({ ok: true, service: "unispin-api", ts: new Date().toISOString(), allowedOrigins });
+  res.json({ ok: true, service: "unispin-api", ts: new Date().toISOString() });
 });
 app.get("/health", (_req, res) => res.status(200).send("ok"));
 
