@@ -68,7 +68,24 @@ const MOCK = {
     embed: "https://www.youtube.com/embed/-sSdhGooQzQ",
     descricao: "Décimo primeiro vídeo da série do treinamento para certificação em Action.NET - LeanAutomation.",
     duracao: "16:25"
-  }
+  },
+  // SAGE (aponta embeds da playlist informada)
+  "oUYIUIFT4sk": { titulo: "Treinamento SAGE 1",  embed: "https://www.youtube.com/embed/oUYIUIFT4sk", descricao: "Introdução ao SAGE, visão geral do sistema e objetivos do treinamento.", duracao: "3:31:05" },
+  "k9zDvNElls4": { titulo: "Treinamento SAGE 2",  embed: "https://www.youtube.com/embed/k9zDvNElls4", descricao: "Arquitetura do SAGE e componentes principais no contexto de centros de operação.", duracao: "3:33:05" },
+  "uCkJH3JeIJQ": { titulo: "Treinamento SAGE 3",  embed: "https://www.youtube.com/embed/uCkJH3JeIJQ", descricao: "Instalação, configuração inicial e serviços do ambiente SAGE.", duracao: "3:31:05" },
+  "WNyFiNu671M": { titulo: "Treinamento SAGE 4",  embed: "https://www.youtube.com/embed/WNyFiNu671M", descricao: "Integração com bancos de dados (ex.: PostgreSQL) e persistência de dados operacionais.", duracao: "3:33:05" },
+  "UOcDsoPI6hU": { titulo: "Treinamento SAGE 5",  embed: "https://www.youtube.com/embed/UOcDsoPI6hU", descricao: "Modelagem de ativos, cadastro de pontos e topologia de rede.", duracao: "5:13:33" },
+  "Who63QFr0GA": { titulo: "Treinamento SAGE 6",  embed: "https://www.youtube.com/embed/Who63QFr0GA", descricao: "Comunicação com IEDs/RTUs, protocolos e boas práticas de telemetria.", duracao: "3:25:48" },
+  "l05gsBesqg4": { titulo: "Treinamento SAGE 7",  embed: "https://www.youtube.com/embed/l05gsBesqg4", descricao: "Construção de telas SCADA, sinóticos e padrões de navegação.", duracao: "3:17:28" },
+  "LvOwfeikA4Q": { titulo: "Treinamento SAGE 8",  embed: "https://www.youtube.com/embed/LvOwfeikA4Q", descricao: "Alarmes, eventos e tratamento de contingências.", duracao: "2:35:49" },
+  "6Jsb8AlLOlo": { titulo: "Treinamento SAGE 9",  embed: "https://www.youtube.com/embed/6Jsb8AlLOlo", descricao: "Tendências, históricos e análise de dados operacionais.", duracao: "3:23:52" },
+  "n6RfHyfAYEw": { titulo: "Treinamento SAGE 10", embed: "https://www.youtube.com/embed/n6RfHyfAYEw", descricao: "Relatórios, auditoria e trilhas de operação.", duracao: "3:28:17" },
+  "AhMMO_MmfgU": { titulo: "Treinamento SAGE 11 (parte 1)", embed: "https://www.youtube.com/embed/AhMMO_MmfgU", descricao: "Segurança, perfis de usuário e gestão de permissões.", duracao: "0:13:21" },
+  "TgnsPPu2VY8": { titulo: "Treinamento SAGE 12", embed: "https://www.youtube.com/embed/TgnsPPu2VY8", descricao: "Scripts/macros e automações no ambiente SAGE.", duracao: "3:36:13" },
+  "6Y0FlnY6vO0": { titulo: "Treinamento SAGE 13", embed: "https://www.youtube.com/embed/6Y0FlnY6vO0", descricao: "Simulações operativas e estudos de rede.", duracao: "4:10:57" },
+  "LDK3VixwPeU": { titulo: "Treinamento SAGE 14", embed: "https://www.youtube.com/embed/LDK3VixwPeU", descricao: "Integração com sistemas externos e APIs.", duracao: "4:16:51" },
+  "nzJWokOQaMo": { titulo: "Treinamento SAGE 15", embed: "https://www.youtube.com/embed/nzJWokOQaMo", descricao: "Boas práticas de operação e confiabilidade.", duracao: "3:06:19" },
+  "SdaocXBGevo": { titulo: "Treinamento SAGE 16", embed: "https://www.youtube.com/embed/SdaocXBGevo", descricao: "Encerramento, revisão dos conceitos e próximos passos.", duracao: "3:42:23" },
 };
 
 export default function Video() {
@@ -204,33 +221,37 @@ export default function Video() {
           <div>
             <div className="card" style={{ maxWidth: "100%" }}>
               <h4 style={{ margin: "0 0 16px 0", color: "#374151" }}>Navegação</h4>
-              {/* Próximo vídeo com thumb */}
+              {/* Lista de navegação sem thumbnails */}
               <div style={{ display: "grid", gap: "12px" }}>
                 <Link to="/videos" className="btn secondary" style={{ textAlign: "center" }}>
                   Ver Todos os Vídeos
                 </Link>
-                <div style={{ display: "grid", gap: "12px" }}>
-                  {nextId && MOCK[nextId] && (
-                    <Link to={`/videos/${nextId}`} style={{ textDecoration: "none" }}>
-                      <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-                        <img src={`https://img.youtube.com/vi/${nextId}/hqdefault.jpg`} alt="Próximo vídeo" style={{ width: "96px", height: "54px", borderRadius: "8px", objectFit: "cover" }} />
-                        <div>
-                          <div style={{ fontSize: "12px", color: "#6b7280" }}>Próximo</div>
-                          <div style={{ fontWeight: 700, color: "#374151" }}>{MOCK[nextId].titulo}</div>
-                        </div>
+                <div style={{ display: "grid", gap: "8px", maxHeight: "360px", overflow: "auto" }}>
+                  {/* Próximos */}
+                  {orderedIds.slice(currentIndex + 1).length > 0 && (
+                    <div>
+                      <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "6px" }}>Próximos</div>
+                      <div style={{ display: "grid", gap: "6px" }}>
+                        {orderedIds.slice(currentIndex + 1).map(vid => (
+                          <Link key={vid} to={`/videos/${vid}`} style={{ textDecoration: "none" }}>
+                            <div style={{ fontWeight: 600, color: "#374151" }}>{MOCK[vid]?.titulo || vid}</div>
+                          </Link>
+                        ))}
                       </div>
-                    </Link>
+                    </div>
                   )}
-                  {prevId && MOCK[prevId] && (
-                    <Link to={`/videos/${prevId}`} style={{ textDecoration: "none" }}>
-                      <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-                        <img src={`https://img.youtube.com/vi/${prevId}/hqdefault.jpg`} alt="Anterior" style={{ width: "96px", height: "54px", borderRadius: "8px", objectFit: "cover" }} />
-                        <div>
-                          <div style={{ fontSize: "12px", color: "#6b7280" }}>Anterior</div>
-                          <div style={{ fontWeight: 700, color: "#374151" }}>{MOCK[prevId].titulo}</div>
-                        </div>
+                  {/* Anteriores */}
+                  {orderedIds.slice(0, currentIndex).length > 0 && (
+                    <div style={{ marginTop: "12px" }}>
+                      <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "6px" }}>Anteriores</div>
+                      <div style={{ display: "grid", gap: "6px" }}>
+                        {orderedIds.slice(0, currentIndex).reverse().map(vid => (
+                          <Link key={vid} to={`/videos/${vid}`} style={{ textDecoration: "none" }}>
+                            <div style={{ fontWeight: 600, color: "#374151" }}>{MOCK[vid]?.titulo || vid}</div>
+                          </Link>
+                        ))}
                       </div>
-                    </Link>
+                    </div>
                   )}
                 </div>
               </div>

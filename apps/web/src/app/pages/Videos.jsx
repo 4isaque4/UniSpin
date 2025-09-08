@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import VideoCard from "../../features/videos/VideoCard.jsx";
+import { TRILHAS } from "../../data/trilhas.js";
 
-const MOCK_VIDEOS = [
+// Trilha padrão (Action.NET) e opção de SAGE
+const VIDEOS_ACTION = [
   { 
     id: "5x6pCc8xUDk", 
     titulo: "Certificação 1 - Apresentação SPIN", 
@@ -70,17 +72,61 @@ const MOCK_VIDEOS = [
   },
 ];
 
+const VIDEOS_SAGE = [
+  { id: "oUYIUIFT4sk", titulo: "Treinamento SAGE 1",  duracao: "3:31:05", descricao: "Introdução à playlist SAGE." },
+  { id: "k9zDvNElls4", titulo: "Treinamento SAGE 2",  duracao: "3:33:05", descricao: "" },
+  { id: "uCkJH3JeIJQ", titulo: "Treinamento SAGE 3",  duracao: "3:31:05", descricao: "" },
+  { id: "WNyFiNu671M", titulo: "Treinamento SAGE 4",  duracao: "3:33:05", descricao: "" },
+  { id: "UOcDsoPI6hU", titulo: "Treinamento SAGE 5",  duracao: "5:13:33", descricao: "" },
+  { id: "Who63QFr0GA", titulo: "Treinamento SAGE 6",  duracao: "3:25:48", descricao: "" },
+  { id: "l05gsBesqg4", titulo: "Treinamento SAGE 7",  duracao: "3:17:28", descricao: "" },
+  { id: "LvOwfeikA4Q", titulo: "Treinamento SAGE 8",  duracao: "2:35:49", descricao: "" },
+  { id: "6Jsb8AlLOlo", titulo: "Treinamento SAGE 9",  duracao: "3:23:52", descricao: "" },
+  { id: "n6RfHyfAYEw", titulo: "Treinamento SAGE 10", duracao: "3:28:17", descricao: "" },
+  { id: "AhMMO_MmfgU", titulo: "Treinamento SAGE 11 (parte 1)", duracao: "0:13:21", descricao: "" },
+  { id: "TgnsPPu2VY8", titulo: "Treinamento SAGE 12", duracao: "3:36:13", descricao: "" },
+  { id: "6Y0FlnY6vO0", titulo: "Treinamento SAGE 13", duracao: "4:10:57", descricao: "" },
+  { id: "LDK3VixwPeU", titulo: "Treinamento SAGE 14", duracao: "4:16:51", descricao: "" },
+  { id: "nzJWokOQaMo", titulo: "Treinamento SAGE 15", duracao: "3:06:19", descricao: "" },
+  { id: "SdaocXBGevo", titulo: "Treinamento SAGE 16", duracao: "3:42:23", descricao: "" },
+];
+
 export default function Videos() {
+  const trilhasDisponiveis = [
+    { id: "action-net-certificacao", nome: "Action.NET" },
+    { id: "sage-treinamento", nome: "SAGE" },
+  ];
+  const [searchParams, setSearchParams] = useSearchParams();
+  const trilha = searchParams.get("trilha") || "action-net-certificacao";
+  const lista = trilha === "sage-treinamento" ? VIDEOS_SAGE : VIDEOS_ACTION;
+
   return (
     <main className="features">
       <div className="container">
-        <p className="kicker" style={{ color: "#6b7280" }}>Vídeos</p>
-        <h2 style={{ margin: "6px 0 32px", textAlign: "center", color: "#374151" }}>
-          Série completa de treinamentos para certificação em Action.NET da UniSpin
+        {/* título removido a pedido */}
+        <h2 style={{ margin: "6px 0 12px", textAlign: "center", color: "#374151" }}>
+          {trilha === "sage-treinamento" ? "Treinamento SAGE" : "Série completa de treinamentos para certificação em Action.NET da UniSpin"}
         </h2>
 
-        <div className="grid videos-grid">
-          {MOCK_VIDEOS.map(v => (
+        {/* Filtro de trilha (pill/segmented) */}
+        <div className="filter-bar" role="tablist" aria-label="Filtrar trilha">
+          {trilhasDisponiveis.map(t => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => setSearchParams({ trilha: t.id })}
+              className={`filter-pill ${trilha === t.id ? 'active' : ''}`}
+              role="tab"
+              aria-selected={trilha === t.id}
+              aria-controls="videos-lista"
+            >
+              {t.nome}
+            </button>
+          ))}
+        </div>
+
+        <div id="videos-lista" className="grid videos-grid">
+          {lista.map(v => (
             <div key={v.id} style={{ width: "100%", maxWidth: "400px" }}>
               <VideoCard video={v} />
             </div>
@@ -88,9 +134,11 @@ export default function Videos() {
         </div>
 
         <div style={{ marginTop: "40px", textAlign: "center" }}>
-          <p style={{ color: "#6b7280", marginBottom: "16px" }}>
-            Série completa de 11 vídeos para certificação em Action.NET
-          </p>
+          {trilha !== "sage-treinamento" && (
+            <p style={{ color: "#6b7280", marginBottom: "16px" }}>
+              Série completa de 11 vídeos para certificação em Action.NET
+            </p>
+          )}
           <Link to="/" className="btn secondary">
             Voltar ao início
           </Link>

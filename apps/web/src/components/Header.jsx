@@ -82,13 +82,14 @@ export default function Header() {
               to={ctaTo}
               className="btn"
               style={{
-                backgroundColor: "#2563EB",
+                backgroundColor: "var(--color-primary)",
+                color: "#fff",
                 border: "none",
-                padding: "14px 28px",
+                padding: "12px 20px",
                 borderRadius: "10px",
-                fontWeight: "600",
-                fontSize: "15px",
-                boxShadow: "0 4px 12px rgba(37, 99, 235, 0.3)",
+                fontWeight: "700",
+                fontSize: "14px",
+                boxShadow: "0 6px 16px rgba(68, 210, 242, 0.25)",
                 transition: "all 0.2s ease"
               }}
             >

@@ -24,6 +24,36 @@ export const TRILHAS = [
       "UwdINYOCHZ4", // Certificação 10
       "-sSdhGooQzQ"  // Certificação 11
     ]
+  },
+  {
+    id: "sage-treinamento",
+    titulo: "Treinamento SAGE",
+    descricao: "Série de vídeos sobre o SAGE (Sistema Aberto de Gerenciamento de Energia)",
+    duracaoTotal: "—:—:—",
+    quantidadeVideos: 16,
+    nivel: "Intermediário",
+    categoria: "Energia & SAGE",
+    cor: "#3B82F6",
+    rota: "/videos",
+    icone: "certification",
+    videos: [
+      "oUYIUIFT4sk",
+      "k9zDvNElls4",
+      "uCkJH3JeIJQ",
+      "WNyFiNu671M",
+      "UOcDsoPI6hU",
+      "Who63QFr0GA",
+      "l05gsBesqg4",
+      "LvOwfeikA4Q",
+      "6Jsb8AlLOlo",
+      "n6RfHyfAYEw",
+      "AhMMO_MmfgU",
+      "TgnsPPu2VY8",
+      "6Y0FlnY6vO0",
+      "LDK3VixwPeU",
+      "nzJWokOQaMo",
+      "SdaocXBGevo"
+    ]
   }
 ];
 
