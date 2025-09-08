@@ -29,7 +29,7 @@ export const TRILHAS = [
     id: "sage-treinamento",
     titulo: "Treinamento SAGE",
     descricao: "Série de vídeos sobre o SAGE (Sistema Aberto de Gerenciamento de Energia)",
-    duracaoTotal: "—:—:—",
+    duracaoTotal: "54:39:11",
     quantidadeVideos: 16,
     nivel: "Intermediário",
     categoria: "Energia & SAGE",
