@@ -73,22 +73,22 @@ const VIDEOS_ACTION = [
 ];
 
 const VIDEOS_SAGE = [
-  { id: "oUYIUIFT4sk", titulo: "Treinamento SAGE 1",  duracao: "3:31:05", descricao: "Introdução à playlist SAGE." },
-  { id: "k9zDvNElls4", titulo: "Treinamento SAGE 2",  duracao: "3:33:05", descricao: "" },
-  { id: "uCkJH3JeIJQ", titulo: "Treinamento SAGE 3",  duracao: "3:31:05", descricao: "" },
-  { id: "WNyFiNu671M", titulo: "Treinamento SAGE 4",  duracao: "3:33:05", descricao: "" },
-  { id: "UOcDsoPI6hU", titulo: "Treinamento SAGE 5",  duracao: "5:13:33", descricao: "" },
-  { id: "Who63QFr0GA", titulo: "Treinamento SAGE 6",  duracao: "3:25:48", descricao: "" },
-  { id: "l05gsBesqg4", titulo: "Treinamento SAGE 7",  duracao: "3:17:28", descricao: "" },
-  { id: "LvOwfeikA4Q", titulo: "Treinamento SAGE 8",  duracao: "2:35:49", descricao: "" },
-  { id: "6Jsb8AlLOlo", titulo: "Treinamento SAGE 9",  duracao: "3:23:52", descricao: "" },
-  { id: "n6RfHyfAYEw", titulo: "Treinamento SAGE 10", duracao: "3:28:17", descricao: "" },
-  { id: "AhMMO_MmfgU", titulo: "Treinamento SAGE 11 (parte 1)", duracao: "0:13:21", descricao: "" },
-  { id: "TgnsPPu2VY8", titulo: "Treinamento SAGE 12", duracao: "3:36:13", descricao: "" },
-  { id: "6Y0FlnY6vO0", titulo: "Treinamento SAGE 13", duracao: "4:10:57", descricao: "" },
-  { id: "LDK3VixwPeU", titulo: "Treinamento SAGE 14", duracao: "4:16:51", descricao: "" },
-  { id: "nzJWokOQaMo", titulo: "Treinamento SAGE 15", duracao: "3:06:19", descricao: "" },
-  { id: "SdaocXBGevo", titulo: "Treinamento SAGE 16", duracao: "3:42:23", descricao: "" },
+  { id: "oUYIUIFT4sk", titulo: "Treinamento SAGE 1",  duracao: "3:31:05", descricao: "Introdução ao SAGE, visão geral do sistema e objetivos." },
+  { id: "k9zDvNElls4", titulo: "Treinamento SAGE 2",  duracao: "3:33:05", descricao: "Arquitetura do SAGE e componentes em centros de operação." },
+  { id: "uCkJH3JeIJQ", titulo: "Treinamento SAGE 3",  duracao: "3:31:05", descricao: "Instalação, configuração inicial e serviços do ambiente SAGE." },
+  { id: "WNyFiNu671M", titulo: "Treinamento SAGE 4",  duracao: "3:33:05", descricao: "Integração com bancos de dados e persistência de dados operacionais." },
+  { id: "UOcDsoPI6hU", titulo: "Treinamento SAGE 5",  duracao: "5:13:33", descricao: "Modelagem de ativos, cadastro de pontos e topologia de rede." },
+  { id: "Who63QFr0GA", titulo: "Treinamento SAGE 6",  duracao: "3:25:48", descricao: "Comunicação com IEDs/RTUs, protocolos e boas práticas de telemetria." },
+  { id: "l05gsBesqg4", titulo: "Treinamento SAGE 7",  duracao: "3:17:28", descricao: "Construção de telas SCADA, sinóticos e padrões de navegação." },
+  { id: "LvOwfeikA4Q", titulo: "Treinamento SAGE 8",  duracao: "2:35:49", descricao: "Alarmes, eventos e tratamento de contingências." },
+  { id: "6Jsb8AlLOlo", titulo: "Treinamento SAGE 9",  duracao: "3:23:52", descricao: "Tendências, históricos e análise de dados operacionais." },
+  { id: "n6RfHyfAYEw", titulo: "Treinamento SAGE 10", duracao: "3:28:17", descricao: "Relatórios, auditoria e trilhas de operação." },
+  { id: "AhMMO_MmfgU", titulo: "Treinamento SAGE 11 (parte 1)", duracao: "0:13:21", descricao: "Segurança, perfis de usuário e gestão de permissões (parte 1)." },
+  { id: "TgnsPPu2VY8", titulo: "Treinamento SAGE 12", duracao: "3:36:13", descricao: "Scripts/macros e automações no ambiente SAGE." },
+  { id: "6Y0FlnY6vO0", titulo: "Treinamento SAGE 13", duracao: "4:10:57", descricao: "Simulações operativas e estudos de rede." },
+  { id: "LDK3VixwPeU", titulo: "Treinamento SAGE 14", duracao: "4:16:51", descricao: "Integração com sistemas externos e APIs." },
+  { id: "nzJWokOQaMo", titulo: "Treinamento SAGE 15", duracao: "3:06:19", descricao: "Boas práticas de operação e confiabilidade." },
+  { id: "SdaocXBGevo", titulo: "Treinamento SAGE 16", duracao: "3:42:23", descricao: "Encerramento, revisão de conceitos e próximos passos." },
 ];
 
 export default function Videos() {
