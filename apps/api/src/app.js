@@ -38,6 +38,22 @@ if (isDev) {
   });
 }
 
+// CORS em produção (usa FRONTEND_ORIGINS)
+if (!isDev) {
+  const corsOptions = {
+    origin: (origin, callback) => {
+      // permitir chamadas sem Origin (healthchecks, curl) e as da whitelist
+      if (!origin || FRONTEND_ORIGINS.includes(origin)) return callback(null, true);
+      return callback(new Error("Not allowed by CORS"));
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Authorization", "Content-Type", "authorization", "content-type"],
+  };
+  app.use(cors(corsOptions));
+  // responder preflight para qualquer rota
+  app.options(/.*/, cors(corsOptions));
+}
+
 // Middlewares comuns
 app.use(helmet());
 app.use(cookieParser());
