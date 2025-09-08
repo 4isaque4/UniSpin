@@ -133,7 +133,16 @@ export default function Videos() {
           ))}
         </div>
 
-        {/* Rodapé removido a pedido */}
+        <div style={{ marginTop: "40px", textAlign: "center" }}>
+          {trilha !== "sage-treinamento" && (
+            <p style={{ color: "#6b7280", marginBottom: "16px" }}>
+              Série completa de 11 vídeos para certificação em Action.NET
+            </p>
+          )}
+          <Link to="/" className="btn secondary">
+            Voltar ao início
+          </Link>
+        </div>
       </div>
     </main>
   );

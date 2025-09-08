@@ -66,14 +66,7 @@ export default function Trilhas() {
           error={err} 
         />
 
-        <div style={{ marginTop: "40px", textAlign: "center" }}>
-          <p style={{ color: "#666", marginBottom: "16px", fontSize: "1rem" }}>
-            Trilhas personalizadas para seu desenvolvimento profissional
-          </p>
-          <Link to="/" className="btn secondary">
-            Voltar ao início
-          </Link>
-        </div>
+        {/* Rodapé removido a pedido */}
       </div>
     </main>
   );
