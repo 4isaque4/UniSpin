@@ -112,6 +112,99 @@ const MOCK = {
     descricao: "Terceira e última parte do curso Action Net X cobrindo Security, Device e Alarms - funcionalidades avançadas de segurança e monitoramento.",
     duracao: "26:15"
   },
+  
+  // Curso de Energia Solar Fotovoltaica
+  "gbzfzrGGKaU": { 
+    titulo: "Módulo 1 - Introdução ao Curso de Energia Solar", 
+    embed: "https://www.youtube.com/embed/gbzfzrGGKaU",
+    descricao: "Introdução ao curso de energia solar fotovoltaica, apresentação dos objetivos e estrutura do curso.",
+    duracao: "45:30",
+    pdf: "/pdfs/curso-solar/modulo-1-introducao.pdf"
+  },
+  "mDKhuBJD5yA": { 
+    titulo: "Módulo 2 - Fundamentos da Energia Solar", 
+    embed: "https://www.youtube.com/embed/mDKhuBJD5yA",
+    descricao: "Fundamentos da energia solar fotovoltaica, conceitos básicos e princípios de funcionamento.",
+    duracao: "52:15",
+    pdf: "/pdfs/curso-solar/modulo-2-fundamentos.pdf"
+  },
+  "IH-Yz3tM8dM": { 
+    titulo: "Módulo 3 - Dimensionamento Inicial - Parte 1", 
+    embed: "https://www.youtube.com/embed/IH-Yz3tM8dM",
+    descricao: "Primeira parte do dimensionamento inicial de sistemas fotovoltaicos, análise de consumo e demanda.",
+    duracao: "38:45",
+    pdf: "/pdfs/curso-solar/dimensionamento-inicial-parte1.pdf"
+  },
+  "S-QTYBb-LJM": { 
+    titulo: "Módulo 4 - Dimensionamento Inicial - Parte 2", 
+    embed: "https://www.youtube.com/embed/S-QTYBb-LJM",
+    descricao: "Segunda parte do dimensionamento inicial, cálculo de irradiação solar e eficiência do sistema.",
+    duracao: "42:20",
+    pdf: "/pdfs/curso-solar/dimensionamento-inicial-parte2.pdf"
+  },
+  "IX2-T8I_v3I": { 
+    titulo: "Módulo 5 - Dimensionamento Inicial - Parte 3", 
+    embed: "https://www.youtube.com/embed/IX2-T8I_v3I",
+    descricao: "Terceira parte do dimensionamento inicial, definição do tamanho do sistema e layout inicial.",
+    duracao: "35:10",
+    pdf: "/pdfs/curso-solar/dimensionamento-inicial-parte3.pdf"
+  },
+  "GbX_JcM4MMg": { 
+    titulo: "Módulo 6 - Acesso ao CRESESB", 
+    embed: "https://www.youtube.com/embed/GbX_JcM4MMg",
+    descricao: "Como utilizar o banco de dados CRESESB para obtenção de dados de irradiação solar.",
+    duracao: "28:30",
+    pdf: "/pdfs/curso-solar/acesso-cresesb.pdf"
+  },
+  "5YwfK448O5I": { 
+    titulo: "Módulo 7 - Dimensionamento dos Componentes", 
+    embed: "https://www.youtube.com/embed/5YwfK448O5I",
+    descricao: "Dimensionamento detalhado dos componentes do sistema fotovoltaico: módulos, inversores e estrutura.",
+    duracao: "65:25",
+    pdf: "/pdfs/curso-solar/dimensionamento-componentes.pdf"
+  },
+  "ea6hIDLJKdQ": { 
+    titulo: "Módulo 8 - Dimensionamento Refinado", 
+    embed: "https://www.youtube.com/embed/ea6hIDLJKdQ",
+    descricao: "Dimensionamento refinado do sistema, otimização e ajustes finais para máxima eficiência.",
+    duracao: "58:40",
+    pdf: "/pdfs/curso-solar/dimensionamento-refinado.pdf"
+  },
+  "qUEwkYJA1O4": { 
+    titulo: "Módulo 9 - Instalação do Sistema", 
+    embed: "https://www.youtube.com/embed/qUEwkYJA1O4",
+    descricao: "Processo de instalação do sistema fotovoltaico, etapas e procedimentos de montagem.",
+    duracao: "72:15",
+    pdf: "/pdfs/curso-solar/instalacao-sistema.pdf"
+  },
+  "pv1DJaPoiEY": { 
+    titulo: "Módulo 10 - Manutenção e Monitoramento", 
+    embed: "https://www.youtube.com/embed/pv1DJaPoiEY",
+    descricao: "Manutenção preventiva e corretiva, monitoramento de performance e troubleshooting.",
+    duracao: "48:30",
+    pdf: "/pdfs/curso-solar/manutencao-monitoramento.pdf"
+  },
+  "UE9ZCE2tqq8": { 
+    titulo: "Módulo 11 - Análise de Viabilidade Econômica", 
+    embed: "https://www.youtube.com/embed/UE9ZCE2tqq8",
+    descricao: "Análise de viabilidade econômica, payback, ROI e aspectos financeiros do investimento.",
+    duracao: "55:20",
+    pdf: "/pdfs/curso-solar/viabilidade-economica.pdf"
+  },
+  "Srj2anPee6k": { 
+    titulo: "Módulo 12 - Normas e Regulamentações", 
+    embed: "https://www.youtube.com/embed/Srj2anPee6k",
+    descricao: "Normas técnicas, regulamentações e aspectos legais para instalação de sistemas fotovoltaicos.",
+    duracao: "41:35",
+    pdf: "/pdfs/curso-solar/normas-regulamentacoes.pdf"
+  },
+  "BuyEAJSgzzQ": { 
+    titulo: "Módulo 13 - Conclusão e Próximos Passos", 
+    embed: "https://www.youtube.com/embed/BuyEAJSgzzQ",
+    descricao: "Conclusão do curso, resumo dos conceitos principais e orientações para próximos passos.",
+    duracao: "32:45",
+    pdf: "/pdfs/curso-solar/conclusao-proximos-passos.pdf"
+  },
 };
 
 export default function Video() {
@@ -217,6 +310,40 @@ export default function Video() {
                   {video.descricao}
                 </p>
               </div>
+              {video.pdf && (
+                <div style={{ marginBottom: "20px" }}>
+                  <strong style={{ color: "#374151" }}>Material Complementar:</strong>
+                  <div style={{ marginTop: "8px" }}>
+                    <a 
+                      href={video.pdf} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        padding: "10px 16px",
+                        backgroundColor: "#FEF3C7",
+                        color: "#92400E",
+                        textDecoration: "none",
+                        borderRadius: "8px",
+                        fontSize: "14px",
+                        fontWeight: "600",
+                        border: "1px solid #FCD34D",
+                        transition: "all 0.2s ease"
+                      }}
+                      onMouseOver={(e) => {
+                        e.target.style.backgroundColor = "#FDE68A";
+                      }}
+                      onMouseOut={(e) => {
+                        e.target.style.backgroundColor = "#FEF3C7";
+                      }}
+                    >
+                      📄 Baixar PDF do Módulo
+                    </a>
+                  </div>
+                </div>
+              )}
               <button
                 onClick={toggleCompleto}
                 disabled={isUpdating}

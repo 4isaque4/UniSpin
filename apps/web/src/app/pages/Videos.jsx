@@ -96,6 +96,7 @@ export default function Videos() {
   const trilhasDisponiveis = [
     { id: "action-net-certificacao", nome: "Action.NET" },
     { id: "action-net-x-completo", nome: "Action Net X" },
+    { id: "curso-solar-fotovoltaico", nome: "Energia Solar" },
     { id: "sage-treinamento", nome: "SAGE" },
   ];
   const [searchParams, setSearchParams] = useSearchParams();

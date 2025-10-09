@@ -25,24 +25,51 @@ export const TRILHAS = [
       "-sSdhGooQzQ"  // Certificação 11
     ]
   },
-  {
-    id: "action-net-x-completo",
-    titulo: "Action Net X - Curso Completo",
-    descricao: "Curso completo de Action Net X cobrindo desde conceitos básicos até funcionalidades avançadas de SCADA e automação industrial",
-    duracaoTotal: "2:22:35",
-    quantidadeVideos: 4,
-    nivel: "Iniciante a Avançado",
-    categoria: "SCADA & Automação",
-    cor: "#10B981",
-    rota: "/videos",
-    icone: "database",
-    videos: [
-      "QPcPbQwrQGE", // Introdução ao Action Net X
-      "oDqVc8k0kc4", // Tags, Draw e Historian - Parte 1
-      "Q22yBESXTQA", // Templates, Símbolos e Tags de Referência - Parte 2
-      "FvtStaF9KqI"  // Security, Device e Alarms - Parte 3
-    ]
-  },
+    {
+      id: "action-net-x-completo",
+      titulo: "Action Net X - Curso Completo",
+      descricao: "Curso completo de Action Net X cobrindo desde conceitos básicos até funcionalidades avançadas de SCADA e automação industrial",
+      duracaoTotal: "2:22:35",
+      quantidadeVideos: 4,
+      nivel: "Iniciante a Avançado",
+      categoria: "SCADA & Automação",
+      cor: "#10B981",
+      rota: "/videos",
+      icone: "database",
+      videos: [
+        "QPcPbQwrQGE", // Introdução ao Action Net X
+        "oDqVc8k0kc4", // Tags, Draw e Historian - Parte 1
+        "Q22yBESXTQA", // Templates, Símbolos e Tags de Referência - Parte 2
+        "FvtStaF9KqI"  // Security, Device e Alarms - Parte 3
+      ]
+    },
+    {
+      id: "curso-solar-fotovoltaico",
+      titulo: "Curso de Energia Solar Fotovoltaica",
+      descricao: "Curso completo de energia solar fotovoltaica cobrindo dimensionamento, instalação e manutenção de sistemas solares",
+      duracaoTotal: "15:30:00",
+      quantidadeVideos: 13,
+      nivel: "Iniciante a Intermediário",
+      categoria: "Energia Renovável",
+      cor: "#F59E0B",
+      rota: "/videos",
+      icone: "sun",
+      videos: [
+        "gbzfzrGGKaU", // Módulo 1 - Introdução
+        "mDKhuBJD5yA", // Módulo 2 - Fundamentos
+        "IH-Yz3tM8dM", // Módulo 3 - Dimensionamento Inicial - Parte 1
+        "S-QTYBb-LJM", // Módulo 4 - Dimensionamento Inicial - Parte 2
+        "IX2-T8I_v3I", // Módulo 5 - Dimensionamento Inicial - Parte 3
+        "GbX_JcM4MMg", // Módulo 6 - Acesso ao CRESESB
+        "5YwfK448O5I", // Módulo 7 - Dimensionamento dos Componentes
+        "ea6hIDLJKdQ", // Módulo 8 - Dimensionamento Refinado
+        "qUEwkYJA1O4", // Módulo 9 - Instalação
+        "pv1DJaPoiEY", // Módulo 10 - Manutenção
+        "UE9ZCE2tqq8", // Módulo 11 - Análise de Viabilidade
+        "Srj2anPee6k", // Módulo 12 - Normas e Regulamentações
+        "BuyEAJSgzzQ"  // Módulo 13 - Conclusão e Próximos Passos
+      ]
+    },
   {
     id: "sage-treinamento",
     titulo: "Treinamento SAGE",
