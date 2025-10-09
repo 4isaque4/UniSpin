@@ -2,6 +2,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { getAllVideos } from "../../data/trilhas.js";
 import VideoCard from "../../features/videos/VideoCard.jsx";
 import { TRILHAS } from "../../data/trilhas.js";
+import { MOCK } from "./Video.jsx";
 
 // Trilha padrão (Action.NET) e opção de SAGE
 const VIDEOS_ACTION = [
@@ -92,6 +93,27 @@ const VIDEOS_SAGE = [
   { id: "SdaocXBGevo", titulo: "Treinamento SAGE 16", duracao: "3:42:23", descricao: "Encerramento, revisão de conceitos e próximos passos." },
 ];
 
+// Função para buscar informações completas do vídeo
+function getVideoInfo(videoId) {
+  // Buscar informações reais no MOCK
+  const videoInfo = MOCK[videoId];
+  
+  if (videoInfo) {
+    return {
+      titulo: videoInfo.titulo,
+      descricao: videoInfo.descricao,
+      duracao: videoInfo.duracao
+    };
+  }
+  
+  // Fallback se não encontrar no MOCK
+  return {
+    titulo: `Vídeo ${videoId.substring(0, 8)}...`,
+    descricao: "Descrição do vídeo será carregada em breve.",
+    duracao: "00:00"
+  };
+}
+
 export default function Videos() {
   const trilhasDisponiveis = [
     { id: "action-net-certificacao", nome: "Action.NET" },
@@ -103,8 +125,19 @@ export default function Videos() {
   const trilha = searchParams.get("trilha") || "action-net-certificacao";
   // Buscar trilha específica
   const trilhaData = TRILHAS.find(t => t.id === trilha);
-  const lista = trilhaData?.videos?.map(videoId => ({ id: videoId })) || 
-                (trilha === "sage-treinamento" ? VIDEOS_SAGE : VIDEOS_ACTION);
+  
+  // Criar lista com informações completas dos vídeos
+  let lista = [];
+  if (trilhaData?.videos) {
+    lista = trilhaData.videos.map(videoId => ({
+      id: videoId,
+      ...getVideoInfo(videoId)
+    }));
+  } else if (trilha === "sage-treinamento") {
+    lista = VIDEOS_SAGE;
+  } else {
+    lista = VIDEOS_ACTION;
+  }
 
   return (
     <main className="features">

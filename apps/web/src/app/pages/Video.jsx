@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto } from "../../data/trilhas.js";
 import { useState, useEffect } from "react";
 
-const MOCK = {
+export const MOCK = {
   "5x6pCc8xUDk": { 
     titulo: "Certificação 1 - Apresentação SPIN", 
     embed: "https://www.youtube.com/embed/5x6pCc8xUDk",
