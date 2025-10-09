@@ -57,13 +57,38 @@ r.get("/", requireAuth, asyncHandler(async (req, res) => {
   try {
     console.log("[trilhas] Iniciando consulta ao banco de dados...");
     
-    const { rows } = await query('SELECT id, name, description FROM "Trilha" ORDER BY created_at DESC');
+    // Dados mock temporários enquanto o Supabase não conecta
+    const mockTrilhas = [
+      {
+        id: "action-net-certificacao",
+        name: "Action.NET",
+        description: "Trilha completa para certificação Action.NET"
+      },
+      {
+        id: "action-net-x-completo", 
+        name: "Action Net X - Curso Completo",
+        description: "Curso completo de Action Net X cobrindo desde conceitos básicos até funcionalidades avançadas de SCADA e automação industrial"
+      },
+      {
+        id: "sage-treinamento",
+        name: "SAGE",
+        description: "Trilha de treinamento SAGE para operadores"
+      }
+    ];
     
-    console.log(`[trilhas] Consulta executada com sucesso. ${rows.length} trilhas encontradas.`);
+    // Tentar conectar ao banco primeiro
+    try {
+      const { rows } = await query('SELECT id, name, description FROM "Trilha" ORDER BY created_at DESC');
+      console.log(`[trilhas] Consulta executada com sucesso. ${rows.length} trilhas encontradas.`);
+      return res.json(rows);
+    } catch (dbError) {
+      console.error("[trilhas] Erro na consulta ao banco, usando dados mock:", dbError.message);
+      console.log(`[trilhas] Retornando ${mockTrilhas.length} trilhas mock.`);
+      return res.json(mockTrilhas);
+    }
     
-    res.json(rows);
   } catch (error) {
-    console.error("[trilhas] Erro na consulta:", error);
+    console.error("[trilhas] Erro geral:", error);
     throw error; // Deixa o errorHandler tratar
   }
 }));
