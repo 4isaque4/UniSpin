@@ -36,12 +36,12 @@ export const TRILHAS = [
       cor: "#10B981",
       rota: "/videos",
       icone: "database",
-      videos: [
-        "QPcPbQwrQGE", // Introdução ao Action Net X
-        "oDqVc8k0kc4", // Tags, Draw e Historian - Parte 1
-        "Q22yBESXTQA", // Templates, Símbolos e Tags de Referência - Parte 2
-        "FvtStaF9KqI"  // Security, Device e Alarms - Parte 3
-      ]
+    videos: [
+      "e2YAFjLBTlk", // Introdução ao Action Net X
+      "CSn-W5dnVhw", // Tags, Draw e Historian - Parte 1
+      "vy8jET69N-4", // Templates, Símbolos e Tags de Referência - Parte 2
+      "8h2MC4N9XEA"  // Security, Device e Alarms - Parte 3
+    ]
     },
     {
       id: "curso-solar-fotovoltaico",
