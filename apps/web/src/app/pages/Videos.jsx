@@ -2,7 +2,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { getAllVideos } from "../../data/trilhas.js";
 import VideoCard from "../../features/videos/VideoCard.jsx";
 import { TRILHAS } from "../../data/trilhas.js";
-import { MOCK } from "./Video.jsx";
+import { MOCK } from "../../data/videoData.js";
 
 // Trilha padrão (Action.NET) e opção de SAGE
 const VIDEOS_ACTION = [
