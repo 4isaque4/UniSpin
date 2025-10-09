@@ -50,8 +50,6 @@ export default function Video() {
   // Helper para obter próximo e anterior baseado na ordem do MOCK
   const orderedIds = Object.keys(MOCK);
   const currentIndex = orderedIds.indexOf(id);
-  const nextId = currentIndex >= 0 && currentIndex < orderedIds.length - 1 ? orderedIds[currentIndex + 1] : null;
-  const prevId = currentIndex > 0 ? orderedIds[currentIndex - 1] : null;
 
   return (
     <main className="features">

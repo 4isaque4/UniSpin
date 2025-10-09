@@ -1,5 +1,4 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { getAllVideos } from "../../data/trilhas.js";
 import VideoCard from "../../features/videos/VideoCard.jsx";
 import { TRILHAS } from "../../data/trilhas.js";
 import { MOCK } from "../../data/videoData.js";
