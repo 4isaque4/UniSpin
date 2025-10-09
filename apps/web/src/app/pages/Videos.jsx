@@ -1,4 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
+import { getAllVideos } from "../../data/trilhas.js";
 import VideoCard from "../../features/videos/VideoCard.jsx";
 import { TRILHAS } from "../../data/trilhas.js";
 
@@ -94,11 +95,15 @@ const VIDEOS_SAGE = [
 export default function Videos() {
   const trilhasDisponiveis = [
     { id: "action-net-certificacao", nome: "Action.NET" },
+    { id: "action-net-x-completo", nome: "Action Net X" },
     { id: "sage-treinamento", nome: "SAGE" },
   ];
   const [searchParams, setSearchParams] = useSearchParams();
   const trilha = searchParams.get("trilha") || "action-net-certificacao";
-  const lista = trilha === "sage-treinamento" ? VIDEOS_SAGE : VIDEOS_ACTION;
+  // Buscar trilha específica
+  const trilhaData = TRILHAS.find(t => t.id === trilha);
+  const lista = trilhaData?.videos?.map(videoId => ({ id: videoId })) || 
+                (trilha === "sage-treinamento" ? VIDEOS_SAGE : VIDEOS_ACTION);
 
   return (
     <main className="features">

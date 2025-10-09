@@ -26,6 +26,24 @@ export const TRILHAS = [
     ]
   },
   {
+    id: "action-net-x-completo",
+    titulo: "Action Net X - Curso Completo",
+    descricao: "Curso completo de Action Net X cobrindo desde conceitos básicos até funcionalidades avançadas de SCADA e automação industrial",
+    duracaoTotal: "2:22:35",
+    quantidadeVideos: 4,
+    nivel: "Iniciante a Avançado",
+    categoria: "SCADA & Automação",
+    cor: "#10B981",
+    rota: "/videos",
+    icone: "database",
+    videos: [
+      "QPcPbQwrQGE", // Introdução ao Action Net X
+      "oDqVc8k0kc4", // Tags, Draw e Historian - Parte 1
+      "Q22yBESXTQA", // Templates, Símbolos e Tags de Referência - Parte 2
+      "FvtStaF9KqI"  // Security, Device e Alarms - Parte 3
+    ]
+  },
+  {
     id: "sage-treinamento",
     titulo: "Treinamento SAGE",
     descricao: "Série de vídeos sobre o SAGE (Sistema Aberto de Gerenciamento de Energia)",
