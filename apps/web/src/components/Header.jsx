@@ -1,13 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../features/auth/AuthContext.jsx";
 
 export default function Header() {
-  const { user, logout } = useAuth();
-
-  // Usuários não autenticados vão para login, usuários autenticados vão para videos
-  const trilhasTo = user ? "/trilhas" : "/login";
-  const videosTo = user ? "/videos" : "/login";
-  const ctaTo = user ? "/videos" : "/login";
 
   return (
     <header className="nav">
@@ -57,17 +50,7 @@ export default function Header() {
           }}>
             Home
           </NavLink>
-          <NavLink to={trilhasTo} style={{ 
-            color: "#1F2937", 
-            textDecoration: "none", 
-            fontWeight: "700",
-            fontSize: "15px",
-            transition: "color 0.2s ease",
-            textShadow: "0 1px 2px rgba(255, 255, 255, 0.8)"
-          }}>
-            Trilhas
-          </NavLink>
-          <NavLink to={videosTo} style={{ 
+          <NavLink to="/videos" style={{ 
             color: "#1F2937", 
             textDecoration: "none", 
             fontWeight: "700",
@@ -77,34 +60,23 @@ export default function Header() {
           }}>
             Vídeos
           </NavLink>
-          {!user && (
-            <Link
-              to={ctaTo}
-              className="btn"
-              style={{
-                backgroundColor: "var(--color-primary)",
-                color: "#fff",
-                border: "none",
-                padding: "12px 20px",
-                borderRadius: "10px",
-                fontWeight: "700",
-                fontSize: "14px",
-                boxShadow: "0 6px 16px rgba(68, 210, 242, 0.25)",
-                transition: "all 0.2s ease"
-              }}
-            >
-              Acessar plataforma
-            </Link>
-          )}
-          {user && (
-            <button
-              onClick={logout}
-              className="btn secondary"
-              style={{ padding: "14px 28px", borderRadius: "10px" }}
-            >
-              Sair
-            </button>
-          )}
+          <Link
+            to="/videos"
+            className="btn"
+            style={{
+              backgroundColor: "var(--color-primary)",
+              color: "#fff",
+              border: "none",
+              padding: "12px 20px",
+              borderRadius: "10px",
+              fontWeight: "700",
+              fontSize: "14px",
+              boxShadow: "0 6px 16px rgba(68, 210, 242, 0.25)",
+              transition: "all 0.2s ease"
+            }}
+          >
+            Acessar plataforma
+          </Link>
         </nav>
       </div>
     </header>
