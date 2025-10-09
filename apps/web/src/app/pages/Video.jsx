@@ -86,6 +86,32 @@ const MOCK = {
   "LDK3VixwPeU": { titulo: "Treinamento SAGE 14", embed: "https://www.youtube.com/embed/LDK3VixwPeU", descricao: "Integração com sistemas externos e APIs.", duracao: "4:16:51" },
   "nzJWokOQaMo": { titulo: "Treinamento SAGE 15", embed: "https://www.youtube.com/embed/nzJWokOQaMo", descricao: "Boas práticas de operação e confiabilidade.", duracao: "3:06:19" },
   "SdaocXBGevo": { titulo: "Treinamento SAGE 16", embed: "https://www.youtube.com/embed/SdaocXBGevo", descricao: "Encerramento, revisão dos conceitos e próximos passos.", duracao: "3:42:23" },
+  
+  // Action Net X - Curso Completo
+  "QPcPbQwrQGE": { 
+    titulo: "Introdução ao Action Net X", 
+    embed: "https://www.youtube.com/embed/QPcPbQwrQGE",
+    descricao: "Introdução ao Action Net X, conceitos básicos e visão geral do sistema SCADA para automação industrial.",
+    duracao: "32:15"
+  },
+  "oDqVc8k0kc4": { 
+    titulo: "Tags, Draw e Historian - Parte 1", 
+    embed: "https://www.youtube.com/embed/oDqVc8k0kc4",
+    descricao: "Primeira parte do curso Action Net X cobrindo Tags, Draw e Historian - fundamentos para desenvolvimento de telas SCADA.",
+    duracao: "45:20"
+  },
+  "Q22yBESXTQA": { 
+    titulo: "Templates, Símbolos e Tags de Referência - Parte 2", 
+    embed: "https://www.youtube.com/embed/Q22yBESXTQA",
+    descricao: "Segunda parte do curso Action Net X abordando Templates, Símbolos e Tags de Referência para otimização do desenvolvimento.",
+    duracao: "38:45"
+  },
+  "FvtStaF9KqI": { 
+    titulo: "Security, Device e Alarms - Parte 3", 
+    embed: "https://www.youtube.com/embed/FvtStaF9KqI",
+    descricao: "Terceira e última parte do curso Action Net X cobrindo Security, Device e Alarms - funcionalidades avançadas de segurança e monitoramento.",
+    duracao: "26:15"
+  },
 };
 
 export default function Video() {
