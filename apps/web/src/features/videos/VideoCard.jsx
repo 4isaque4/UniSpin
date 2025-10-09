@@ -3,8 +3,8 @@ import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto } from "../
 import { useState } from "react";
 import "../../styles/VideoCard.css";
 
-export default function VideoCard({ video, showContext = false }) {
-  const [isCompleto, setIsCompleto] = useState(() => isVideoCompleto("action-net-certificacao", video.id));
+export default function VideoCard({ video, showContext = false, trilhaId = "action-net-certificacao" }) {
+  const [isCompleto, setIsCompleto] = useState(() => isVideoCompleto(trilhaId, video.id));
   const [isUpdating, setIsUpdating] = useState(false);
   const [imageError, setImageError] = useState(false);
 
@@ -13,10 +13,10 @@ export default function VideoCard({ video, showContext = false }) {
     
     try {
       if (isCompleto) {
-        marcarVideoIncompleto("action-net-certificacao", video.id);
+        marcarVideoIncompleto(trilhaId, video.id);
         setIsCompleto(false);
       } else {
-        marcarVideoCompleto("action-net-certificacao", video.id);
+        marcarVideoCompleto(trilhaId, video.id);
         setIsCompleto(true);
       }
       

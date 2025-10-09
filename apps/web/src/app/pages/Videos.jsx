@@ -111,8 +111,13 @@ export default function Videos() {
       <div className="container">
         {/* título removido a pedido */}
         <h2 style={{ margin: "6px 0 12px", textAlign: "center", color: "#374151" }}>
-          {trilha === "sage-treinamento" ? "Treinamento SAGE" : "Série completa de treinamentos para certificação em Action.NET da UniSpin"}
+          {trilhaData ? trilhaData.titulo : "Vídeos de Treinamento"}
         </h2>
+        {trilhaData && (
+          <p style={{ margin: "0 0 20px", textAlign: "center", color: "#6B7280", fontSize: "16px" }}>
+            {trilhaData.descricao}
+          </p>
+        )}
 
         {/* Filtro de trilha (pill/segmented) */}
         <div className="filter-bar" role="tablist" aria-label="Filtrar trilha">
@@ -134,15 +139,15 @@ export default function Videos() {
         <div id="videos-lista" className="grid videos-grid">
           {lista.map(v => (
             <div key={v.id} style={{ width: "100%", maxWidth: "400px" }}>
-              <VideoCard video={v} />
+              <VideoCard video={v} trilhaId={trilha} />
             </div>
           ))}
         </div>
 
         <div style={{ marginTop: "40px", textAlign: "center" }}>
-          {trilha !== "sage-treinamento" && (
+          {trilhaData && (
             <p style={{ color: "#6b7280", marginBottom: "16px" }}>
-              Série completa de 11 vídeos para certificação em Action.NET
+              {trilhaData.quantidadeVideos} vídeos • Duração total: {trilhaData.duracaoTotal} • Nível: {trilhaData.nivel}
             </p>
           )}
           <Link to="/" className="btn secondary">

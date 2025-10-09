@@ -314,33 +314,28 @@ export default function Video() {
                 <div style={{ marginBottom: "20px" }}>
                   <strong style={{ color: "#374151" }}>Material Complementar:</strong>
                   <div style={{ marginTop: "8px" }}>
-                    <a 
-                      href={video.pdf} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        padding: "10px 16px",
-                        backgroundColor: "#FEF3C7",
-                        color: "#92400E",
-                        textDecoration: "none",
-                        borderRadius: "8px",
-                        fontSize: "14px",
-                        fontWeight: "600",
-                        border: "1px solid #FCD34D",
-                        transition: "all 0.2s ease"
-                      }}
-                      onMouseOver={(e) => {
-                        e.target.style.backgroundColor = "#FDE68A";
-                      }}
-                      onMouseOut={(e) => {
-                        e.target.style.backgroundColor = "#FEF3C7";
-                      }}
-                    >
-                      📄 Baixar PDF do Módulo
-                    </a>
+                    <div style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      padding: "10px 16px",
+                      backgroundColor: "#F3F4F6",
+                      color: "#6B7280",
+                      borderRadius: "8px",
+                      fontSize: "14px",
+                      fontWeight: "600",
+                      border: "1px solid #D1D5DB"
+                    }}>
+                      📄 PDF Disponível em Breve
+                    </div>
+                    <div style={{ 
+                      marginTop: "4px", 
+                      fontSize: "12px", 
+                      color: "#9CA3AF",
+                      fontStyle: "italic"
+                    }}>
+                      O material complementar será adicionado em breve
+                    </div>
                   </div>
                 </div>
               )}
