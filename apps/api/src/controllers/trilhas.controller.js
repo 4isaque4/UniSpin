@@ -1,5 +1,5 @@
 import { list as listTrilhas, get as getTrilha } from "../repositories/trilhas.repo.js";
-import { getAllVideos } from "../repositories/videos.repo.js";
+import { list as listVideos } from "../repositories/videos.repo.js";
 
 export async function listar(req, res, next) {
   try {
@@ -12,7 +12,7 @@ export async function listar(req, res, next) {
 
 export async function listarVideos(req, res, next) {
   try {
-    const videos = await getAllVideos();
+    const videos = await listVideos();
     res.json(videos);
   } catch (e) {
     next(e);
