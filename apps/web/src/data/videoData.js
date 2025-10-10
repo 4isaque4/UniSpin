@@ -87,118 +87,79 @@ export const MOCK = {
   "e2YAFjLBTlk": { 
     titulo: "Introdução do Curso Action net X", 
     embed: "https://www.youtube.com/embed/e2YAFjLBTlk",
-    descricao: "Introdução ao Action Net X, conceitos básicos e visão geral do sistema SCADA para automação industrial.",
-    duracao: "3:56"
+    descricao: "Introdução completa ao Action Net X: O que é um SCADA, conceitos fundamentais de supervisão e controle, apresentação da empresa SPIN, introdução ao software SCADA Action.NET, visão geral da interface, configurações básicas do sistema, primeiros passos na plataforma, conceitos de automação energética, monitoramento em tempo real, arquitetura do sistema SCADA, diferenças entre Action.NET e Action.NET X, objetivos do curso e estrutura de aprendizado.",
+    duracao: "32:15"
   },
   "CSn-W5dnVhw": { 
-    titulo: "Tags, draw e alarms Parte 1", 
+    titulo: "Tags, Draw e Historian - Parte 1", 
     embed: "https://www.youtube.com/embed/CSn-W5dnVhw",
-    descricao: "Primeira parte do curso Action Net X cobrindo Tags, Draw e Historian - fundamentos para desenvolvimento de telas SCADA.",
-    duracao: "1:12:39"
+    descricao: "Módulo completo de Tags, Draw e Historian: Criação e configuração de Tags em tempo real, propriedades e namespaces, tipos de dados e configurações avançadas, criação de telas e dashboards responsivos, ferramentas de desenho e layout, configurações de display e dynamics, menu vertical e horizontal, montagem de componentes como disjuntores, introdução aos templates e símbolos, variáveis de referência, janela de comando, Value As String, configuração do Historian para armazenamento de dados históricos, consultas e relatórios, integração entre Tags e telas.",
+    duracao: "45:20"
   },
   "vy8jET69N-4": { 
-    titulo: "Templates, Símbolos e Tags de Referência Parte 2", 
+    titulo: "Templates, Símbolos e Tags de Referência - Parte 2", 
     embed: "https://www.youtube.com/embed/vy8jET69N-4",
-    descricao: "Segunda parte do curso Action Net X abordando Templates, Símbolos e Tags de Referência para otimização do desenvolvimento.",
-    duracao: "38:17"
+    descricao: "Desenvolvimento avançado com Templates e Símbolos: Criação de templates parametrizados para padronização, desenvolvimento de símbolos customizados, uso avançado de tags de referência, testes no Watch para validação, replicação de disjuntores em múltiplas telas, otimização do desenvolvimento através de componentes reutilizáveis, configurações de animação e dinâmicas, integração entre templates e dados em tempo real, boas práticas de programação SCADA, organização de projetos complexos, manutenção e atualização de sistemas existentes.",
+    duracao: "38:45"
   },
   "8h2MC4N9XEA": { 
-    titulo: "Security, device e alarms Parte 3", 
+    titulo: "Security, Devices e Alarms - Parte 3", 
     embed: "https://www.youtube.com/embed/8h2MC4N9XEA",
-    descricao: "Terceira e última parte do curso Action Net X cobrindo Security, Device e Alarms - funcionalidades avançadas de segurança e monitoramento.",
-    duracao: "27:37"
+    descricao: "Segurança, Comunicação e Monitoramento Avançado: Configuração completa de Security com definição de permissões e níveis de acesso, criação de usuários e grupos, controle de acesso a funcionalidades, configuração de Devices e protocolos de comunicação (Modbus, OPC, DNP3, IEC 61850), setup de drivers de comunicação, configuração de Alarms com grupos e condições personalizadas, priorização de alarmes, notificações e acknoledgment, integração com sistemas externos, configuração de Scripts para automação avançada, execução do sistema em modo Run, monitoramento de performance, troubleshooting e manutenção preventiva, LeanAutomation para otimização de processos.",
+    duracao: "26:15"
   },
   
   // Curso de Energia Solar Fotovoltaica
   "gbzfzrGGKaU": { 
-    titulo: "Módulo 1 - Introdução ao Curso de Energia Solar", 
+    titulo: "Módulo 1 - Introdução ao Sistema Fotovoltaico", 
     embed: "https://www.youtube.com/embed/gbzfzrGGKaU",
-    descricao: "Introdução ao curso de energia solar fotovoltaica, apresentação dos objetivos e estrutura do curso.",
-    duracao: "45:30",
+    descricao: "Introdução ao sistema fotovoltaico: sol, radiação solar, efeito fotovoltaico, conceitos básicos de eletricidade, tipos de células, conexões em série/paralelo e características elétricas dos módulos.",
+    duracao: "11:33",
     pdf: "/pdfs/curso-solar/modulo-1-introducao.pdf"
   },
   "mDKhuBJD5yA": { 
-    titulo: "Módulo 2 - Fundamentos da Energia Solar", 
+    titulo: "Módulo 2 - Cálculos Iniciais e Dimensionamento", 
     embed: "https://www.youtube.com/embed/mDKhuBJD5yA",
-    descricao: "Fundamentos da energia solar fotovoltaica, conceitos básicos e princípios de funcionamento.",
-    duracao: "52:15",
-    pdf: "/pdfs/curso-solar/modulo-2-fundamentos.pdf"
+    descricao: "Análise da conta de energia, grupos A e B, tipos de instalação (monofásica, bifásica, trifásica), custo de disponibilidade, análise de necessidade do cliente e dados solares.",
+    duracao: "12:23",
+    pdf: "/pdfs/curso-solar/modulo-2-calculos-iniciais.pdf"
   },
   "IH-Yz3tM8dM": { 
-    titulo: "Módulo 3 - Dimensionamento Inicial - Parte 1", 
+    titulo: "Módulo 2 (Parte 2) - Dimensionamento Inicial", 
     embed: "https://www.youtube.com/embed/IH-Yz3tM8dM",
-    descricao: "Primeira parte do dimensionamento inicial de sistemas fotovoltaicos, análise de consumo e demanda.",
-    duracao: "38:45",
-    pdf: "/pdfs/curso-solar/dimensionamento-inicial-parte1.pdf"
+    descricao: "Continuação do módulo 2: dados solares, localização da instalação, compensação de energia, HSP (horas de sol pico), potência pico e dimensionamento dos módulos.",
+    duracao: "8:04",
+    pdf: "/pdfs/curso-solar/modulo-2-dimensionamento.pdf"
   },
   "S-QTYBb-LJM": { 
-    titulo: "Módulo 4 - Dimensionamento Inicial - Parte 2", 
+    titulo: "Módulo 3 - Dimensionamento Final", 
     embed: "https://www.youtube.com/embed/S-QTYBb-LJM",
-    descricao: "Segunda parte do dimensionamento inicial, cálculo de irradiação solar e eficiência do sistema.",
-    duracao: "42:20",
-    pdf: "/pdfs/curso-solar/dimensionamento-inicial-parte2.pdf"
+    descricao: "Dimensionamento final: padrão de entrada, análise da ficha de dados do módulo, correção por temperatura (tensão, potência, corrente), perdas estimativas e vistoria técnica.",
+    duracao: "11:21",
+    pdf: "/pdfs/curso-solar/modulo-3-dimensionamento-final.pdf"
   },
   "IX2-T8I_v3I": { 
-    titulo: "Módulo 5 - Dimensionamento Inicial - Parte 3", 
+    titulo: "Módulo 4 - Dimensionamento dos Componentes", 
     embed: "https://www.youtube.com/embed/IX2-T8I_v3I",
-    descricao: "Terceira parte do dimensionamento inicial, definição do tamanho do sistema e layout inicial.",
-    duracao: "35:10",
-    pdf: "/pdfs/curso-solar/dimensionamento-inicial-parte3.pdf"
+    descricao: "Dimensionamento dos componentes: inversor, string box, DPS, disjuntores, conector MC4, cabeamento e aterramento.",
+    duracao: "14:59"
   },
   "GbX_JcM4MMg": { 
-    titulo: "Módulo 6 - Acesso ao CRESESB", 
+    titulo: "Módulo 5 - Pré-instalação (EPI/EPC)", 
     embed: "https://www.youtube.com/embed/GbX_JcM4MMg",
-    descricao: "Como utilizar o banco de dados CRESESB para obtenção de dados de irradiação solar.",
-    duracao: "28:30",
-    pdf: "/pdfs/curso-solar/acesso-cresesb.pdf"
+    descricao: "Pré-instalação: equipamentos de proteção individual (EPI) - capacete, óculos, luvas, cinto de segurança, talabarte, calçado. Equipamentos de proteção coletiva (EPC) e ferramentas necessárias.",
+    duracao: "2:11"
   },
   "5YwfK448O5I": { 
-    titulo: "Módulo 7 - Dimensionamento dos Componentes", 
+    titulo: "Módulo 6 - Instalação do Sistema", 
     embed: "https://www.youtube.com/embed/5YwfK448O5I",
-    descricao: "Dimensionamento detalhado dos componentes do sistema fotovoltaico: módulos, inversores e estrutura.",
-    duracao: "65:25",
-    pdf: "/pdfs/curso-solar/dimensionamento-componentes.pdf"
+    descricao: "Instalação completa: fixação da corda de vida, estrutura metálica no telhado, fixação dos módulos, conexões elétricas, string box, inversor e aterramento.",
+    duracao: "9:05"
   },
   "ea6hIDLJKdQ": { 
-    titulo: "Módulo 8 - Dimensionamento Refinado", 
+    titulo: "Módulo 7 - Contato com Distribuidora", 
     embed: "https://www.youtube.com/embed/ea6hIDLJKdQ",
-    descricao: "Dimensionamento refinado do sistema, otimização e ajustes finais para máxima eficiência.",
-    duracao: "58:40",
-    pdf: "/pdfs/curso-solar/dimensionamento-refinado.pdf"
-  },
-  "qUEwkYJA1O4": { 
-    titulo: "Módulo 9 - Instalação do Sistema", 
-    embed: "https://www.youtube.com/embed/qUEwkYJA1O4",
-    descricao: "Processo de instalação do sistema fotovoltaico, etapas e procedimentos de montagem.",
-    duracao: "72:15",
-    pdf: "/pdfs/curso-solar/instalacao-sistema.pdf"
-  },
-  "pv1DJaPoiEY": { 
-    titulo: "Módulo 10 - Manutenção e Monitoramento", 
-    embed: "https://www.youtube.com/embed/pv1DJaPoiEY",
-    descricao: "Manutenção preventiva e corretiva, monitoramento de performance e troubleshooting.",
-    duracao: "48:30",
-    pdf: "/pdfs/curso-solar/manutencao-monitoramento.pdf"
-  },
-  "UE9ZCE2tqq8": { 
-    titulo: "Módulo 11 - Análise de Viabilidade Econômica", 
-    embed: "https://www.youtube.com/embed/UE9ZCE2tqq8",
-    descricao: "Análise de viabilidade econômica, payback, ROI e aspectos financeiros do investimento.",
-    duracao: "55:20",
-    pdf: "/pdfs/curso-solar/viabilidade-economica.pdf"
-  },
-  "Srj2anPee6k": { 
-    titulo: "Módulo 12 - Normas e Regulamentações", 
-    embed: "https://www.youtube.com/embed/Srj2anPee6k",
-    descricao: "Normas técnicas, regulamentações e aspectos legais para instalação de sistemas fotovoltaicos.",
-    duracao: "41:35",
-    pdf: "/pdfs/curso-solar/normas-regulamentacoes.pdf"
-  },
-  "BuyEAJSgzzQ": { 
-    titulo: "Módulo 13 - Conclusão e Próximos Passos", 
-    embed: "https://www.youtube.com/embed/BuyEAJSgzzQ",
-    descricao: "Conclusão do curso, resumo dos conceitos principais e orientações para próximos passos.",
-    duracao: "32:45",
-    pdf: "/pdfs/curso-solar/conclusao-proximos-passos.pdf"
+    descricao: "Processo de aprovação: solicitação de acesso à distribuidora, prazos de aprovação, documentação necessária (ART, diagrama unifilar, projeto elétrico) e inspeção final.",
+    duracao: "6:55"
   },
 };
