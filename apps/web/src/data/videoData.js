@@ -85,28 +85,28 @@ export const MOCK = {
   
   // Action Net X - Curso Completo
   "e2YAFjLBTlk": { 
-    titulo: "Introdução ao Action Net X", 
+    titulo: "Introdução do Curso Action net X", 
     embed: "https://www.youtube.com/embed/e2YAFjLBTlk",
     descricao: "Introdução ao Action Net X, conceitos básicos e visão geral do sistema SCADA para automação industrial.",
-    duracao: "32:15"
+    duracao: "3:56"
   },
   "CSn-W5dnVhw": { 
-    titulo: "Tags, Draw e Historian - Parte 1", 
+    titulo: "Tags, draw e alarms Parte 1", 
     embed: "https://www.youtube.com/embed/CSn-W5dnVhw",
     descricao: "Primeira parte do curso Action Net X cobrindo Tags, Draw e Historian - fundamentos para desenvolvimento de telas SCADA.",
-    duracao: "45:20"
+    duracao: "1:12:39"
   },
   "vy8jET69N-4": { 
-    titulo: "Templates, Símbolos e Tags de Referência - Parte 2", 
+    titulo: "Templates, Símbolos e Tags de Referência Parte 2", 
     embed: "https://www.youtube.com/embed/vy8jET69N-4",
     descricao: "Segunda parte do curso Action Net X abordando Templates, Símbolos e Tags de Referência para otimização do desenvolvimento.",
-    duracao: "38:45"
+    duracao: "38:17"
   },
   "8h2MC4N9XEA": { 
-    titulo: "Security, Device e Alarms - Parte 3", 
+    titulo: "Security, device e alarms Parte 3", 
     embed: "https://www.youtube.com/embed/8h2MC4N9XEA",
     descricao: "Terceira e última parte do curso Action Net X cobrindo Security, Device e Alarms - funcionalidades avançadas de segurança e monitoramento.",
-    duracao: "26:15"
+    duracao: "27:37"
   },
   
   // Curso de Energia Solar Fotovoltaica

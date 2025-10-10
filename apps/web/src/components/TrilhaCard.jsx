@@ -111,7 +111,7 @@ export default function TrilhaCard({ trilha }) {
 
       {/* Botão de ação */}
       <Link 
-        to={trilha.rota} 
+        to={`${trilha.rota}?trilha=${trilha.id}`} 
         className="btn" 
         style={{ 
           width: "100%", 

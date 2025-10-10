@@ -4,7 +4,7 @@ export const TRILHAS = [
     id: "action-net-certificacao",
     titulo: "Certificação Action.NET",
     descricao: "Série completa de 11 vídeos para certificação em Action.NET da UniSpin",
-    duracaoTotal: "3:47:00", // Soma de todos os vídeos: 15:42 + 18:35 + 22:18 + 19:47 + 16:53 + 21:29 + 17:44 + 20:16 + 18:52 + 19:38 + 16:25 = 3:47:00
+    duracaoTotal: "2:40:00", // Duração corrigida conforme informação do usuário
     quantidadeVideos: 11,
     nivel: "Intermediário",
     categoria: "SCADA & Automação",
@@ -29,7 +29,7 @@ export const TRILHAS = [
       id: "action-net-x-completo",
       titulo: "Action Net X - Curso Completo",
       descricao: "Curso completo de Action Net X cobrindo desde conceitos básicos até funcionalidades avançadas de SCADA e automação industrial",
-      duracaoTotal: "2:22:35",
+      duracaoTotal: "2:22:29",
       quantidadeVideos: 4,
       nivel: "Iniciante a Avançado",
       categoria: "SCADA & Automação",
