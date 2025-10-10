@@ -104,32 +104,78 @@ export default function Video() {
                   {video.descricao}
                 </p>
               </div>
-              {video.pdf && (
+              {(video.pdf || video.udemy) && (
                 <div style={{ marginBottom: "20px" }}>
                   <strong style={{ color: "#374151" }}>Material Complementar:</strong>
-                  <div style={{ marginTop: "8px" }}>
-                    <div style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      padding: "10px 16px",
-                      backgroundColor: "#F3F4F6",
-                      color: "#6B7280",
-                      borderRadius: "8px",
-                      fontSize: "14px",
-                      fontWeight: "600",
-                      border: "1px solid #D1D5DB"
-                    }}>
-                      📄 PDF Disponível em Breve
-                    </div>
-                    <div style={{ 
-                      marginTop: "4px", 
-                      fontSize: "12px", 
-                      color: "#9CA3AF",
-                      fontStyle: "italic"
-                    }}>
-                      O material complementar será adicionado em breve
-                    </div>
+                  <div style={{ marginTop: "8px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                    {video.pdf && (
+                      <a 
+                        href={video.pdf} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          padding: "10px 16px",
+                          backgroundColor: "#3B82F6",
+                          color: "white",
+                          borderRadius: "8px",
+                          fontSize: "14px",
+                          fontWeight: "600",
+                          textDecoration: "none",
+                          border: "1px solid #3B82F6",
+                          transition: "all 0.2s ease"
+                        }}
+                        onMouseOver={(e) => {
+                          e.target.style.backgroundColor = "#2563EB";
+                          e.target.style.borderColor = "#2563EB";
+                        }}
+                        onMouseOut={(e) => {
+                          e.target.style.backgroundColor = "#3B82F6";
+                          e.target.style.borderColor = "#3B82F6";
+                        }}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
+                          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                        </svg>
+                        Baixar PDF
+                      </a>
+                    )}
+                    {video.udemy && (
+                      <a 
+                        href={video.udemy} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          padding: "10px 16px",
+                          backgroundColor: "#10B981",
+                          color: "white",
+                          borderRadius: "8px",
+                          fontSize: "14px",
+                          fontWeight: "600",
+                          textDecoration: "none",
+                          border: "1px solid #10B981",
+                          transition: "all 0.2s ease"
+                        }}
+                        onMouseOver={(e) => {
+                          e.target.style.backgroundColor = "#059669";
+                          e.target.style.borderColor = "#059669";
+                        }}
+                        onMouseOut={(e) => {
+                          e.target.style.backgroundColor = "#10B981";
+                          e.target.style.borderColor = "#10B981";
+                        }}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
+                          <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+                        </svg>
+                        Curso Completo na Udemy
+                      </a>
+                    )}
                   </div>
                 </div>
               )}

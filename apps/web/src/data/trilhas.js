@@ -45,8 +45,8 @@ export const TRILHAS = [
     },
     {
       id: "curso-solar-fotovoltaico",
-      titulo: "Curso de Energia Solar Fotovoltaica",
-      descricao: "Curso completo de energia solar fotovoltaica da EvoSol cobrindo desde conceitos básicos até instalação e aprovação com distribuidora",
+      titulo: "Energia Solar Fotovoltaica",
+      descricao: "Energia solar fotovoltaica da EvoSol cobrindo desde conceitos básicos até instalação e aprovação com distribuidora",
       duracaoTotal: "1:16:31",
       quantidadeVideos: 7,
       nivel: "Iniciante a Intermediário",

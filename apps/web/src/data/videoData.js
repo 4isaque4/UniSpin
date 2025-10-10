@@ -160,6 +160,7 @@ export const MOCK = {
     titulo: "Módulo 7 - Contato com Distribuidora", 
     embed: "https://www.youtube.com/embed/ea6hIDLJKdQ",
     descricao: "Processo de aprovação: solicitação de acesso à distribuidora, prazos de aprovação, documentação necessária (ART, diagrama unifilar, projeto elétrico) e inspeção final.",
-    duracao: "6:55"
+    duracao: "6:55",
+    udemy: "/pdfs/curso-solar/1. Simulado Completo dos 7 Módulos do Curso Completo de Energia Solar.html"
   },
 };
