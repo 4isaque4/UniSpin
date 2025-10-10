@@ -29,7 +29,7 @@ export const TRILHAS = [
       id: "action-net-x-completo",
       titulo: "Action Net X",
       descricao: "Curso completo de Action Net X cobrindo todos os aspectos do SCADA: desde conceitos básicos de supervisão e controle até funcionalidades avançadas como Security, Devices, Alarms, Templates, Símbolos, Scripts e LeanAutomation. Inclui desenvolvimento de telas, configuração de Tags, Historian, comunicação com dispositivos, automação de processos e otimização de sistemas de automação energética.",
-      duracaoTotal: "2:22:35",
+      duracaoTotal: "2:22:29",
       quantidadeVideos: 4,
       nivel: "Iniciante a Avançado",
       categoria: "SCADA & Automação",

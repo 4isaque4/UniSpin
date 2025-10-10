@@ -88,25 +88,25 @@ export const MOCK = {
     titulo: "Introdução do Curso Action net X", 
     embed: "https://www.youtube.com/embed/e2YAFjLBTlk",
     descricao: "Introdução completa ao Action Net X: O que é um SCADA, conceitos fundamentais de supervisão e controle, apresentação da empresa SPIN, introdução ao software SCADA Action.NET, visão geral da interface, configurações básicas do sistema, primeiros passos na plataforma, conceitos de automação energética, monitoramento em tempo real, arquitetura do sistema SCADA, diferenças entre Action.NET e Action.NET X, objetivos do curso e estrutura de aprendizado.",
-    duracao: "32:15"
+    duracao: "3:56"
   },
   "CSn-W5dnVhw": { 
     titulo: "Tags, Draw e Historian - Parte 1", 
     embed: "https://www.youtube.com/embed/CSn-W5dnVhw",
     descricao: "Módulo completo de Tags, Draw e Historian: Criação e configuração de Tags em tempo real, propriedades e namespaces, tipos de dados e configurações avançadas, criação de telas e dashboards responsivos, ferramentas de desenho e layout, configurações de display e dynamics, menu vertical e horizontal, montagem de componentes como disjuntores, introdução aos templates e símbolos, variáveis de referência, janela de comando, Value As String, configuração do Historian para armazenamento de dados históricos, consultas e relatórios, integração entre Tags e telas.",
-    duracao: "45:20"
+    duracao: "1:12:39"
   },
   "vy8jET69N-4": { 
     titulo: "Templates, Símbolos e Tags de Referência - Parte 2", 
     embed: "https://www.youtube.com/embed/vy8jET69N-4",
     descricao: "Desenvolvimento avançado com Templates e Símbolos: Criação de templates parametrizados para padronização, desenvolvimento de símbolos customizados, uso avançado de tags de referência, testes no Watch para validação, replicação de disjuntores em múltiplas telas, otimização do desenvolvimento através de componentes reutilizáveis, configurações de animação e dinâmicas, integração entre templates e dados em tempo real, boas práticas de programação SCADA, organização de projetos complexos, manutenção e atualização de sistemas existentes.",
-    duracao: "38:45"
+    duracao: "38:17"
   },
   "8h2MC4N9XEA": { 
     titulo: "Security, Devices e Alarms - Parte 3", 
     embed: "https://www.youtube.com/embed/8h2MC4N9XEA",
     descricao: "Segurança, Comunicação e Monitoramento Avançado: Configuração completa de Security com definição de permissões e níveis de acesso, criação de usuários e grupos, controle de acesso a funcionalidades, configuração de Devices e protocolos de comunicação (Modbus, OPC, DNP3, IEC 61850), setup de drivers de comunicação, configuração de Alarms com grupos e condições personalizadas, priorização de alarmes, notificações e acknoledgment, integração com sistemas externos, configuração de Scripts para automação avançada, execução do sistema em modo Run, monitoramento de performance, troubleshooting e manutenção preventiva, LeanAutomation para otimização de processos.",
-    duracao: "26:15"
+    duracao: "27:37"
   },
   
   // Curso de Energia Solar Fotovoltaica
