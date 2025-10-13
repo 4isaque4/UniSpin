@@ -35,7 +35,7 @@ export default function VideoCard({ video, showContext = false, trilhaId = "acti
 
   return (
     <div className="video-card">
-      <Link to={`/videos/${video.id}`} style={{ textDecoration: "none" }}>
+      <Link to={`/videos/${video.id}?trilha=${trilhaId}`} style={{ textDecoration: "none" }}>
         <div className="video-thumbnail-container">
           {!imageError ? (
             <img 

@@ -40,7 +40,7 @@ export default function Header() {
                 textTransform: "uppercase",
                 letterSpacing: "1.2px"
               }}>
-                Engenharia de Automação
+                Plataforma de aprendizagem da Spin Engenharia
               </span>
             </div>
           </div>

@@ -6,7 +6,6 @@ export default function Home() {
       {/* HERO */}
       <section className="hero">
         <div className="container" style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}>
-          <span className="eyebrow" style={{ color: "#6b7280" }}>Plataforma corporativa</span>
           <h1 style={{ color: "#374151" }}>Aprender, criar e compartilhar — no ritmo da inovação.</h1>
           <p className="lead" style={{ color: "#6b7280" }}>
             A UniSpin centraliza treinamentos, projetos e conhecimento em uma experiência rápida, responsiva e acessível.

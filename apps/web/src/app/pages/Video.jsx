@@ -1,19 +1,32 @@
-import { useParams, Link } from "react-router-dom";
-import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto } from "../../data/trilhas.js";
+import { useParams, Link, useSearchParams } from "react-router-dom";
+import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto, TRILHAS } from "../../data/trilhas.js";
 import { useState, useEffect } from "react";
 import { MOCK } from "../../data/videoData.js";
 
 export default function Video() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
   const video = MOCK[id];
   const [isCompleto, setIsCompleto] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
+  // Detectar a trilha atual pelo parâmetro da URL ou pelo vídeo
+  const trilhaIdFromUrl = searchParams.get("trilha");
+  let trilhaAtual = TRILHAS.find(t => t.id === trilhaIdFromUrl);
+  
+  // Se não houver trilha na URL, buscar pela ID do vídeo
+  if (!trilhaAtual) {
+    trilhaAtual = TRILHAS.find(t => t.videos && t.videos.includes(id));
+  }
+  
+  // Fallback para action-net-certificacao
+  const trilhaId = trilhaAtual?.id || "action-net-certificacao";
+
   useEffect(() => {
     if (video) {
-      setIsCompleto(isVideoCompleto("action-net-certificacao", id));
+      setIsCompleto(isVideoCompleto(trilhaId, id));
     }
-  }, [id, video]);
+  }, [id, video, trilhaId]);
 
   if (!video) {
     return (
@@ -34,10 +47,10 @@ export default function Video() {
     
     try {
       if (isCompleto) {
-        marcarVideoIncompleto("action-net-certificacao", id);
+        marcarVideoIncompleto(trilhaId, id);
         setIsCompleto(false);
       } else {
-        marcarVideoCompleto("action-net-certificacao", id);
+        marcarVideoCompleto(trilhaId, id);
         setIsCompleto(true);
       }
     } catch (error) {
@@ -47,8 +60,8 @@ export default function Video() {
     }
   };
 
-  // Helper para obter próximo e anterior baseado na ordem do MOCK
-  const orderedIds = Object.keys(MOCK);
+  // Filtrar vídeos apenas da trilha atual
+  const orderedIds = trilhaAtual?.videos || Object.keys(MOCK);
   const currentIndex = orderedIds.indexOf(id);
 
   return (
@@ -61,7 +74,7 @@ export default function Video() {
           
           <h1 style={{ margin: "0 0 8px 0", fontSize: "2rem", color: "#374151" }}>{video.titulo}</h1>
           <p style={{ margin: "0 0 16px 0", color: "#6b7280" }}>
-            Duração: {video.duracao} | Treinamento Action.NET
+            Duração: {video.duracao} | {trilhaAtual?.titulo || "Treinamento"}
           </p>
         </div>
 
@@ -162,11 +175,11 @@ export default function Video() {
           {/* Navegação entre vídeos */}
           <div>
             <div className="card" style={{ maxWidth: "100%" }}>
-              <h4 style={{ margin: "0 0 16px 0", color: "#374151" }}>Navegação</h4>
+              <h4 style={{ margin: "0 0 16px 0", color: "#374151" }}>Navegação - {trilhaAtual?.titulo || "Trilha"}</h4>
               {/* Lista de navegação sem thumbnails */}
               <div style={{ display: "grid", gap: "12px" }}>
-                <Link to="/videos" className="btn secondary" style={{ textAlign: "center" }}>
-                  Ver Todos os Vídeos
+                <Link to={`/videos?trilha=${trilhaId}`} className="btn secondary" style={{ textAlign: "center" }}>
+                  Ver Todos os Vídeos da Trilha
                 </Link>
                 <div style={{ display: "grid", gap: "8px", maxHeight: "360px", overflow: "auto" }}>
                   {/* Próximos */}
@@ -175,7 +188,7 @@ export default function Video() {
                       <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "6px" }}>Próximos</div>
                       <div style={{ display: "grid", gap: "6px" }}>
                         {orderedIds.slice(currentIndex + 1).map(vid => (
-                          <Link key={vid} to={`/videos/${vid}`} style={{ textDecoration: "none" }}>
+                          <Link key={vid} to={`/videos/${vid}?trilha=${trilhaId}`} style={{ textDecoration: "none" }}>
                             <div style={{ fontWeight: 600, color: "#374151" }}>{MOCK[vid]?.titulo || vid}</div>
                           </Link>
                         ))}
@@ -188,7 +201,7 @@ export default function Video() {
                       <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "6px" }}>Anteriores</div>
                       <div style={{ display: "grid", gap: "6px" }}>
                         {orderedIds.slice(0, currentIndex).reverse().map(vid => (
-                          <Link key={vid} to={`/videos/${vid}`} style={{ textDecoration: "none" }}>
+                          <Link key={vid} to={`/videos/${vid}?trilha=${trilhaId}`} style={{ textDecoration: "none" }}>
                             <div style={{ fontWeight: 600, color: "#374151" }}>{MOCK[vid]?.titulo || vid}</div>
                           </Link>
                         ))}
