@@ -66,13 +66,12 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
   return (
     <div style={{ 
       display: "flex", 
-      flexDirection: "row", 
-      justifyContent: "center",
-      alignItems: "flex-start",
-      gap: "32px",
-      flexWrap: "wrap",
-      maxWidth: "1200px",
-      margin: "0 auto"
+      flexDirection: "column", 
+      alignItems: "flex-end",
+      gap: "24px",
+      maxWidth: "400px",
+      marginLeft: "auto",
+      marginRight: "0"
     }}>
       {/* Trilhas locais (hardcoded) */}
       {TRILHAS.map(trilha => (
