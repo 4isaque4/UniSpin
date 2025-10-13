@@ -76,22 +76,6 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
       {TRILHAS.map(trilha => (
         <TrilhaCard key={trilha.id} trilha={trilha} />
       ))}
-
-      {/* Trilhas da API (se existirem) */}
-      {trilhasAPI.map(trilha => (
-        <div key={trilha.id} className="card" style={{ 
-          maxWidth: "400px", 
-          width: "100%",
-          textAlign: "center"
-        }}>
-          <h3 style={{ margin: "4px 0 4px 0", fontSize: "1.05rem" }}>
-            {trilha.name}
-          </h3>
-          <p style={{ margin: "0", color: "#6b7280" }}>
-            {trilha.description || "Sem descrição"}
-          </p>
-        </div>
-      ))}
     </div>
   );
 }
