@@ -12,7 +12,8 @@ export default function TrilhaCard({ trilha }) {
       borderRadius: "12px",
       padding: "24px",
       textAlign: "center",
-      width: "300px",
+      width: "280px",
+      flexShrink: 0,
       boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)"
     }}>
       {/* Cabeçalho com categoria */}
