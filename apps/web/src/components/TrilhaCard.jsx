@@ -13,8 +13,11 @@ export default function TrilhaCard({ trilha }) {
       padding: "24px",
       textAlign: "center",
       width: "280px",
+      height: "100%",
       flexShrink: 0,
-      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)"
+      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
+      display: "flex",
+      flexDirection: "column"
     }}>
       {/* Cabeçalho com categoria */}
       <div style={{ 
@@ -47,7 +50,13 @@ export default function TrilhaCard({ trilha }) {
         color: "#6b7280", 
         lineHeight: "1.5",
         fontSize: "14px",
-        fontWeight: "400"
+        fontWeight: "400",
+        flex: "1",
+        display: "-webkit-box",
+        WebkitLineClamp: 4,
+        WebkitBoxOrient: "vertical",
+        overflow: "hidden",
+        textOverflow: "ellipsis"
       }}>
         {trilha.descricao}
       </p>
@@ -69,7 +78,11 @@ export default function TrilhaCard({ trilha }) {
           color: "#fff", 
           borderRadius: "8px",
           fontSize: "11px",
-          fontWeight: "600"
+          fontWeight: "600",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          maxWidth: "120px"
         }}>
           {trilha.nivel}
         </span>

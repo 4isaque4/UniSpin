@@ -68,7 +68,7 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
       display: "flex", 
       flexDirection: "row", 
       justifyContent: "center",
-      alignItems: "flex-start",
+      alignItems: "stretch",
       gap: "24px",
       flexWrap: "nowrap"
     }}>
