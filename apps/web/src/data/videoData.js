@@ -114,29 +114,25 @@ export const MOCK = {
     titulo: "Módulo 1 - Introdução ao Sistema Fotovoltaico", 
     embed: "https://www.youtube.com/embed/gbzfzrGGKaU",
     descricao: "Introdução ao sistema fotovoltaico: sol, radiação solar, efeito fotovoltaico, conceitos básicos de eletricidade, tipos de células, conexões em série/paralelo e características elétricas dos módulos.",
-    duracao: "11:33",
-    pdf: "/pdfs/curso-solar/modulo-1-introducao.pdf"
+    duracao: "11:33"
   },
   "mDKhuBJD5yA": { 
     titulo: "Módulo 2 - Cálculos Iniciais e Dimensionamento", 
     embed: "https://www.youtube.com/embed/mDKhuBJD5yA",
     descricao: "Análise da conta de energia, grupos A e B, tipos de instalação (monofásica, bifásica, trifásica), custo de disponibilidade, análise de necessidade do cliente e dados solares.",
-    duracao: "12:23",
-    pdf: "/pdfs/curso-solar/modulo-2-calculos-iniciais.pdf"
+    duracao: "12:23"
   },
   "IH-Yz3tM8dM": { 
     titulo: "Módulo 2 (Parte 2) - Dimensionamento Inicial", 
     embed: "https://www.youtube.com/embed/IH-Yz3tM8dM",
     descricao: "Continuação do módulo 2: dados solares, localização da instalação, compensação de energia, HSP (horas de sol pico), potência pico e dimensionamento dos módulos.",
-    duracao: "8:04",
-    pdf: "/pdfs/curso-solar/modulo-2-dimensionamento.pdf"
+    duracao: "8:04"
   },
   "S-QTYBb-LJM": { 
     titulo: "Módulo 3 - Dimensionamento Final", 
     embed: "https://www.youtube.com/embed/S-QTYBb-LJM",
     descricao: "Dimensionamento final: padrão de entrada, análise da ficha de dados do módulo, correção por temperatura (tensão, potência, corrente), perdas estimativas e vistoria técnica.",
-    duracao: "11:21",
-    pdf: "/pdfs/curso-solar/modulo-3-dimensionamento-final.pdf"
+    duracao: "11:21"
   },
   "IX2-T8I_v3I": { 
     titulo: "Módulo 4 - Dimensionamento dos Componentes", 
@@ -162,5 +158,13 @@ export const MOCK = {
     descricao: "Processo de aprovação: solicitação de acesso à distribuidora, prazos de aprovação, documentação necessária (ART, diagrama unifilar, projeto elétrico) e inspeção final.",
     duracao: "6:55",
     udemy: "/pdfs/curso-solar/1. Simulado Completo dos 7 Módulos do Curso Completo de Energia Solar.html"
+  },
+  
+  // Falcon BI 4.0
+  "8M4aA5I4TMo": { 
+    titulo: "Falcon BI 4.0 - Apresentação", 
+    embed: "https://www.youtube.com/embed/8M4aA5I4TMo",
+    descricao: "Apresentação do Falcon BI 4.0, plataforma de análise de dados que transforma dados do negócio em informação. Com o Falcon Analytics, sua equipe poderá tomar decisões conscientes e estratégicas baseadas em inteligência de mercado.",
+    duracao: "00:00"
   },
 };

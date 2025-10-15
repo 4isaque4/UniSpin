@@ -6,8 +6,8 @@ export const TRILHAS = [
     descricao: "Série completa de 11 vídeos para certificação em Action.NET da UniSpin",
     duracaoTotal: "2:40:00", // Duração corrigida conforme informação do usuário
     quantidadeVideos: 11,
-    nivel: "Intermediário",
-    categoria: "SCADA & Automação",
+    nivel: "",
+    categoria: "",
     cor: "#3B82F6",
     rota: "/videos",
     icone: "certification",
@@ -31,8 +31,8 @@ export const TRILHAS = [
       descricao: "Curso completo de Action Net X cobrindo todos os aspectos do SCADA: desde conceitos básicos de supervisão e controle até funcionalidades avançadas como Security, Devices, Alarms, Templates, Símbolos, Scripts e LeanAutomation. Inclui desenvolvimento de telas, configuração de Tags, Historian, comunicação com dispositivos, automação de processos e otimização de sistemas de automação energética.",
       duracaoTotal: "2:22:29",
       quantidadeVideos: 4,
-      nivel: "Iniciante a Avançado",
-      categoria: "SCADA & Automação",
+      nivel: "",
+      categoria: "",
       cor: "#10B981",
       rota: "/videos",
       icone: "database",
@@ -49,8 +49,8 @@ export const TRILHAS = [
       descricao: "Energia solar fotovoltaica da EvoSol cobrindo desde conceitos básicos até instalação e aprovação com distribuidora",
       duracaoTotal: "1:16:31",
       quantidadeVideos: 7,
-      nivel: "Iniciante a Intermediário",
-      categoria: "Energia Renovável",
+      nivel: "",
+      categoria: "",
       cor: "#F59E0B",
       rota: "/videos",
       icone: "sun",
@@ -71,8 +71,8 @@ export const TRILHAS = [
     descricao: "Série de vídeos sobre o SAGE (Sistema Aberto de Gerenciamento de Energia)",
     duracaoTotal: "54:39:11",
     quantidadeVideos: 16,
-    nivel: "Intermediário",
-    categoria: "Energia & SAGE",
+    nivel: "",
+    categoria: "",
     cor: "#3B82F6",
     rota: "/videos",
     icone: "certification",
@@ -93,6 +93,21 @@ export const TRILHAS = [
       "LDK3VixwPeU",
       "nzJWokOQaMo",
       "SdaocXBGevo"
+    ]
+  },
+  {
+    id: "falcon-bi-40",
+    titulo: "Falcon BI 4.0",
+    descricao: "Plataforma própria de análise de dados que transforma dados do negócio em informação. Tomando decisões conscientes e estratégicas baseadas em inteligência de mercado, oferecendo integração com outros aplicativos e permitindo criação de extensões e interfaces personalizadas.",
+    duracaoTotal: "00:00:00", // Será atualizado quando mais vídeos forem adicionados
+    quantidadeVideos: 1,
+    nivel: "",
+    categoria: "",
+    cor: "#8B5CF6",
+    rota: "/videos",
+    icone: "database",
+    videos: [
+      "8M4aA5I4TMo" // Vídeo do Falcon BI 4.0
     ]
   }
 ];

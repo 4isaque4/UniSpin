@@ -13,70 +13,42 @@ export default function TrilhaCard({ trilha }) {
       padding: "24px",
       textAlign: "center",
       maxWidth: "400px",
+      width: "100%",
       margin: "0 auto",
-      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)"
+      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
+      display: "flex",
+      flexDirection: "column",
+      height: "400px" // Altura fixa para todos os cards
     }}>
-      {/* Cabeçalho com categoria */}
-      <div style={{ 
-        marginBottom: "16px" 
-      }}>
-        <span style={{ 
-          fontSize: "12px", 
-          fontWeight: "600", 
-          color: "#6b7280",
-          textTransform: "uppercase",
-          letterSpacing: "0.5px"
-        }}>
-          {trilha.categoria}
-        </span>
-      </div>
-
       {/* Título da trilha */}
       <h3 style={{ 
-        margin: "0 0 8px 0", 
+        margin: "0 0 16px 0", 
         fontSize: "20px", 
         fontWeight: "700",
-        color: "#374151"
+        color: "#374151",
+        lineHeight: "1.3"
       }}>
         {trilha.titulo}
       </h3>
 
       {/* Descrição */}
       <p style={{ 
-        margin: "0 0 16px 0", 
+        margin: "0 0 20px 0", 
         color: "#6b7280", 
         lineHeight: "1.5",
         fontSize: "14px",
-        fontWeight: "400"
+        fontWeight: "400",
+        flex: "1",
+        overflow: "hidden",
+        display: "-webkit-box",
+        WebkitLineClamp: "4",
+        WebkitBoxOrient: "vertical"
       }}>
         {trilha.descricao}
       </p>
 
-      {/* Informações da trilha */}
-      <div style={{ 
-        display: "flex", 
-        justifyContent: "space-between", 
-        alignItems: "center",
-        marginBottom: "20px"
-      }}>
-        <div style={{ display: "flex", gap: "16px", fontSize: "12px", color: "#6b7280", fontWeight: "500" }}>
-          <span>{trilha.quantidadeVideos} vídeos</span>
-          <span>{trilha.duracaoTotal}</span>
-        </div>
-        <span style={{ 
-          padding: "4px 8px", 
-          backgroundColor: "var(--color-primary)", 
-          color: "#fff", 
-          borderRadius: "8px",
-          fontSize: "11px",
-          fontWeight: "600"
-        }}>
-          {trilha.nivel}
-        </span>
-      </div>
-
       {/* Barra de Progresso */}
-      <div style={{ marginBottom: "20px" }}>
+      <div style={{ marginBottom: "20px", marginTop: "auto" }}>
         <div style={{ 
           display: "flex", 
           justifyContent: "space-between", 
@@ -125,7 +97,8 @@ export default function TrilhaCard({ trilha }) {
           fontWeight: "600",
           textDecoration: "none",
           display: "inline-block",
-          transition: "all 0.2s ease"
+          transition: "all 0.2s ease",
+          marginTop: "auto"
         }}
       >
         {progresso === 100 ? "Trilha Concluída!" : "Começar Trilha"}

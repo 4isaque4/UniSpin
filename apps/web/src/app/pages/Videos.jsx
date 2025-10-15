@@ -119,6 +119,7 @@ export default function Videos() {
     { id: "action-net-x-completo", nome: "Action Net X" },
     { id: "curso-solar-fotovoltaico", nome: "Energia Solar" },
     { id: "sage-treinamento", nome: "SAGE" },
+    { id: "falcon-bi-40", nome: "Falcon BI 4.0" },
   ];
   const [searchParams, setSearchParams] = useSearchParams();
   const trilha = searchParams.get("trilha") || "action-net-certificacao";
@@ -168,6 +169,18 @@ export default function Videos() {
           ))}
         </div>
 
+        {/* Seção específica para treinamento de vídeos */}
+        {trilha === "curso-solar-fotovoltaico" && (
+          <div style={{ marginBottom: "30px", padding: "20px", backgroundColor: "#f8fafc", borderRadius: "12px", border: "1px solid #e2e8f0" }}>
+            <h3 style={{ margin: "0 0 16px 0", color: "#374151", fontSize: "18px", fontWeight: "600" }}>
+              Treinamento Completo
+            </h3>
+            <p style={{ margin: "0 0 16px 0", color: "#6b7280", fontSize: "14px" }}>
+              Acompanhe todos os módulos do curso de energia solar fotovoltaica da EvoSol.
+            </p>
+          </div>
+        )}
+
         <div id="videos-lista" className="grid videos-grid">
           {lista.map(v => (
             <div key={v.id} style={{ width: "100%", maxWidth: "400px" }}>
@@ -176,16 +189,6 @@ export default function Videos() {
           ))}
         </div>
 
-        <div style={{ marginTop: "40px", textAlign: "center" }}>
-          {trilhaData && (
-            <p style={{ color: "#6b7280", marginBottom: "16px" }}>
-              {trilhaData.quantidadeVideos} vídeos • Duração total: {trilhaData.duracaoTotal} • Nível: {trilhaData.nivel}
-            </p>
-          )}
-          <Link to="/" className="btn secondary">
-            Voltar ao início
-          </Link>
-        </div>
       </div>
     </main>
   );
