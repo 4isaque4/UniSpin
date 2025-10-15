@@ -65,11 +65,14 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
 
   return (
     <div style={{ 
-      display: "grid", 
-      gridTemplateColumns: "repeat(auto-fit, minmax(350px, 400px))",
+      display: "flex", 
+      flexDirection: "row",
       justifyContent: "center",
+      alignItems: "flex-start",
       gap: "24px",
-      padding: "0 20px"
+      flexWrap: "wrap",
+      padding: "0 20px",
+      minHeight: "420px"
     }}>
       {/* Trilhas locais (hardcoded) */}
       {TRILHAS.map(trilha => (
@@ -79,10 +82,22 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
       {/* Trilhas da API (se existirem) */}
       {trilhasAPI.map(trilha => (
         <div key={trilha.id} className="card" style={{ 
-          maxWidth: "400px", 
-          width: "100%",
+          background: "white",
+          border: "1px solid rgba(0, 0, 0, 0.08)",
+          borderRadius: "12px",
+          padding: "24px",
           textAlign: "center",
-          height: "400px"
+          width: "350px",
+          minWidth: "350px",
+          maxWidth: "350px",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
+          display: "flex",
+          flexDirection: "column",
+          height: "400px",
+          minHeight: "400px",
+          maxHeight: "400px",
+          flexShrink: 0,
+          margin: "0"
         }}>
           <h3 style={{ margin: "4px 0 4px 0", fontSize: "1.05rem" }}>
             {trilha.name}

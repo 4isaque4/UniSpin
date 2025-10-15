@@ -12,13 +12,17 @@ export default function TrilhaCard({ trilha }) {
       borderRadius: "12px",
       padding: "24px",
       textAlign: "center",
-      maxWidth: "400px",
-      width: "100%",
-      margin: "0 auto",
+      width: "350px",
+      minWidth: "350px",
+      maxWidth: "350px",
       boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
       display: "flex",
       flexDirection: "column",
-      height: "400px" // Altura fixa para todos os cards
+      height: "400px",
+      minHeight: "400px",
+      maxHeight: "400px",
+      flexShrink: 0,
+      margin: "0"
     }}>
       {/* Título da trilha */}
       <h3 style={{ 
