@@ -2,8 +2,21 @@ import { Link } from "react-router-dom";
 import { calcularProgressoTrilha, getVideosCompletados } from "../data/trilhas.js";
 
 export default function TrilhaCard({ trilha }) {
-  const progresso = calcularProgressoTrilha(trilha.id);
-  const videosCompletados = getVideosCompletados(trilha.id);
+  // Para trilhas locais, usa as funções existentes
+  // Para trilhas da API, calcula progresso baseado na estrutura da trilha
+  let progresso, videosCompletados;
+  
+  if (trilha.videos && trilha.videos.length > 0) {
+    // Trilha com estrutura de vídeos (API ou local)
+    const progressoLocal = getVideosCompletados(trilha.id);
+    videosCompletados = progressoLocal;
+    const totalVideos = trilha.quantidadeVideos || trilha.videos.length;
+    progresso = Math.round((progressoLocal.length / totalVideos) * 100);
+  } else {
+    // Fallback para trilhas locais sem estrutura completa
+    progresso = calcularProgressoTrilha(trilha.id);
+    videosCompletados = getVideosCompletados(trilha.id);
+  }
 
   return (
     <div className="card" style={{ 
@@ -32,7 +45,7 @@ export default function TrilhaCard({ trilha }) {
         color: "#374151",
         lineHeight: "1.3"
       }}>
-        {trilha.titulo}
+        {trilha.titulo || trilha.name}
       </h3>
 
       {/* Descrição */}
@@ -48,7 +61,7 @@ export default function TrilhaCard({ trilha }) {
         WebkitLineClamp: "4",
         WebkitBoxOrient: "vertical"
       }}>
-        {trilha.descricao}
+        {trilha.descricao || trilha.description || "Sem descrição"}
       </p>
 
       {/* Barra de Progresso */}
@@ -60,7 +73,7 @@ export default function TrilhaCard({ trilha }) {
           marginBottom: "8px"
         }}>
           <span style={{ fontSize: "12px", color: "#6b7280", fontWeight: "500" }}>
-            Progresso: {videosCompletados.length}/{trilha.quantidadeVideos} vídeos
+            Progresso: {videosCompletados.length}/{trilha.quantidadeVideos || (trilha.videos ? trilha.videos.length : 0)} vídeos
           </span>
           <span style={{ fontSize: "12px", color: "#374151", fontWeight: "600" }}>
             {progresso}%

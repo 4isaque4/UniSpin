@@ -84,33 +84,14 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
         <TrilhaCard key={trilha.id} trilha={trilha} />
       ))}
 
-      {/* Trilhas da API (se existirem) */}
-      {trilhasAPI.map(trilha => (
-        <div key={trilha.id} className="card" style={{ 
-          background: "white",
-          border: "1px solid rgba(0, 0, 0, 0.08)",
-          borderRadius: "12px",
-          padding: "24px",
-          textAlign: "center",
-          width: "350px",
-          minWidth: "350px",
-          maxWidth: "350px",
-          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
-          display: "flex",
-          flexDirection: "column",
-          height: "400px",
-          minHeight: "400px",
-          maxHeight: "400px",
-          flexShrink: 0,
-          margin: "0"
-        }}>
-          <h3 style={{ margin: "4px 0 4px 0", fontSize: "1.05rem" }}>
-            {trilha.name}
-          </h3>
-          <p style={{ margin: "0", color: "#6b7280" }}>
-            {trilha.description || "Sem descrição"}
-          </p>
-        </div>
+      {/* Trilhas da API são filtradas - só exibimos se tiverem estrutura completa */}
+      {trilhasAPI.filter(trilha => 
+        trilha.quantidadeVideos && 
+        trilha.quantidadeVideos > 0 && 
+        trilha.videos && 
+        trilha.videos.length > 0
+      ).map(trilha => (
+        <TrilhaCard key={trilha.id} trilha={trilha} />
       ))}
     </div>
   );
