@@ -99,7 +99,7 @@ export const TRILHAS = [
     id: "falcon-bi-40",
     titulo: "Falcon BI 4.0",
     descricao: "Plataforma própria de análise de dados que transforma dados do negócio em informação. Tomando decisões conscientes e estratégicas baseadas em inteligência de mercado, oferecendo integração com outros aplicativos e permitindo criação de extensões e interfaces personalizadas.",
-    duracaoTotal: "00:00:00", // Será atualizado quando mais vídeos forem adicionados
+    duracaoTotal: "1:48:56", // Duração do vídeo atual
     quantidadeVideos: 1,
     nivel: "",
     categoria: "",

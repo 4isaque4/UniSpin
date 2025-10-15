@@ -165,6 +165,6 @@ export const MOCK = {
     titulo: "Falcon BI 4.0 - Apresentação", 
     embed: "https://www.youtube.com/embed/8M4aA5I4TMo",
     descricao: "Apresentação do Falcon BI 4.0, plataforma de análise de dados que transforma dados do negócio em informação. Com o Falcon Analytics, sua equipe poderá tomar decisões conscientes e estratégicas baseadas em inteligência de mercado.",
-    duracao: "00:00"
+    duracao: "1:48:56"
   },
 };
