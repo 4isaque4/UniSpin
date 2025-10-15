@@ -51,7 +51,7 @@ export default function Trilhas() {
 
   return (
     <main className="features">
-      <div className="container" style={{ maxWidth: "1400px", margin: "0 auto" }}>
+      <div className="container" style={{ maxWidth: "1400px", margin: "0 auto", overflowX: "auto" }}>
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <p className="kicker">Trilhas de Aprendizado</p>
           <h2 style={{ margin: "6px 0 18px", fontSize: "2.5rem" }}>Trilhas Disponíveis</h2>
