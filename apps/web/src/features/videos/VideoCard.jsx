@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto } from "../../data/trilhas.js";
 import { useState } from "react";
+import { useAuth } from "../../features/auth/AuthContext.jsx";
 import "../../styles/VideoCard.css";
 
 export default function VideoCard({ video, showContext = false, trilhaId = "action-net-certificacao" }) {
-  const [isCompleto, setIsCompleto] = useState(() => isVideoCompleto(trilhaId, video.id));
+  const { user } = useAuth();
+  const userId = user?.id || null;
+  
+  const [isCompleto, setIsCompleto] = useState(() => isVideoCompleto(trilhaId, video.id, userId));
   const [isUpdating, setIsUpdating] = useState(false);
   const [imageError, setImageError] = useState(false);
 
@@ -13,10 +17,10 @@ export default function VideoCard({ video, showContext = false, trilhaId = "acti
     
     try {
       if (isCompleto) {
-        marcarVideoIncompleto(trilhaId, video.id);
+        marcarVideoIncompleto(trilhaId, video.id, userId);
         setIsCompleto(false);
       } else {
-        marcarVideoCompleto(trilhaId, video.id);
+        marcarVideoCompleto(trilhaId, video.id, userId);
         setIsCompleto(true);
       }
       

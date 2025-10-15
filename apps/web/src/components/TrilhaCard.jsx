@@ -1,21 +1,25 @@
 import { Link } from "react-router-dom";
 import { calcularProgressoTrilha, getVideosCompletados } from "../data/trilhas.js";
+import { useAuth } from "../features/auth/AuthContext.jsx";
 
 export default function TrilhaCard({ trilha }) {
+  const { user } = useAuth();
+  
   // Para trilhas locais, usa as funções existentes
   // Para trilhas da API, calcula progresso baseado na estrutura da trilha
   let progresso, videosCompletados;
+  const userId = user?.id || null;
   
   if (trilha.videos && trilha.videos.length > 0) {
     // Trilha com estrutura de vídeos (API ou local)
-    const progressoLocal = getVideosCompletados(trilha.id);
+    const progressoLocal = getVideosCompletados(trilha.id, userId);
     videosCompletados = progressoLocal;
     const totalVideos = trilha.quantidadeVideos || trilha.videos.length;
     progresso = Math.round((progressoLocal.length / totalVideos) * 100);
   } else {
     // Fallback para trilhas locais sem estrutura completa
-    progresso = calcularProgressoTrilha(trilha.id);
-    videosCompletados = getVideosCompletados(trilha.id);
+    progresso = calcularProgressoTrilha(trilha.id, userId);
+    videosCompletados = getVideosCompletados(trilha.id, userId);
   }
 
   return (

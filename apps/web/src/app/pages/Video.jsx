@@ -2,6 +2,7 @@ import { useParams, Link, useSearchParams } from "react-router-dom";
 import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto, TRILHAS } from "../../data/trilhas.js";
 import { useState, useEffect } from "react";
 import { MOCK } from "../../data/videoData.js";
+import { useAuth } from "../../features/auth/AuthContext.jsx";
 
 export default function Video() {
   const { id } = useParams();
@@ -9,6 +10,8 @@ export default function Video() {
   const video = MOCK[id];
   const [isCompleto, setIsCompleto] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+  const { user } = useAuth();
+  const userId = user?.id || null;
 
   // Detectar a trilha atual pelo parâmetro da URL ou pelo vídeo
   const trilhaIdFromUrl = searchParams.get("trilha");
@@ -24,9 +27,9 @@ export default function Video() {
 
   useEffect(() => {
     if (video) {
-      setIsCompleto(isVideoCompleto(trilhaId, id));
+      setIsCompleto(isVideoCompleto(trilhaId, id, userId));
     }
-  }, [id, video, trilhaId]);
+  }, [id, video, trilhaId, userId]);
 
   if (!video) {
     return (
@@ -47,10 +50,10 @@ export default function Video() {
     
     try {
       if (isCompleto) {
-        marcarVideoIncompleto(trilhaId, id);
+        marcarVideoIncompleto(trilhaId, id, userId);
         setIsCompleto(false);
       } else {
-        marcarVideoCompleto(trilhaId, id);
+        marcarVideoCompleto(trilhaId, id, userId);
         setIsCompleto(true);
       }
     } catch (error) {
