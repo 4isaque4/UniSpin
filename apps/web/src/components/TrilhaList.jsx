@@ -64,16 +64,21 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
   }
 
   return (
-    <div style={{ 
-      display: "flex", 
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "flex-start",
-      gap: "24px",
-      flexWrap: "wrap",
-      padding: "0 20px",
-      minHeight: "420px"
-    }}>
+    <div 
+      className="trilhas-container"
+      style={{ 
+        display: "flex", 
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        gap: "24px",
+        flexWrap: "nowrap",
+        padding: "20px",
+        minHeight: "420px",
+        overflowX: "auto",
+        maxWidth: "none",
+        width: "100%"
+      }}>
       {/* Trilhas locais (hardcoded) */}
       {TRILHAS.map(trilha => (
         <TrilhaCard key={trilha.id} trilha={trilha} />

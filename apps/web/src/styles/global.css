@@ -358,3 +358,18 @@ main {
   line-height: 1.6;
   font-weight: 400;
 }
+
+/* Container específico para trilhas - layout horizontal */
+.trilhas-container {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 20px;
+  min-height: 420px;
+  overflow-x: auto;
+  max-width: none !important;
+  width: 100%;
+}
