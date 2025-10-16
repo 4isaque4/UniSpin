@@ -162,13 +162,13 @@ export const MOCK = {
   
   // Falcon BI 4.0
   "8M4aA5I4TMo": { 
-    titulo: "Falcon BI 4.0 - Apresentação", 
+    titulo: "Falcon BI 4.0 - Video 1", 
     embed: "https://www.youtube.com/embed/8M4aA5I4TMo",
     descricao: "Apresentação do Falcon BI 4.0, plataforma de análise de dados que transforma dados do negócio em informação. Com o Falcon Analytics, sua equipe poderá tomar decisões conscientes e estratégicas baseadas em inteligência de mercado.",
     duracao: "1:48:56"
   },
   "7cnbfdlD3BE": { 
-    titulo: "Treinamento Completo", 
+    titulo: "Falcon BI 4.0 - Video 2", 
     embed: "https://www.youtube.com/embed/7cnbfdlD3BE",
     descricao: "Acompanhe todos os módulos do curso de energia solar fotovoltaica da EvoSol.",
     duracao: "56:28",
