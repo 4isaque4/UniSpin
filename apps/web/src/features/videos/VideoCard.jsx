@@ -102,7 +102,8 @@ export default function VideoCard({ video, showContext = false, trilhaId = "acti
       
       {/* Botão de conclusão */}
       <div style={{ 
-        padding: "0 16px 16px 16px"
+        padding: "0 16px 16px 16px",
+        marginTop: "auto"
       }}>
         <button
           onClick={toggleCompleto}
