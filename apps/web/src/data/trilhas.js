@@ -99,15 +99,16 @@ export const TRILHAS = [
     id: "falcon-bi-40",
     titulo: "Falcon BI 4.0",
     descricao: "Plataforma própria de análise de dados que transforma dados do negócio em informação. Tomando decisões conscientes e estratégicas baseadas em inteligência de mercado, oferecendo integração com outros aplicativos e permitindo criação de extensões e interfaces personalizadas.",
-    duracaoTotal: "1:48:56", // Duração do vídeo atual
-    quantidadeVideos: 1,
+    duracaoTotal: "2:45:24", // Duração total: 1:48:56 + 56:28 = 2:45:24
+    quantidadeVideos: 2,
     nivel: "",
     categoria: "",
     cor: "#8B5CF6",
     rota: "/videos",
     icone: "database",
     videos: [
-      "8M4aA5I4TMo" // Vídeo do Falcon BI 4.0
+      "8M4aA5I4TMo", // Vídeo do Falcon BI 4.0
+      "7cnbfdlD3BE"  // Novo vídeo - Treinamento Completo
     ]
   }
 ];
