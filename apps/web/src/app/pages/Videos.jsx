@@ -1,5 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
 import VideoCard from "../../features/videos/VideoCard.jsx";
+import DownloadList from "../../components/DownloadList.jsx";
 import { TRILHAS } from "../../data/trilhas.js";
 import { MOCK } from "../../data/videoData.js";
 
@@ -175,6 +176,13 @@ export default function Videos() {
             </div>
           ))}
         </div>
+
+        {/* Seção de Downloads - apenas para trilha do SAGE */}
+        {trilha === "sage-treinamento" && (
+          <div style={{ marginTop: "40px" }}>
+            <DownloadList trilhaId={trilha} />
+          </div>
+        )}
 
         <div style={{ marginTop: "40px", textAlign: "center" }}>
           {trilhaData && (

@@ -2,6 +2,7 @@ import { Router } from "express";
 import auth from "./auth.routes.js";
 import trilhas from "./trilhas.routes.js";
 import videos from "./videos.routes.js";
+import downloads from "./downloads.routes.js";
 import { testConnection } from "../repositories/db.js";
 import dns from "dns";
 import { promisify } from "util";
@@ -147,8 +148,10 @@ router.get("/network-test", async (req, res) => {
   }
 });
 
+router.use("/auth", auth);
 router.use("/trilhas", trilhas);
 router.use("/videos", videos);
+router.use("/downloads", downloads);
 // router.use("/progresso", progresso);
 
 export default router;
