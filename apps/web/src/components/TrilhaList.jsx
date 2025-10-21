@@ -64,16 +64,33 @@ export default function TrilhaList({ trilhasAPI = [], loading = false, error = n
   }
 
   return (
-    <div style={{ 
-      display: "flex", 
-      flexDirection: "row", 
-      justifyContent: "center",
-      alignItems: "stretch",
-      gap: "24px",
-      flexWrap: "nowrap"
-    }}>
+    <div 
+      className="trilhas-container"
+      style={{ 
+        display: "flex", 
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        gap: "24px",
+        flexWrap: "nowrap",
+        padding: "20px 40px",
+        minHeight: "420px",
+        overflowX: "auto",
+        maxWidth: "none",
+        width: "100%"
+      }}>
       {/* Trilhas locais (hardcoded) */}
       {TRILHAS.map(trilha => (
+        <TrilhaCard key={trilha.id} trilha={trilha} />
+      ))}
+
+      {/* Trilhas da API são filtradas - só exibimos se tiverem estrutura completa */}
+      {trilhasAPI.filter(trilha => 
+        trilha.quantidadeVideos && 
+        trilha.quantidadeVideos > 0 && 
+        trilha.videos && 
+        trilha.videos.length > 0
+      ).map(trilha => (
         <TrilhaCard key={trilha.id} trilha={trilha} />
       ))}
     </div>

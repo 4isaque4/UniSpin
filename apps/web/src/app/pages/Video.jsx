@@ -2,6 +2,7 @@ import { useParams, Link, useSearchParams } from "react-router-dom";
 import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto, TRILHAS } from "../../data/trilhas.js";
 import { useState, useEffect } from "react";
 import { MOCK } from "../../data/videoData.js";
+import { useAuth } from "../../features/auth/AuthContext.jsx";
 
 export default function Video() {
   const { id } = useParams();
@@ -9,6 +10,8 @@ export default function Video() {
   const video = MOCK[id];
   const [isCompleto, setIsCompleto] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+  const { user } = useAuth();
+  const userId = user?.id || null;
 
   // Detectar a trilha atual pelo parâmetro da URL ou pelo vídeo
   const trilhaIdFromUrl = searchParams.get("trilha");
@@ -24,9 +27,9 @@ export default function Video() {
 
   useEffect(() => {
     if (video) {
-      setIsCompleto(isVideoCompleto(trilhaId, id));
+      setIsCompleto(isVideoCompleto(trilhaId, id, userId));
     }
-  }, [id, video, trilhaId]);
+  }, [id, video, trilhaId, userId]);
 
   if (!video) {
     return (
@@ -47,10 +50,10 @@ export default function Video() {
     
     try {
       if (isCompleto) {
-        marcarVideoIncompleto(trilhaId, id);
+        marcarVideoIncompleto(trilhaId, id, userId);
         setIsCompleto(false);
       } else {
-        marcarVideoCompleto(trilhaId, id);
+        marcarVideoCompleto(trilhaId, id, userId);
         setIsCompleto(true);
       }
     } catch (error) {
@@ -117,32 +120,183 @@ export default function Video() {
                   {video.descricao}
                 </p>
               </div>
-              {video.pdf && (
+              {/* Material Complementar - PDFs e Udemy */}
+              {(video.udemy || trilhaId === "curso-solar-fotovoltaico") && (
                 <div style={{ marginBottom: "20px" }}>
                   <strong style={{ color: "#374151" }}>Material Complementar:</strong>
-                  <div style={{ marginTop: "8px" }}>
-                    <div style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      padding: "10px 16px",
-                      backgroundColor: "#F3F4F6",
-                      color: "#6B7280",
-                      borderRadius: "8px",
-                      fontSize: "14px",
-                      fontWeight: "600",
-                      border: "1px solid #D1D5DB"
-                    }}>
-                      📄 PDF Disponível em Breve
-                    </div>
-                    <div style={{ 
-                      marginTop: "4px", 
-                      fontSize: "12px", 
-                      color: "#9CA3AF",
-                      fontStyle: "italic"
-                    }}>
-                      O material complementar será adicionado em breve
-                    </div>
+                  <div style={{ marginTop: "8px", display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                    {/* Link do Udemy */}
+                    {video.udemy && (
+                      <a 
+                        href={video.udemy} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          padding: "10px 16px",
+                          backgroundColor: "#10B981",
+                          color: "white",
+                          borderRadius: "8px",
+                          fontSize: "14px",
+                          fontWeight: "600",
+                          textDecoration: "none",
+                          border: "1px solid #10B981",
+                          transition: "all 0.2s ease"
+                        }}
+                        onMouseOver={(e) => {
+                          e.target.style.backgroundColor = "#059669";
+                          e.target.style.borderColor = "#059669";
+                        }}
+                        onMouseOut={(e) => {
+                          e.target.style.backgroundColor = "#10B981";
+                          e.target.style.borderColor = "#10B981";
+                        }}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
+                          <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+                        </svg>
+                        Curso Completo na Udemy
+                      </a>
+                    )}
+                    
+                    {/* PDFs do Curso de Energia Solar */}
+                    {trilhaId === "curso-solar-fotovoltaico" && (
+                      <>
+                        <a 
+                          href="/pdfs/curso-solar/modulo-1-introducao.pdf" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            padding: "10px 16px",
+                            backgroundColor: "#F59E0B",
+                            color: "white",
+                            borderRadius: "8px",
+                            fontSize: "14px",
+                            fontWeight: "600",
+                            textDecoration: "none",
+                            border: "1px solid #F59E0B",
+                            transition: "all 0.2s ease"
+                          }}
+                          onMouseOver={(e) => {
+                            e.target.style.backgroundColor = "#D97706";
+                            e.target.style.borderColor = "#D97706";
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.backgroundColor = "#F59E0B";
+                            e.target.style.borderColor = "#F59E0B";
+                          }}
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                          </svg>
+                          Módulo 1 - Introdução
+                        </a>
+                        
+                        <a 
+                          href="/pdfs/curso-solar/modulo-2-calculos-iniciais.pdf" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            padding: "10px 16px",
+                            backgroundColor: "#F59E0B",
+                            color: "white",
+                            borderRadius: "8px",
+                            fontSize: "14px",
+                            fontWeight: "600",
+                            textDecoration: "none",
+                            border: "1px solid #F59E0B",
+                            transition: "all 0.2s ease"
+                          }}
+                          onMouseOver={(e) => {
+                            e.target.style.backgroundColor = "#D97706";
+                            e.target.style.borderColor = "#D97706";
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.backgroundColor = "#F59E0B";
+                            e.target.style.borderColor = "#F59E0B";
+                          }}
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                          </svg>
+                          Módulo 2 - Cálculos Iniciais
+                        </a>
+                        
+                        <a 
+                          href="/pdfs/curso-solar/modulo-2-dimensionamento.pdf" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            padding: "10px 16px",
+                            backgroundColor: "#F59E0B",
+                            color: "white",
+                            borderRadius: "8px",
+                            fontSize: "14px",
+                            fontWeight: "600",
+                            textDecoration: "none",
+                            border: "1px solid #F59E0B",
+                            transition: "all 0.2s ease"
+                          }}
+                          onMouseOver={(e) => {
+                            e.target.style.backgroundColor = "#D97706";
+                            e.target.style.borderColor = "#D97706";
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.backgroundColor = "#F59E0B";
+                            e.target.style.borderColor = "#F59E0B";
+                          }}
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                          </svg>
+                          Módulo 2 - Dimensionamento
+                        </a>
+                        
+                        <a 
+                          href="/pdfs/curso-solar/modulo-3-dimensionamento-final.pdf" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            padding: "10px 16px",
+                            backgroundColor: "#F59E0B",
+                            color: "white",
+                            borderRadius: "8px",
+                            fontSize: "14px",
+                            fontWeight: "600",
+                            textDecoration: "none",
+                            border: "1px solid #F59E0B",
+                            transition: "all 0.2s ease"
+                          }}
+                          onMouseOver={(e) => {
+                            e.target.style.backgroundColor = "#D97706";
+                            e.target.style.borderColor = "#D97706";
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.backgroundColor = "#F59E0B";
+                            e.target.style.borderColor = "#F59E0B";
+                          }}
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                          </svg>
+                          Módulo 3 - Dimensionamento Final
+                        </a>
+                      </>
+                    )}
                   </div>
                 </div>
               )}

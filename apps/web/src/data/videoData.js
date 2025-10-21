@@ -82,6 +82,21 @@ export const MOCK = {
   "LDK3VixwPeU": { titulo: "Treinamento SAGE 14", embed: "https://www.youtube.com/embed/LDK3VixwPeU", descricao: "Integração com sistemas externos e APIs.", duracao: "4:16:51" },
   "nzJWokOQaMo": { titulo: "Treinamento SAGE 15", embed: "https://www.youtube.com/embed/nzJWokOQaMo", descricao: "Boas práticas de operação e confiabilidade.", duracao: "3:06:19" },
   "SdaocXBGevo": { titulo: "Treinamento SAGE 16", embed: "https://www.youtube.com/embed/SdaocXBGevo", descricao: "Encerramento, revisão dos conceitos e próximos passos.", duracao: "3:42:23" },
+  "17rx1The-NY": { titulo: "Treinamento SAGE 17", embed: "https://www.youtube.com/embed/17rx1The-NY", descricao: "Aula 17 do treinamento SAGE - conceitos avançados e práticas operacionais.", duracao: "3:29:12" },
+  "B6krD4a8VvM": { titulo: "Treinamento SAGE 18", embed: "https://www.youtube.com/embed/B6krD4a8VvM", descricao: "Aula 18 do treinamento SAGE - teoria das tabelas e estruturas de dados.", duracao: "3:32:42" },
+  "1NX5U_ABAHw": { titulo: "Treinamento SAGE 19", embed: "https://www.youtube.com/embed/1NX5U_ABAHw", descricao: "Aula 19 do treinamento SAGE - configurações avançadas e otimizações.", duracao: "4:19:46" },
+  "eSTZuekkgYc": { titulo: "Treinamento SAGE 20", embed: "https://www.youtube.com/embed/eSTZuekkgYc", descricao: "Aula 20 do treinamento SAGE - integração de sistemas e protocolos.", duracao: "4:19:26" },
+  "cLw-J8BQ1Fc": { titulo: "Treinamento SAGE 21", embed: "https://www.youtube.com/embed/cLw-J8BQ1Fc", descricao: "Aula 21 do treinamento SAGE - análise de dados e relatórios.", duracao: "3:43:30" },
+  "WD0cmov9POc": { titulo: "Treinamento SAGE 22", embed: "https://www.youtube.com/embed/WD0cmov9POc", descricao: "Aula 22 do treinamento SAGE - monitoramento e alertas.", duracao: "3:35:37" },
+  "-s0cT0bRc5Q": { titulo: "Treinamento SAGE 23", embed: "https://www.youtube.com/embed/-s0cT0bRc5Q", descricao: "Aula 23 do treinamento SAGE - configurações de rede e conectividade.", duracao: "4:06:29" },
+  "w0QbPJpp5O8": { titulo: "Treinamento SAGE 24", embed: "https://www.youtube.com/embed/w0QbPJpp5O8", descricao: "Aula 24 do treinamento SAGE - interface e experiência do usuário.", duracao: "3:55:14" },
+  "asHdWMPpbdk": { titulo: "Treinamento SAGE 25", embed: "https://www.youtube.com/embed/asHdWMPpbdk", descricao: "Aula 25 do treinamento SAGE - Gustavo - parte 1.", duracao: "2:49:06" },
+  "1HGym7_5ES4": { titulo: "Treinamento SAGE 26 - Josiane Bueno parte 1", embed: "https://www.youtube.com/embed/1HGym7_5ES4", descricao: "Aula bônus 26 do treinamento SAGE com Josiane Bueno - parte 1.", duracao: "3:29:12" },
+  "nclMMPvdZiI": { titulo: "Treinamento SAGE 26 - Josiane Bueno parte 2", embed: "https://www.youtube.com/embed/nclMMPvdZiI", descricao: "Aula bônus 26 do treinamento SAGE com Josiane Bueno - parte 2.", duracao: "3:11:44" },
+  "cbAePn-Z9IQ": { titulo: "Treinamento SAGE 27 - Itamar parte 1", embed: "https://www.youtube.com/embed/cbAePn-Z9IQ", descricao: "Aula bônus 27 do treinamento SAGE com Itamar - parte 1.", duracao: "3:42:55" },
+  "rV9MRM90lao": { titulo: "Treinamento SAGE 27 - Itamar parte 2", embed: "https://www.youtube.com/embed/rV9MRM90lao", descricao: "Aula bônus 27 do treinamento SAGE com Itamar - parte 2.", duracao: "3:42:55" },
+  "03dDa8lt4SY": { titulo: "Treinamento SAGE 28 - Kayo parte 1", embed: "https://www.youtube.com/embed/03dDa8lt4SY", descricao: "Aula bônus 28 do treinamento SAGE com Kayo - parte 1.", duracao: "2:08:23" },
+  "iLh4A5y39Ec": { titulo: "Treinamento SAGE 28 - Kayo parte 2", embed: "https://www.youtube.com/embed/iLh4A5y39Ec", descricao: "Aula bônus 28 do treinamento SAGE com Kayo - parte 2.", duracao: "2:38:42" },
   
   // Action Net X - Curso Completo
   "e2YAFjLBTlk": { 
@@ -114,29 +129,25 @@ export const MOCK = {
     titulo: "Módulo 1 - Introdução ao Sistema Fotovoltaico", 
     embed: "https://www.youtube.com/embed/gbzfzrGGKaU",
     descricao: "Introdução ao sistema fotovoltaico: sol, radiação solar, efeito fotovoltaico, conceitos básicos de eletricidade, tipos de células, conexões em série/paralelo e características elétricas dos módulos.",
-    duracao: "11:33",
-    pdf: "/pdfs/curso-solar/modulo-1-introducao.pdf"
+    duracao: "11:33"
   },
   "mDKhuBJD5yA": { 
     titulo: "Módulo 2 - Cálculos Iniciais e Dimensionamento", 
     embed: "https://www.youtube.com/embed/mDKhuBJD5yA",
     descricao: "Análise da conta de energia, grupos A e B, tipos de instalação (monofásica, bifásica, trifásica), custo de disponibilidade, análise de necessidade do cliente e dados solares.",
-    duracao: "12:23",
-    pdf: "/pdfs/curso-solar/modulo-2-calculos-iniciais.pdf"
+    duracao: "12:23"
   },
   "IH-Yz3tM8dM": { 
     titulo: "Módulo 2 (Parte 2) - Dimensionamento Inicial", 
     embed: "https://www.youtube.com/embed/IH-Yz3tM8dM",
     descricao: "Continuação do módulo 2: dados solares, localização da instalação, compensação de energia, HSP (horas de sol pico), potência pico e dimensionamento dos módulos.",
-    duracao: "8:04",
-    pdf: "/pdfs/curso-solar/modulo-2-dimensionamento.pdf"
+    duracao: "8:04"
   },
   "S-QTYBb-LJM": { 
     titulo: "Módulo 3 - Dimensionamento Final", 
     embed: "https://www.youtube.com/embed/S-QTYBb-LJM",
     descricao: "Dimensionamento final: padrão de entrada, análise da ficha de dados do módulo, correção por temperatura (tensão, potência, corrente), perdas estimativas e vistoria técnica.",
-    duracao: "11:21",
-    pdf: "/pdfs/curso-solar/modulo-3-dimensionamento-final.pdf"
+    duracao: "11:21"
   },
   "IX2-T8I_v3I": { 
     titulo: "Módulo 4 - Dimensionamento dos Componentes", 
@@ -160,6 +171,21 @@ export const MOCK = {
     titulo: "Módulo 7 - Contato com Distribuidora", 
     embed: "https://www.youtube.com/embed/ea6hIDLJKdQ",
     descricao: "Processo de aprovação: solicitação de acesso à distribuidora, prazos de aprovação, documentação necessária (ART, diagrama unifilar, projeto elétrico) e inspeção final.",
-    duracao: "6:55"
+    duracao: "6:55",
+    udemy: "/pdfs/curso-solar/1. Simulado Completo dos 7 Módulos do Curso Completo de Energia Solar.html"
+  },
+  
+  // Falcon BI 4.0
+  "8M4aA5I4TMo": { 
+    titulo: "Falcon BI 4.0 - Video 1", 
+    embed: "https://www.youtube.com/embed/8M4aA5I4TMo",
+    descricao: "Introdução ao Falcon BI 4.0 com Rafael Alfieri e Wagner Lacerda. Apresentação do Falcon BI 4.0 que transforma dados em informação, foco em dashboards operacionais, objetos, fontes de dados e interações. Demonstração prática com dados de uma empresa.",
+    duracao: "1:48:56"
+  },
+  "7cnbfdlD3BE": { 
+    titulo: "Falcon BI 4.0 - Video 2", 
+    embed: "https://www.youtube.com/embed/7cnbfdlD3BE",
+    descricao: "Continuação do treinamento Falcon BI 4.0 com foco em desenvolvimento de dashboards, objetos, fontes de dados e interações. Demonstração prática de componentes, containers e funcionalidades avançadas da plataforma.",
+    duracao: "56:28"
   },
 };

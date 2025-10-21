@@ -1,9 +1,26 @@
 import { Link } from "react-router-dom";
 import { calcularProgressoTrilha, getVideosCompletados } from "../data/trilhas.js";
+import { useAuth } from "../features/auth/AuthContext.jsx";
 
 export default function TrilhaCard({ trilha }) {
-  const progresso = calcularProgressoTrilha(trilha.id);
-  const videosCompletados = getVideosCompletados(trilha.id);
+  const { user } = useAuth();
+  
+  // Para trilhas locais, usa as funções existentes
+  // Para trilhas da API, calcula progresso baseado na estrutura da trilha
+  let progresso, videosCompletados;
+  const userId = user?.id || null;
+  
+  if (trilha.videos && trilha.videos.length > 0) {
+    // Trilha com estrutura de vídeos (API ou local)
+    const progressoLocal = getVideosCompletados(trilha.id, userId);
+    videosCompletados = progressoLocal;
+    const totalVideos = trilha.quantidadeVideos || trilha.videos.length;
+    progresso = Math.round((progressoLocal.length / totalVideos) * 100);
+  } else {
+    // Fallback para trilhas locais sem estrutura completa
+    progresso = calcularProgressoTrilha(trilha.id, userId);
+    videosCompletados = getVideosCompletados(trilha.id, userId);
+  }
 
   return (
     <div className="card" style={{ 
@@ -12,84 +29,47 @@ export default function TrilhaCard({ trilha }) {
       borderRadius: "12px",
       padding: "24px",
       textAlign: "center",
-      width: "280px",
-      height: "100%",
-      flexShrink: 0,
+      width: "350px",
+      minWidth: "350px",
+      maxWidth: "350px",
       boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
+      height: "400px",
+      minHeight: "400px",
+      maxHeight: "400px",
+      flexShrink: 0,
+      margin: "0"
     }}>
-      {/* Cabeçalho com categoria */}
-      <div style={{ 
-        marginBottom: "16px" 
-      }}>
-        <span style={{ 
-          fontSize: "12px", 
-          fontWeight: "600", 
-          color: "#6b7280",
-          textTransform: "uppercase",
-          letterSpacing: "0.5px"
-        }}>
-          {trilha.categoria}
-        </span>
-      </div>
-
       {/* Título da trilha */}
       <h3 style={{ 
-        margin: "0 0 8px 0", 
+        margin: "0 0 16px 0", 
         fontSize: "20px", 
         fontWeight: "700",
-        color: "#374151"
+        color: "#374151",
+        lineHeight: "1.3"
       }}>
-        {trilha.titulo}
+        {trilha.titulo || trilha.name}
       </h3>
 
       {/* Descrição */}
       <p style={{ 
-        margin: "0 0 16px 0", 
+        margin: "0 0 20px 0", 
         color: "#6b7280", 
         lineHeight: "1.5",
         fontSize: "14px",
         fontWeight: "400",
         flex: "1",
-        display: "-webkit-box",
-        WebkitLineClamp: 4,
-        WebkitBoxOrient: "vertical",
         overflow: "hidden",
-        textOverflow: "ellipsis"
+        display: "-webkit-box",
+        WebkitLineClamp: "4",
+        WebkitBoxOrient: "vertical"
       }}>
-        {trilha.descricao}
+        {trilha.descricao || trilha.description || "Sem descrição"}
       </p>
 
-      {/* Informações da trilha */}
-      <div style={{ 
-        display: "flex", 
-        justifyContent: "space-between", 
-        alignItems: "center",
-        marginBottom: "20px"
-      }}>
-        <div style={{ display: "flex", gap: "16px", fontSize: "12px", color: "#6b7280", fontWeight: "500" }}>
-          <span>{trilha.quantidadeVideos} vídeos</span>
-          <span>{trilha.duracaoTotal}</span>
-        </div>
-        <span style={{ 
-          padding: "4px 8px", 
-          backgroundColor: "var(--color-primary)", 
-          color: "#fff", 
-          borderRadius: "8px",
-          fontSize: "11px",
-          fontWeight: "600",
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          maxWidth: "120px"
-        }}>
-          {trilha.nivel}
-        </span>
-      </div>
-
       {/* Barra de Progresso */}
-      <div style={{ marginBottom: "20px" }}>
+      <div style={{ marginBottom: "20px", marginTop: "auto" }}>
         <div style={{ 
           display: "flex", 
           justifyContent: "space-between", 
@@ -97,7 +77,7 @@ export default function TrilhaCard({ trilha }) {
           marginBottom: "8px"
         }}>
           <span style={{ fontSize: "12px", color: "#6b7280", fontWeight: "500" }}>
-            Progresso: {videosCompletados.length}/{trilha.quantidadeVideos} vídeos
+            Progresso: {videosCompletados.length}/{trilha.quantidadeVideos || (trilha.videos ? trilha.videos.length : 0)} vídeos
           </span>
           <span style={{ fontSize: "12px", color: "#374151", fontWeight: "600" }}>
             {progresso}%
@@ -138,7 +118,8 @@ export default function TrilhaCard({ trilha }) {
           fontWeight: "600",
           textDecoration: "none",
           display: "inline-block",
-          transition: "all 0.2s ease"
+          transition: "all 0.2s ease",
+          marginTop: "auto"
         }}
       >
         {progresso === 100 ? "Trilha Concluída!" : "Começar Trilha"}

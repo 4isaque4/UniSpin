@@ -6,8 +6,8 @@ export const TRILHAS = [
     descricao: "Série completa de 11 vídeos para certificação em Action.NET da UniSpin",
     duracaoTotal: "2:40:00", // Duração corrigida conforme informação do usuário
     quantidadeVideos: 11,
-    nivel: "Intermediário",
-    categoria: "SCADA & Automação",
+    nivel: "",
+    categoria: "",
     cor: "#3B82F6",
     rota: "/videos",
     icone: "certification",
@@ -31,8 +31,8 @@ export const TRILHAS = [
       descricao: "Curso completo de Action Net X cobrindo todos os aspectos do SCADA: desde conceitos básicos de supervisão e controle até funcionalidades avançadas como Security, Devices, Alarms, Templates, Símbolos, Scripts e LeanAutomation. Inclui desenvolvimento de telas, configuração de Tags, Historian, comunicação com dispositivos, automação de processos e otimização de sistemas de automação energética.",
       duracaoTotal: "2:22:29",
       quantidadeVideos: 4,
-      nivel: "Iniciante a Avançado",
-      categoria: "SCADA & Automação",
+      nivel: "",
+      categoria: "",
       cor: "#10B981",
       rota: "/videos",
       icone: "database",
@@ -45,12 +45,12 @@ export const TRILHAS = [
     },
     {
       id: "curso-solar-fotovoltaico",
-      titulo: "Curso de Energia Solar Fotovoltaica",
-      descricao: "Curso completo de energia solar fotovoltaica da EvoSol cobrindo desde conceitos básicos até instalação e aprovação com distribuidora",
+      titulo: "Energia Solar Fotovoltaica",
+      descricao: "Energia solar fotovoltaica da EvoSol cobrindo desde conceitos básicos até instalação e aprovação com distribuidora",
       duracaoTotal: "1:16:31",
       quantidadeVideos: 7,
-      nivel: "Iniciante a Intermediário",
-      categoria: "Energia Renovável",
+      nivel: "",
+      categoria: "",
       cor: "#F59E0B",
       rota: "/videos",
       icone: "sun",
@@ -68,31 +68,62 @@ export const TRILHAS = [
   {
     id: "sage-treinamento",
     titulo: "Treinamento SAGE",
-    descricao: "Série de vídeos sobre o SAGE (Sistema Aberto de Gerenciamento de Energia)",
-    duracaoTotal: "54:39:11",
-    quantidadeVideos: 16,
-    nivel: "Intermediário",
-    categoria: "Energia & SAGE",
+    descricao: "Série completa de vídeos sobre o SAGE (Sistema Aberto de Gerenciamento de Energia) incluindo aulas bônus",
+    duracaoTotal: "85:45:00",
+    quantidadeVideos: 28,
+    nivel: "",
+    categoria: "",
     cor: "#3B82F6",
     rota: "/videos",
     icone: "certification",
     videos: [
-      "oUYIUIFT4sk",
-      "k9zDvNElls4",
-      "uCkJH3JeIJQ",
-      "WNyFiNu671M",
-      "UOcDsoPI6hU",
-      "Who63QFr0GA",
-      "l05gsBesqg4",
-      "LvOwfeikA4Q",
-      "6Jsb8AlLOlo",
-      "n6RfHyfAYEw",
-      "AhMMO_MmfgU",
-      "TgnsPPu2VY8",
-      "6Y0FlnY6vO0",
-      "LDK3VixwPeU",
-      "nzJWokOQaMo",
-      "SdaocXBGevo"
+      "oUYIUIFT4sk", // SAGE 1
+      "k9zDvNElls4", // SAGE 2
+      "uCkJH3JeIJQ", // SAGE 3
+      "WNyFiNu671M", // SAGE 4
+      "UOcDsoPI6hU", // SAGE 5
+      "Who63QFr0GA", // SAGE 6
+      "l05gsBesqg4", // SAGE 7
+      "LvOwfeikA4Q", // SAGE 8
+      "6Jsb8AlLOlo", // SAGE 9
+      "n6RfHyfAYEw", // SAGE 10
+      "AhMMO_MmfgU", // SAGE 11
+      "TgnsPPu2VY8", // SAGE 12
+      "6Y0FlnY6vO0", // SAGE 13
+      "LDK3VixwPeU", // SAGE 14
+      "nzJWokOQaMo", // SAGE 15
+      "SdaocXBGevo", // SAGE 16
+      "17rx1The-NY", // SAGE 17
+      "B6krD4a8VvM", // SAGE 18
+      "1NX5U_ABAHw", // SAGE 19
+      "eSTZuekkgYc", // SAGE 20
+      "cLw-J8BQ1Fc", // SAGE 21
+      "WD0cmov9POc", // SAGE 22
+      "-s0cT0bRc5Q", // SAGE 23
+      "w0QbPJpp5O8", // SAGE 24
+      "asHdWMPpbdk", // SAGE 25
+      "1HGym7_5ES4", // SAGE 26 - Josiane Bueno parte 1
+      "nclMMPvdZiI", // SAGE 26 - Josiane Bueno parte 2
+      "cbAePn-Z9IQ", // SAGE 27 - Itamar parte 1
+      "rV9MRM90lao", // SAGE 27 - Itamar parte 2
+      "03dDa8lt4SY", // SAGE 28 - Kayo parte 1
+      "iLh4A5y39Ec"  // SAGE 28 - Kayo parte 2
+    ]
+  },
+  {
+    id: "falcon-bi-40",
+    titulo: "Falcon BI 4.0",
+    descricao: "Plataforma própria de análise de dados que transforma dados do negócio em informação. Tomando decisões conscientes e estratégicas baseadas em inteligência de mercado, oferecendo integração com outros aplicativos e permitindo criação de extensões e interfaces personalizadas.",
+    duracaoTotal: "2:45:24", // Duração total: 1:48:56 + 56:28 = 2:45:24
+    quantidadeVideos: 2,
+    nivel: "",
+    categoria: "",
+    cor: "#8B5CF6",
+    rota: "/videos",
+    icone: "database",
+    videos: [
+      "8M4aA5I4TMo", // Vídeo do Falcon BI 4.0
+      "7cnbfdlD3BE"  // Novo vídeo - Treinamento Completo
     ]
   }
 ];
@@ -115,41 +146,79 @@ export const getTrilhaById = (id) => {
   return TRILHAS.find(trilha => trilha.id === id);
 };
 
-// Funções para gerenciar progresso
-export const getProgressoTrilha = (trilhaId) => {
-  const progresso = localStorage.getItem(`progresso_${trilhaId}`);
+// Função auxiliar para obter ID do usuário atual
+const getCurrentUserId = () => {
+  try {
+    // Primeiro tenta obter do Supabase localStorage
+    const supabaseSessionKey = 'sb-' + (import.meta.env.VITE_SUPABASE_URL || '').replace(/[^a-zA-Z0-9]/g, '') + '-auth-token';
+    const userData = localStorage.getItem(supabaseSessionKey);
+    
+    if (userData) {
+      const parsed = JSON.parse(userData);
+      return parsed?.currentSession?.user?.id || parsed?.user?.id;
+    }
+    
+    // Fallback: tenta outras chaves comuns
+    const fallbackKeys = ['sb-auth-token', 'supabase.auth.token'];
+    for (const key of fallbackKeys) {
+      const data = localStorage.getItem(key);
+      if (data) {
+        const parsed = JSON.parse(data);
+        const userId = parsed?.currentSession?.user?.id || parsed?.user?.id;
+        if (userId) return userId;
+      }
+    }
+    
+    return null;
+  } catch (error) {
+    console.log('Não foi possível obter ID do usuário do localStorage:', error);
+    return null;
+  }
+};
+
+// Funções para gerenciar progresso por usuário
+export const getProgressoTrilha = (trilhaId, userId = null) => {
+  const currentUserId = userId || getCurrentUserId();
+  const key = currentUserId ? `progresso_${currentUserId}_${trilhaId}` : `progresso_${trilhaId}`;
+  const progresso = localStorage.getItem(key);
   return progresso ? JSON.parse(progresso) : [];
 };
 
-export const marcarVideoCompleto = (trilhaId, videoId) => {
-  const progresso = getProgressoTrilha(trilhaId);
+export const marcarVideoCompleto = (trilhaId, videoId, userId = null) => {
+  const currentUserId = userId || getCurrentUserId();
+  const key = currentUserId ? `progresso_${currentUserId}_${trilhaId}` : `progresso_${trilhaId}`;
+  
+  const progresso = getProgressoTrilha(trilhaId, currentUserId);
   if (!progresso.includes(videoId)) {
     progresso.push(videoId);
-    localStorage.setItem(`progresso_${trilhaId}`, JSON.stringify(progresso));
+    localStorage.setItem(key, JSON.stringify(progresso));
   }
   return progresso;
 };
 
-export const marcarVideoIncompleto = (trilhaId, videoId) => {
-  const progresso = getProgressoTrilha(trilhaId);
+export const marcarVideoIncompleto = (trilhaId, videoId, userId = null) => {
+  const currentUserId = userId || getCurrentUserId();
+  const key = currentUserId ? `progresso_${currentUserId}_${trilhaId}` : `progresso_${trilhaId}`;
+  
+  const progresso = getProgressoTrilha(trilhaId, currentUserId);
   const novoProgresso = progresso.filter(id => id !== videoId);
-  localStorage.setItem(`progresso_${trilhaId}`, JSON.stringify(novoProgresso));
+  localStorage.setItem(key, JSON.stringify(novoProgresso));
   return novoProgresso;
 };
 
-export const calcularProgressoTrilha = (trilhaId) => {
+export const calcularProgressoTrilha = (trilhaId, userId = null) => {
   const trilha = getTrilhaById(trilhaId);
   if (!trilha) return 0;
   
-  const progresso = getProgressoTrilha(trilhaId);
+  const progresso = getProgressoTrilha(trilhaId, userId);
   return Math.round((progresso.length / trilha.quantidadeVideos) * 100);
 };
 
-export const getVideosCompletados = (trilhaId) => {
-  return getProgressoTrilha(trilhaId);
+export const getVideosCompletados = (trilhaId, userId = null) => {
+  return getProgressoTrilha(trilhaId, userId);
 };
 
-export const isVideoCompleto = (trilhaId, videoId) => {
-  const progresso = getProgressoTrilha(trilhaId);
+export const isVideoCompleto = (trilhaId, videoId, userId = null) => {
+  const progresso = getProgressoTrilha(trilhaId, userId);
   return progresso.includes(videoId);
 };
