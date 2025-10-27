@@ -53,9 +53,9 @@ async function resolveDatabaseUrl(rawUrl) {
       url.hostname = ipv4.address;
       console.log(`[DB] Usando IPv4: ${ipv4.address}`);
     } else if (ipv6) {
-      // IPv6 deve ser usado sem colchetes na URL de conexão
-      url.hostname = ipv6.address;
-      console.log(`[DB] Usando IPv6: ${ipv6.address}`);
+      // IPv6 deve ser usado COM colchetes na URL de conexão para compatibilidade
+      url.hostname = `[${ipv6.address}]`;
+      console.log(`[DB] Usando IPv6: [${ipv6.address}]`);
     } else {
       console.log(`[DB] Usando hostname original: ${url.hostname}`);
     }
@@ -91,6 +91,9 @@ async function initializePool() {
       max: 5,
       idleTimeoutMillis: 30_000,
       connectionTimeoutMillis: 10_000,
+      // Permitir IPv6 no Heroku
+      keepAlive: true,
+      keepAliveInitialDelayMillis: 10000,
     });
     
     // Eventos do pool
