@@ -39,106 +39,16 @@ export default function DownloadList({ trilhaId }) {
     try {
       setLoading(true);
       
-      // Lista de arquivos do SAGE baseada na estrutura da pasta
+      // Um único arquivo que leva para a pasta do Dropbox
       const sageFiles = [
         {
-          id: "aplicacao-usuario",
-          nome: "Aplicação Usuario",
-          descricao: "Arquivos da aplicação do usuário SAGE",
-          tipo: "Aplicação",
-          tamanho: "~50MB",
-          icone: "application",
-          categoria: "Sistema"
-        },
-        {
-          id: "apresentacao-teamgov",
-          nome: "Apresentação Teamgov",
-          descricao: "Apresentação para equipe governamental",
-          tipo: "Apresentação",
-          tamanho: "~15MB",
-          icone: "presentation",
-          categoria: "Documentação"
-        },
-        {
-          id: "atualizacao",
-          nome: "Atualização",
-          descricao: "Arquivos de atualização do sistema SAGE",
-          tipo: "Atualização",
-          tamanho: "~30MB",
-          icone: "update",
-          categoria: "Sistema"
-        },
-        {
-          id: "bizus",
-          nome: "Bizus",
-          descricao: "Dicas e truques para uso do SAGE",
-          tipo: "Documentação",
-          tamanho: "~5MB",
-          icone: "tips",
-          categoria: "Documentação"
-        },
-        {
-          id: "cid",
-          nome: "CID",
-          descricao: "Documentação CID do SAGE",
-          tipo: "Documentação",
-          tamanho: "~10MB",
-          icone: "document",
-          categoria: "Documentação"
-        },
-        {
-          id: "cnfs",
-          nome: "CNFs",
-          descricao: "Arquivos de configuração CNF",
-          tipo: "Configuração",
-          tamanho: "~8MB",
-          icone: "config",
-          categoria: "Configuração"
-        },
-        {
-          id: "comandos-especificos",
-          nome: "Comandos Específicos",
-          descricao: "Lista de comandos específicos do SAGE",
-          tipo: "Documentação",
-          tamanho: "~3MB",
-          icone: "command",
-          categoria: "Documentação"
-        },
-        {
-          id: "compareit",
-          nome: "CompareIT",
-          descricao: "Ferramenta de comparação CompareIT",
-          tipo: "Ferramenta",
-          tamanho: "~20MB",
-          icone: "tool",
-          categoria: "Ferramentas"
-        },
-        {
-          id: "efi",
-          nome: "EFI",
-          descricao: "Arquivos relacionados ao EFI",
-          tipo: "Sistema",
-          tamanho: "~25MB",
-          icone: "system",
-          categoria: "Sistema"
-        },
-        {
-          id: "iec-teste",
-          nome: "IEC TESTE",
-          descricao: "Arquivos de teste IEC",
-          tipo: "Teste",
-          tamanho: "~12MB",
-          icone: "test",
-          categoria: "Testes"
-        },
-        {
-          id: "iecbrowser",
-          nome: "IECBrowser",
-          descricao: "Navegador IEC para SAGE",
-          tipo: "Ferramenta",
-          tamanho: "~18MB",
-          icone: "browser",
-          categoria: "Ferramentas"
+          id: "pasta-sage",
+          nome: "Arquivos do SAGE",
+          descricao: "Todos os arquivos e ferramentas do SAGE disponíveis",
+          tipo: "Pasta completa",
+          tamanho: "Vários arquivos",
+          icone: "folder",
+          categoria: "Geral"
         }
       ];
 
@@ -162,7 +72,7 @@ export default function DownloadList({ trilhaId }) {
           descricao: "Todos os exercícios e materiais do curso de energia solar fotovoltaica",
           tipo: "Pasta completa",
           tamanho: "Vários arquivos",
-          icone: "document",
+          icone: "folder",
           categoria: "Materiais"
         }
       ];
@@ -257,6 +167,11 @@ export default function DownloadList({ trilhaId }) {
           <path d="M21 12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v7z"/>
           <path d="M3 8h18"/>
           <path d="M3 12h18"/>
+        </svg>
+      ),
+      folder: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
         </svg>
       )
     };
