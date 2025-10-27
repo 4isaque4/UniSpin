@@ -5,12 +5,33 @@ export default function DownloadList({ trilhaId }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Link da pasta compartilhada do Dropbox
-  const DROPBOX_FOLDER_URL = 'https://www.dropbox.com/scl/fo/5stpiz277gqe711x9hc15/AIDn_ionlSG5WwVdIdFjHvI?rlkey=hmo24rzrm6paaffnw9xacmaym&st=bmn41su5&dl=0';
+  // Links das pastas compartilhadas do Dropbox
+  const DROPBOX_FOLDER_URLS = {
+    'sage-treinamento': 'https://www.dropbox.com/scl/fo/5stpiz277gqe711x9hc15/AIDn_ionlSG5WwVdIdFjHvI?rlkey=hmo24rzrm6paaffnw9xacmaym&st=bmn41su5&dl=0',
+    'curso-solar-fotovoltaico': 'https://www.dropbox.com/scl/fo/ojsuasksfjkjmrkyr28lg/AFuZ4nfA6DGAEW0e6GYo9wE?rlkey=oqwl322pt3r9t2fl137l6sjj6&st=d5tw4bba&dl=0'
+  };
+
+  const [trilhaInfo, setTrilhaInfo] = useState({
+    titulo: '',
+    descricao: '',
+    cor: '#3B82F6'
+  });
 
   useEffect(() => {
     if (trilhaId === 'sage-treinamento') {
       loadSageDownloads();
+      setTrilhaInfo({
+        titulo: 'Arquivos de Download - SAGE',
+        descricao: 'Acesse todos os arquivos e ferramentas do SAGE disponíveis para download',
+        cor: '#3B82F6'
+      });
+    } else if (trilhaId === 'curso-solar-fotovoltaico') {
+      loadSolarDownloads();
+      setTrilhaInfo({
+        titulo: 'Arquivos de Download - Energia Solar',
+        descricao: 'Acesse todos os exercícios e materiais do curso de energia solar fotovoltaica',
+        cor: '#F59E0B'
+      });
     }
   }, [trilhaId]);
 
@@ -129,10 +150,61 @@ export default function DownloadList({ trilhaId }) {
     }
   };
 
+  const loadSolarDownloads = async () => {
+    try {
+      setLoading(true);
+      
+      // Lista de exercícios do curso de energia solar
+      const solarFiles = [
+        {
+          id: "exercicios-1",
+          nome: "Exercícios 1",
+          descricao: "Primeiro conjunto de exercícios do curso de energia solar",
+          tipo: "Exercícios",
+          tamanho: "~471KB",
+          icone: "document",
+          categoria: "Exercícios"
+        },
+        {
+          id: "exercicios-2",
+          nome: "Exercícios 2",
+          descricao: "Segundo conjunto de exercícios do curso de energia solar",
+          tipo: "Exercícios",
+          tamanho: "~275KB",
+          icone: "document",
+          categoria: "Exercícios"
+        },
+        {
+          id: "exercicios-3",
+          nome: "Exercícios 3",
+          descricao: "Terceiro conjunto de exercícios do curso de energia solar",
+          tipo: "Exercícios",
+          tamanho: "~238KB",
+          icone: "document",
+          categoria: "Exercícios"
+        },
+        {
+          id: "exercicios-4",
+          nome: "Exercícios 4",
+          descricao: "Quarto conjunto de exercícios do curso de energia solar",
+          tipo: "Exercícios",
+          tamanho: "~233KB",
+          icone: "document",
+          categoria: "Exercícios"
+        }
+      ];
+
+      setDownloads(solarFiles);
+      setLoading(false);
+    } catch (err) {
+      setError('Erro ao carregar arquivos de download');
+      setLoading(false);
+    }
+  };
+
   const getDownloadUrl = (fileId) => {
-    // Usa o link da pasta compartilhada do Dropbox que você forneceu
-    // O Dropbox automaticamente permite navegar pelos arquivos da pasta
-    return DROPBOX_FOLDER_URL;
+    // Retorna o link da pasta compartilhada do Dropbox correspondente à trilha
+    return DROPBOX_FOLDER_URLS[trilhaId] || DROPBOX_FOLDER_URLS['sage-treinamento'];
   };
 
   const getIconComponent = (iconType) => {
@@ -311,9 +383,9 @@ export default function DownloadList({ trilhaId }) {
       <div style={{ 
         marginBottom: '20px',
         padding: '16px',
-        background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.05))',
+        background: `linear-gradient(135deg, ${trilhaInfo.cor === '#F59E0B' ? 'rgba(245, 158, 11, 0.1)' : 'rgba(59, 130, 246, 0.1)'}, ${trilhaInfo.cor === '#F59E0B' ? 'rgba(251, 191, 36, 0.05)' : 'rgba(147, 197, 253, 0.05)'})`,
         borderRadius: '12px',
-        border: '1px solid rgba(59, 130, 246, 0.2)'
+        border: `1px solid ${trilhaInfo.cor === '#F59E0B' ? 'rgba(245, 158, 11, 0.2)' : 'rgba(59, 130, 246, 0.2)'}`
       }}>
         <h2 style={{ 
           color: '#1F2937', 
@@ -329,14 +401,14 @@ export default function DownloadList({ trilhaId }) {
             <polyline points="7,10 12,15 17,10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          Arquivos de Download - SAGE
+          {trilhaInfo.titulo}
         </h2>
         <p style={{ 
           color: '#6B7280', 
           margin: '0', 
           fontSize: '14px'
         }}>
-          Acesse todos os arquivos e ferramentas do SAGE disponíveis para download
+          {trilhaInfo.descricao}
         </p>
       </div>
 

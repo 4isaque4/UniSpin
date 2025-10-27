@@ -170,190 +170,14 @@ export default function Videos() {
           ))}
         </div>
 
-        {/* Seção específica para treinamento de vídeos */}
-        {trilha === "curso-solar-fotovoltaico" && (
-          <div style={{ marginBottom: "30px", padding: "20px", backgroundColor: "#f8fafc", borderRadius: "12px", border: "1px solid #e2e8f0" }}>
-            <h3 style={{ margin: "0 0 16px 0", color: "#374151", fontSize: "18px", fontWeight: "600" }}>
-              Treinamento Completo
-            </h3>
-            <p style={{ margin: "0 0 20px 0", color: "#6b7280", fontSize: "14px" }}>
-              Acompanhe todos os módulos do curso de energia solar fotovoltaica da EvoSol.
-            </p>
-            
-            {/* Material Complementar - PDFs */}
-            <div style={{ marginBottom: "20px" }}>
-              <h4 style={{ margin: "0 0 12px 0", color: "#374151", fontSize: "16px", fontWeight: "600" }}>
-                Material Complementar
-              </h4>
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                <a 
-                  href="/pdfs/curso-solar/modulo-1-introducao.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "10px 16px",
-                    backgroundColor: "#F59E0B",
-                    color: "white",
-                    borderRadius: "8px",
-                    fontSize: "14px",
-                    fontWeight: "600",
-                    textDecoration: "none",
-                    border: "1px solid #F59E0B",
-                    transition: "all 0.2s ease"
-                  }}
-                  onMouseOver={(e) => {
-                    e.target.style.backgroundColor = "#D97706";
-                    e.target.style.borderColor = "#D97706";
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.backgroundColor = "#F59E0B";
-                    e.target.style.borderColor = "#F59E0B";
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
-                  </svg>
-                  Módulo 1 - Introdução
-                </a>
-                
-                <a 
-                  href="/pdfs/curso-solar/modulo-2-calculos-iniciais.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "10px 16px",
-                    backgroundColor: "#F59E0B",
-                    color: "white",
-                    borderRadius: "8px",
-                    fontSize: "14px",
-                    fontWeight: "600",
-                    textDecoration: "none",
-                    border: "1px solid #F59E0B",
-                    transition: "all 0.2s ease"
-                  }}
-                  onMouseOver={(e) => {
-                    e.target.style.backgroundColor = "#D97706";
-                    e.target.style.borderColor = "#D97706";
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.backgroundColor = "#F59E0B";
-                    e.target.style.borderColor = "#F59E0B";
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
-                  </svg>
-                  Módulo 2 - Cálculos Iniciais
-                </a>
-                
-                <a 
-                  href="/pdfs/curso-solar/modulo-2-dimensionamento.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "10px 16px",
-                    backgroundColor: "#F59E0B",
-                    color: "white",
-                    borderRadius: "8px",
-                    fontSize: "14px",
-                    fontWeight: "600",
-                    textDecoration: "none",
-                    border: "1px solid #F59E0B",
-                    transition: "all 0.2s ease"
-                  }}
-                  onMouseOver={(e) => {
-                    e.target.style.backgroundColor = "#D97706";
-                    e.target.style.borderColor = "#D97706";
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.backgroundColor = "#F59E0B";
-                    e.target.style.borderColor = "#F59E0B";
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
-                  </svg>
-                  Módulo 2 - Dimensionamento
-                </a>
-                
-                <a 
-                  href="/pdfs/curso-solar/modulo-3-dimensionamento-final.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "10px 16px",
-                    backgroundColor: "#F59E0B",
-                    color: "white",
-                    borderRadius: "8px",
-                    fontSize: "14px",
-                    fontWeight: "600",
-                    textDecoration: "none",
-                    border: "1px solid #F59E0B",
-                    transition: "all 0.2s ease"
-                  }}
-                  onMouseOver={(e) => {
-                    e.target.style.backgroundColor = "#D97706";
-                    e.target.style.borderColor = "#D97706";
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.backgroundColor = "#F59E0B";
-                    e.target.style.borderColor = "#F59E0B";
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
-                  </svg>
-                  Módulo 3 - Dimensionamento Final
-                </a>
-                
-                <a 
-                  href="/pdfs/curso-solar/1. Simulado Completo dos 7 Módulos do Curso Completo de Energia Solar.html" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "10px 16px",
-                    backgroundColor: "#10B981",
-                    color: "white",
-                    borderRadius: "8px",
-                    fontSize: "14px",
-                    fontWeight: "600",
-                    textDecoration: "none",
-                    border: "1px solid #10B981",
-                    transition: "all 0.2s ease"
-                  }}
-                  onMouseOver={(e) => {
-                    e.target.style.backgroundColor = "#059669";
-                    e.target.style.borderColor = "#059669";
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.backgroundColor = "#10B981";
-                    e.target.style.borderColor = "#10B981";
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "4px" }}>
-                    <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
-                  </svg>
-                  Simulado Completo
-                </a>
-              </div>
-            </div>
+        {/* Seção de Downloads - apenas para trilhas SAGE e Energia Solar */}
+        {(trilha === "sage-treinamento" || trilha === "curso-solar-fotovoltaico") && (
+          <div style={{ marginTop: "24px", marginBottom: "40px" }}>
+            <DownloadList trilhaId={trilha} />
           </div>
         )}
+
+
 
         <div id="videos-lista" className="grid videos-grid">
           {lista.map(v => (
@@ -362,13 +186,6 @@ export default function Videos() {
             </div>
           ))}
         </div>
-
-        {/* Seção de Downloads - apenas para trilha do SAGE */}
-        {trilha === "sage-treinamento" && (
-          <div style={{ marginTop: "40px" }}>
-            <DownloadList trilhaId={trilha} />
-          </div>
-        )}
 
         <div style={{ marginTop: "40px", textAlign: "center" }}>
           {trilhaData && (
