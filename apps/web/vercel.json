@@ -1,6 +1,6 @@
 {
     "rewrites": [
-      { "source": "/api/(.*)", "destination": "https://unispin-api.herokuapp.com/$1" },
+      { "source": "/api/(.*)", "destination": "https://unispin-api-b916b4ae49e1.herokuapp.com/$1" },
       { "source": "/(.*)", "destination": "/" }
     ]
   }
