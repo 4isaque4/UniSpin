@@ -154,43 +154,16 @@ export default function DownloadList({ trilhaId }) {
     try {
       setLoading(true);
       
-      // Lista de exercícios do curso de energia solar
+      // Um único arquivo que leva para a pasta do Dropbox
       const solarFiles = [
         {
-          id: "exercicios-1",
-          nome: "Exercícios 1",
-          descricao: "Primeiro conjunto de exercícios do curso de energia solar",
-          tipo: "Exercícios",
-          tamanho: "~471KB",
+          id: "pasta-exercicios",
+          nome: "Exercícios do Curso",
+          descricao: "Todos os exercícios e materiais do curso de energia solar fotovoltaica",
+          tipo: "Pasta completa",
+          tamanho: "Vários arquivos",
           icone: "document",
-          categoria: "Exercícios"
-        },
-        {
-          id: "exercicios-2",
-          nome: "Exercícios 2",
-          descricao: "Segundo conjunto de exercícios do curso de energia solar",
-          tipo: "Exercícios",
-          tamanho: "~275KB",
-          icone: "document",
-          categoria: "Exercícios"
-        },
-        {
-          id: "exercicios-3",
-          nome: "Exercícios 3",
-          descricao: "Terceiro conjunto de exercícios do curso de energia solar",
-          tipo: "Exercícios",
-          tamanho: "~238KB",
-          icone: "document",
-          categoria: "Exercícios"
-        },
-        {
-          id: "exercicios-4",
-          nome: "Exercícios 4",
-          descricao: "Quarto conjunto de exercícios do curso de energia solar",
-          tipo: "Exercícios",
-          tamanho: "~233KB",
-          icone: "document",
-          categoria: "Exercícios"
+          categoria: "Materiais"
         }
       ];
 
@@ -414,21 +387,6 @@ export default function DownloadList({ trilhaId }) {
 
       {Object.entries(downloadsByCategory).map(([categoria, arquivos]) => (
         <div key={categoria} style={{ marginBottom: '24px' }}>
-          <h3 style={{
-            color: getCategoryColor(categoria),
-            margin: '0 0 12px 0',
-            fontSize: '16px',
-            fontWeight: '600',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
-          }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-            </svg>
-            {categoria}
-          </h3>
-          
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
