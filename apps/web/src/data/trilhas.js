@@ -129,7 +129,7 @@ export const TRILHAS = [
   {
     id: "curso-basico-csharp",
     titulo: "Curso Básico de C#",
-    descricao: "Manual básico para material inicial de estágio na Spin. Vídeos gravados para a disciplina de 'Programação II' ministrada no Ifes Campus Cachoeiro em 2020. Foram apresentados conceitos e práticas de programação orientada a objetos utilizando a linguagem C#.",
+    descricao: "Manual básico para material inicial de estágio na Spin. Conteúdo necessário para o estágio inicial na empresa.",
     duracaoTotal: "10:01:01",
     quantidadeVideos: 24,
     nivel: "Iniciante",
