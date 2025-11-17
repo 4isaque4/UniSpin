@@ -116,7 +116,14 @@ export default function Video() {
               </div>
               <div style={{ marginBottom: "20px" }}>
                 <strong style={{ color: "#374151" }}>Descrição:</strong>
-                <p style={{ margin: "8px 0 0 0", fontSize: "14px", lineHeight: "1.6", color: "#6b7280" }}>
+                <p style={{ 
+                  margin: "8px 0 0 0", 
+                  fontSize: "14px", 
+                  lineHeight: "1.8", 
+                  color: "#6b7280",
+                  whiteSpace: "pre-line",
+                  fontFamily: "system-ui, -apple-system, sans-serif"
+                }}>
                   {video.descricao}
                 </p>
               </div>

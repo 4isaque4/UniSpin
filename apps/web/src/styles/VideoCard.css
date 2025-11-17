@@ -86,7 +86,7 @@
 .video-description {
   color: #6b7280;
   font-size: 13px;
-  line-height: 1.4;
+  line-height: 1.6;
   margin: 0 0 12px 0;
   font-weight: 400;
   display: -webkit-box;
@@ -94,6 +94,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   flex: 1;
+  white-space: pre-line;
 }
 
 /* Video Context (modo detalhado) */
