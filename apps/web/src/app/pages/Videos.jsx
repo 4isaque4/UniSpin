@@ -122,6 +122,7 @@ export default function Videos() {
     { id: "sage-treinamento", nome: "SAGE" },
     { id: "falcon-bi-40", nome: "Falcon BI 4.0" },
     { id: "curso-basico-csharp", nome: "C#" },
+    { id: "curso-sql-completo", nome: "SQL" },
   ];
   const [searchParams, setSearchParams] = useSearchParams();
   const trilha = searchParams.get("trilha") || "action-net-certificacao";
