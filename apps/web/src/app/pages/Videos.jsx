@@ -121,6 +121,7 @@ export default function Videos() {
     { id: "curso-solar-fotovoltaico", nome: "Energia Solar" },
     { id: "sage-treinamento", nome: "SAGE" },
     { id: "falcon-bi-40", nome: "Falcon BI 4.0" },
+    { id: "curso-basico-csharp", nome: "C#" },
   ];
   const [searchParams, setSearchParams] = useSearchParams();
   const trilha = searchParams.get("trilha") || "action-net-certificacao";
