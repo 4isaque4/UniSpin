@@ -2,6 +2,7 @@ import { useParams, Link, useSearchParams } from "react-router-dom";
 import { marcarVideoCompleto, marcarVideoIncompleto, isVideoCompleto, TRILHAS } from "../../data/trilhas.js";
 import { useState, useEffect } from "react";
 import { MOCK } from "../../data/videoData.js";
+import { blogVideoIds } from "../../data/blog-videos.js";
 import { useAuth } from "../../features/auth/AuthContext.jsx";
 
 export default function Video() {
@@ -13,23 +14,26 @@ export default function Video() {
   const { user } = useAuth();
   const userId = user?.id || null;
 
+  // Verificar se é um vídeo do blog
+  const isBlogVideo = searchParams.get("blog") === "true" || blogVideoIds.includes(id);
+
   // Detectar a trilha atual pelo parâmetro da URL ou pelo vídeo
   const trilhaIdFromUrl = searchParams.get("trilha");
   let trilhaAtual = TRILHAS.find(t => t.id === trilhaIdFromUrl);
   
-  // Se não houver trilha na URL, buscar pela ID do vídeo
-  if (!trilhaAtual) {
+  // Se não houver trilha na URL e não for vídeo do blog, buscar pela ID do vídeo
+  if (!trilhaAtual && !isBlogVideo) {
     trilhaAtual = TRILHAS.find(t => t.videos && t.videos.includes(id));
   }
   
-  // Fallback para action-net-certificacao
-  const trilhaId = trilhaAtual?.id || "action-net-certificacao";
+  // Fallback para action-net-certificacao (apenas se não for blog)
+  const trilhaId = isBlogVideo ? null : (trilhaAtual?.id || "action-net-certificacao");
 
   useEffect(() => {
-    if (video) {
+    if (video && !isBlogVideo && trilhaId) {
       setIsCompleto(isVideoCompleto(trilhaId, id, userId));
     }
-  }, [id, video, trilhaId, userId]);
+  }, [id, video, trilhaId, userId, isBlogVideo]);
 
   if (!video) {
     return (
@@ -46,6 +50,8 @@ export default function Video() {
   }
 
   const toggleCompleto = async () => {
+    if (isBlogVideo || !trilhaId) return;
+    
     setIsUpdating(true);
     
     try {
@@ -63,21 +69,21 @@ export default function Video() {
     }
   };
 
-  // Filtrar vídeos apenas da trilha atual
-  const orderedIds = trilhaAtual?.videos || Object.keys(MOCK);
+  // Filtrar vídeos apenas da trilha atual ou do blog
+  const orderedIds = isBlogVideo ? blogVideoIds : (trilhaAtual?.videos || Object.keys(MOCK));
   const currentIndex = orderedIds.indexOf(id);
 
   return (
     <main className="features">
       <div className="container">
         <div style={{ marginBottom: "24px" }}>
-          <Link to="/videos" className="btn secondary" style={{ marginBottom: "16px", display: "inline-block" }}>
-            ← Voltar aos vídeos
+          <Link to={isBlogVideo ? "/blog" : "/videos"} className="btn secondary" style={{ marginBottom: "16px", display: "inline-block" }}>
+            ← {isBlogVideo ? "Voltar ao blog" : "Voltar aos vídeos"}
           </Link>
           
           <h1 style={{ margin: "0 0 8px 0", fontSize: "2rem", color: "#374151" }}>{video.titulo}</h1>
           <p style={{ margin: "0 0 16px 0", color: "#6b7280" }}>
-            Duração: {video.duracao} | {trilhaAtual?.titulo || "Treinamento"}
+            {video.duracao && `Duração: ${video.duracao} | `}{isBlogVideo ? "Blog" : (trilhaAtual?.titulo || "Treinamento")}
           </p>
         </div>
 
@@ -307,40 +313,42 @@ export default function Video() {
                   </div>
                 </div>
               )}
-              <button
-                onClick={toggleCompleto}
-                disabled={isUpdating}
-                style={{
-                  width: "100%",
-                  padding: "12px",
-                  backgroundColor: isCompleto ? "var(--neutral-900)" : "var(--color-primary)",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "10px",
-                  cursor: "pointer",
-                  fontSize: "14px",
-                  fontWeight: "700",
-                  transition: "all 0.2s ease",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px"
-                }}
-                title={isCompleto ? "Marcar como não assistido" : "Marcar como assistido"}
-              >
-                {isUpdating ? "Atualizando..." : (isCompleto ? "Vídeo Concluído" : "Marcar como Concluído")}
-              </button>
+              {!isBlogVideo && (
+                <button
+                  onClick={toggleCompleto}
+                  disabled={isUpdating}
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    backgroundColor: isCompleto ? "var(--neutral-900)" : "var(--color-primary)",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    transition: "all 0.2s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px"
+                  }}
+                  title={isCompleto ? "Marcar como não assistido" : "Marcar como assistido"}
+                >
+                  {isUpdating ? "Atualizando..." : (isCompleto ? "Vídeo Concluído" : "Marcar como Concluído")}
+                </button>
+              )}
             </div>
           </div>
 
           {/* Navegação entre vídeos */}
           <div>
             <div className="card" style={{ maxWidth: "100%" }}>
-              <h4 style={{ margin: "0 0 16px 0", color: "#374151" }}>Navegação - {trilhaAtual?.titulo || "Trilha"}</h4>
+              <h4 style={{ margin: "0 0 16px 0", color: "#374151" }}>Navegação - {isBlogVideo ? "Blog" : (trilhaAtual?.titulo || "Trilha")}</h4>
               {/* Lista de navegação sem thumbnails */}
               <div style={{ display: "grid", gap: "12px" }}>
-                <Link to={`/videos?trilha=${trilhaId}`} className="btn secondary" style={{ textAlign: "center" }}>
-                  Ver Todos os Vídeos da Trilha
+                <Link to={isBlogVideo ? "/blog" : `/videos?trilha=${trilhaId}`} className="btn secondary" style={{ textAlign: "center" }}>
+                  {isBlogVideo ? "Ver Todos os Vídeos do Blog" : "Ver Todos os Vídeos da Trilha"}
                 </Link>
                 <div style={{ display: "grid", gap: "8px", maxHeight: "360px", overflow: "auto" }}>
                   {/* Próximos */}
@@ -349,7 +357,7 @@ export default function Video() {
                       <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "6px" }}>Próximos</div>
                       <div style={{ display: "grid", gap: "6px" }}>
                         {orderedIds.slice(currentIndex + 1).map(vid => (
-                          <Link key={vid} to={`/videos/${vid}?trilha=${trilhaId}`} style={{ textDecoration: "none" }}>
+                          <Link key={vid} to={`/videos/${vid}${isBlogVideo ? "?blog=true" : `?trilha=${trilhaId}`}`} style={{ textDecoration: "none" }}>
                             <div style={{ fontWeight: 600, color: "#374151" }}>{MOCK[vid]?.titulo || vid}</div>
                           </Link>
                         ))}
@@ -362,7 +370,7 @@ export default function Video() {
                       <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "6px" }}>Anteriores</div>
                       <div style={{ display: "grid", gap: "6px" }}>
                         {orderedIds.slice(0, currentIndex).reverse().map(vid => (
-                          <Link key={vid} to={`/videos/${vid}?trilha=${trilhaId}`} style={{ textDecoration: "none" }}>
+                          <Link key={vid} to={`/videos/${vid}${isBlogVideo ? "?blog=true" : `?trilha=${trilhaId}`}`} style={{ textDecoration: "none" }}>
                             <div style={{ fontWeight: 600, color: "#374151" }}>{MOCK[vid]?.titulo || vid}</div>
                           </Link>
                         ))}

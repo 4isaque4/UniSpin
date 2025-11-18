@@ -77,6 +77,18 @@ export default function Header() {
           }}>
             Vídeos
           </NavLink>
+          {user && (
+            <NavLink to="/blog" style={{ 
+              color: "#1F2937", 
+              textDecoration: "none", 
+              fontWeight: "700",
+              fontSize: "15px",
+              transition: "color 0.2s ease",
+              textShadow: "0 1px 2px rgba(255, 255, 255, 0.8)"
+            }}>
+              Blog
+            </NavLink>
+          )}
           {!user && (
             <Link
               to={ctaTo}

@@ -1,6 +1,5 @@
 // Vídeos da trilha: Curso em Vídeo - Python
 export const videos = {
-  "U_A2kwUfmlw": { titulo: "Seja APOIADOR e receba RECOMPENSAS", embed: "https://www.youtube.com/embed/U_A2kwUfmlw", descricao: "Vídeo sobre como apoiar o canal Curso em Vídeo e receber recompensas.", duracao: "4:55" },
   "S9uPNppGsGo": { titulo: "Curso Python #01 - Seja um Programador", embed: "https://www.youtube.com/embed/S9uPNppGsGo", descricao: "Primeira aula do curso de Python. Introdução à programação e motivação para se tornar um programador.", duracao: "29:07" },
   "Mp0vhMDI7fA": { titulo: "Curso Python #02 - Para que serve o Python?", embed: "https://www.youtube.com/embed/Mp0vhMDI7fA", descricao: "Segunda aula do curso de Python. Entendendo para que serve o Python e suas aplicações.", duracao: "21:53" },
   "VuKvR1J2LQE": { titulo: "Curso Python #03 - Instalando o Python3 e o IDLE", embed: "https://www.youtube.com/embed/VuKvR1J2LQE", descricao: "Terceira aula do curso de Python. Como instalar o Python3 e o IDLE no seu computador.", duracao: "17:49" },

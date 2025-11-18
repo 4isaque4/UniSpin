@@ -5,6 +5,7 @@ import Login from "./routes/Login.jsx";
 import Trilhas from "./routes/Trilhas.jsx";
 import Videos from "./pages/Videos.jsx";
 import Video from "./pages/Video.jsx";
+import Blog from "./pages/Blog.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import GuestRoute from "./GuestRoute.jsx";
 
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
         { path: "/trilhas", element: <Trilhas /> },
         { path: "/videos", element: <Videos /> },
         { path: "/videos/:id", element: <Video /> },
+        { path: "/blog", element: <Blog /> },
       ]},
     ],
   },

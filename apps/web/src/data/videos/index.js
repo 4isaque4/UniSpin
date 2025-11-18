@@ -9,6 +9,7 @@ import { videos as cursoSqlCompleto } from './curso-sql-completo.js';
 import { videos as cursoPythonCompleto } from './curso-python-completo.js';
 import { videos as cursoPostgresql } from './curso-postgresql.js';
 import { videos as cursoSqlParaAnalistas } from './curso-sql-para-analistas.js';
+import { blogVideos } from '../blog-videos.js';
 
 // Combinar todos os vídeos em um único objeto
 export const MOCK = {
@@ -21,5 +22,6 @@ export const MOCK = {
   ...cursoSqlCompleto,
   ...cursoPythonCompleto,
   ...cursoPostgresql,
-  ...cursoSqlParaAnalistas
+  ...cursoSqlParaAnalistas,
+  ...blogVideos
 };
