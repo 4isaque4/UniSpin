@@ -7,6 +7,8 @@ import { videos as falconBi40 } from './falcon-bi-40.js';
 import { videos as cursoBasicoCsharp } from './curso-basico-csharp.js';
 import { videos as cursoSqlCompleto } from './curso-sql-completo.js';
 import { videos as cursoPythonCompleto } from './curso-python-completo.js';
+import { videos as cursoPostgresql } from './curso-postgresql.js';
+import { videos as cursoSqlParaAnalistas } from './curso-sql-para-analistas.js';
 
 // Combinar todos os vídeos em um único objeto
 export const MOCK = {
@@ -17,5 +19,7 @@ export const MOCK = {
   ...falconBi40,
   ...cursoBasicoCsharp,
   ...cursoSqlCompleto,
-  ...cursoPythonCompleto
+  ...cursoPythonCompleto,
+  ...cursoPostgresql,
+  ...cursoSqlParaAnalistas
 };
