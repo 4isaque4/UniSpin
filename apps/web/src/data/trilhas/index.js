@@ -7,6 +7,8 @@ import { trilha as falconBi40 } from './falcon-bi-40.js';
 import { trilha as cursoBasicoCsharp } from './curso-basico-csharp.js';
 import { trilha as cursoSqlCompleto } from './curso-sql-completo.js';
 import { trilha as cursoPythonCompleto } from './curso-python-completo.js';
+import { trilha as cursoPostgresql } from './curso-postgresql.js';
+import { trilha as cursoSqlParaAnalistas } from './curso-sql-para-analistas.js';
 
 export const TRILHAS = [
   actionNetCertificacao,
@@ -16,7 +18,9 @@ export const TRILHAS = [
   falconBi40,
   cursoBasicoCsharp,
   cursoSqlCompleto,
-  cursoPythonCompleto
+  cursoPythonCompleto,
+  cursoPostgresql,
+  cursoSqlParaAnalistas
 ];
 
 // Função para obter trilha por ID

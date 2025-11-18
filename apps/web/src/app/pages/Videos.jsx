@@ -123,6 +123,8 @@ export default function Videos() {
     { id: "falcon-bi-40", nome: "Falcon BI 4.0" },
     { id: "curso-basico-csharp", nome: "C#" },
     { id: "curso-sql-completo", nome: "SQL" },
+    { id: "curso-sql-para-analistas", nome: "SQL Analistas" },
+    { id: "curso-postgresql", nome: "PostgreSQL" },
     { id: "curso-python-completo", nome: "Python" },
   ];
   const [searchParams, setSearchParams] = useSearchParams();
