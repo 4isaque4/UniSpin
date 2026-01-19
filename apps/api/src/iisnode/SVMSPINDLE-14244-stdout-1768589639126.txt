@@ -1,0 +1,5 @@
+[DB] Configurando pool de conexão...
+[DB] DATABASE_URL configurada: Não
+[DB] SSL forçado: false
+[DB] Forçar IPv4: false
+[DB] Usando DATABASE_URL original

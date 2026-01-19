@@ -1,0 +1,7 @@
+[DB] Erro ao resolver hostname: Invalid URL
+Variáveis de ambiente obrigatórias não configuradas: [ 'DATABASE_URL', 'SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY' ]
+Por favor, configure as seguintes variáveis:
+  - DATABASE_URL
+  - SUPABASE_URL
+  - SUPABASE_SERVICE_ROLE_KEY
+Falha na validação das variáveis de ambiente. Encerrando aplicação.
