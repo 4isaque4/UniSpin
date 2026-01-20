@@ -9,6 +9,7 @@ import { trilha as cursoSqlCompleto } from './curso-sql-completo.js';
 import { trilha as cursoPythonCompleto } from './curso-python-completo.js';
 import { trilha as cursoPostgresql } from './curso-postgresql.js';
 import { trilha as cursoSqlParaAnalistas } from './curso-sql-para-analistas.js';
+import { trilha as informacoesGeraisEnergiaEletrica } from './informacoes-gerais-energia-eletrica.js';
 
 export const TRILHAS = [
   actionNetCertificacao,
@@ -20,7 +21,8 @@ export const TRILHAS = [
   cursoSqlCompleto,
   cursoPythonCompleto,
   cursoPostgresql,
-  cursoSqlParaAnalistas
+  cursoSqlParaAnalistas,
+  informacoesGeraisEnergiaEletrica
 ];
 
 // Função para obter trilha por ID
