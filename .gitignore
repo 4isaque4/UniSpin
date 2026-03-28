@@ -29,3 +29,8 @@ coverage/
 
 .UniSpin.rar
 .env.zip
+
+# IIS/runtime artifacts
+apps/api/src/iisnode/
+apps/web/apps/
+unispin_onboarding*.html
