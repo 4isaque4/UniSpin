@@ -5,7 +5,7 @@ import { requireAuth } from '../middlewares/auth.js';
 const router = express.Router();
 
 // Link da pasta compartilhada do Dropbox
-const DROPBOX_FOLDER_URL = 'https://www.dropbox.com/scl/fo/5stpiz277gqe711x9hc15/AIDn_ionlSG5WwVdIdFjHvI?rlkey=hmo24rzrm6paaffnw9xacmaym&st=bmn41su5&dl=0';
+const DROPBOX_FOLDER_URL = 'https://www.dropbox.com/home/_TEMP/Unispin/Pdfs/Cont%C3%A9udo%20SAGE';
 
 // Lista de arquivos do SAGE disponíveis para download
 const SAGE_FILES = [
@@ -172,7 +172,8 @@ router.get('/sage/:fileId', requireAuth, async (req, res) => {
 
     // Gerar URL de download direto
     // Em produção, isso seria feito através da API do Dropbox
-    const downloadUrl = `${DROPBOX_FOLDER_URL}&file=${fileId}`;
+    const separator = DROPBOX_FOLDER_URL.includes('?') ? '&' : '?';
+    const downloadUrl = `${DROPBOX_FOLDER_URL}${separator}file=${encodeURIComponent(fileId)}`;
     
     // Log do download para analytics
     console.log(`[Downloads] Download iniciado: ${file.nome} por usuário ${req.user?.id || 'unknown'}`);

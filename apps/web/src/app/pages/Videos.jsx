@@ -118,9 +118,9 @@ export default function Videos() {
   const trilhasDisponiveis = [
     { id: "action-net-certificacao", nome: "Action.NET" },
     { id: "action-net-x-completo", nome: "Action Net X" },
+    { id: "dts", nome: "DTS" },
     { id: "curso-solar-fotovoltaico", nome: "Energia Solar" },
     { id: "sage-treinamento", nome: "SAGE" },
-    { id: "falcon-bi-40", nome: "Falcon BI 4.0" },
     { id: "curso-basico-csharp", nome: "C#" },
     { id: "curso-sql-completo", nome: "SQL" },
     { id: "curso-sql-para-analistas", nome: "SQL Analistas" },
@@ -128,7 +128,9 @@ export default function Videos() {
     { id: "curso-python-completo", nome: "Python" },
   ];
   const [searchParams, setSearchParams] = useSearchParams();
-  const trilha = searchParams.get("trilha") || "action-net-certificacao";
+  const trilhaAtualParam = searchParams.get("trilha");
+  const trilhasPermitidas = new Set(trilhasDisponiveis.map((t) => t.id));
+  const trilha = trilhasPermitidas.has(trilhaAtualParam) ? trilhaAtualParam : "action-net-certificacao";
   // Buscar trilha específica
   const trilhaData = TRILHAS.find(t => t.id === trilha);
   

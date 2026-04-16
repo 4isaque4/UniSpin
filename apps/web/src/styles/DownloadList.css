@@ -1,0 +1,122 @@
+.download-section {
+  margin-top: 24px;
+}
+
+.download-section__header {
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(68, 210, 242, 0.28);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+
+.download-section--solar .download-section__header {
+  border-color: rgba(245, 158, 11, 0.35);
+  border-left-color: #f59e0b;
+}
+
+.download-section__title {
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  line-height: 1.2;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.download-section__subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(17, 24, 39, 0.74);
+}
+
+.download-card {
+  width: min(380px, 100%);
+  display: block;
+  text-decoration: none;
+  background: #ffffff;
+  border: 1px solid rgba(13, 13, 13, 0.09);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(13, 13, 13, 0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.download-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(13, 13, 13, 0.12);
+  border-color: rgba(68, 210, 242, 0.35);
+}
+
+.download-section--solar .download-card:hover {
+  border-color: rgba(245, 158, 11, 0.42);
+}
+
+.download-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.download-card__icon {
+  color: #1f2937;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-card__title {
+  margin: 0 0 4px 0;
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.download-card__meta {
+  margin: 0;
+  color: rgba(55, 65, 81, 0.78);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.download-card__description {
+  margin: 0 0 14px 0;
+  color: #4b5563;
+  line-height: 1.45;
+}
+
+.download-card__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(68, 210, 242, 0.34);
+  background: rgba(68, 210, 242, 0.09);
+  color: #0b6c88;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 12px;
+}
+
+.download-section--solar .download-card__cta {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.12);
+  color: #975a16;
+}
+
+@media (max-width: 768px) {
+  .download-section__header {
+    padding: 14px;
+  }
+
+  .download-section__title {
+    font-size: 22px;
+  }
+
+  .download-card {
+    width: 100%;
+  }
+}
