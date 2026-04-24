@@ -3,7 +3,7 @@ export const trilha = {
   id: "sage-treinamento",
   titulo: "Treinamento SAGE",
   descricao: "Sequência oficial unificada do treinamento SAGE, com ordem didática padronizada e complemento das aulas faltantes entre os dois canais.",
-  duracaoTotal: "-",
+  duracaoTotal: "114:20:24",
   quantidadeVideos: 35,
   nivel: "Básico ao Avançado",
   categoria: "SAGE",

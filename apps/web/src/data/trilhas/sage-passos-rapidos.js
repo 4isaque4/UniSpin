@@ -3,7 +3,7 @@ export const trilha = {
   id: "sage-passos-rapidos",
   titulo: "SAGE - Passo a Passo Rápido",
   descricao: "Guias objetivos de instalação e configuração do SAGE apresentados pela monitora do treinamento. Ideal para revisar os procedimentos práticos das aulas.",
-  duracaoTotal: "–",
+  duracaoTotal: "0:14:34",
   quantidadeVideos: 2,
   nivel: "Básico",
   categoria: "SAGE",
