@@ -3,6 +3,7 @@ import VideoCard from "../../features/videos/VideoCard.jsx";
 import DownloadList from "../../components/DownloadList.jsx";
 import { TRILHAS } from "../../data/trilhas.js";
 import { MOCK } from "../../data/videoData.js";
+import { trilha as sagePassosRapidos } from "../../data/trilhas/sage-passos-rapidos.js";
 
 // Trilha padrão (Action.NET) e opção de SAGE
 const VIDEOS_ACTION = [
@@ -121,7 +122,6 @@ export default function Videos() {
     { id: "dts", nome: "DTS" },
     { id: "curso-solar-fotovoltaico", nome: "Energia Solar" },
     { id: "sage-treinamento", nome: "SAGE" },
-    { id: "sage-passos-rapidos", nome: "SAGE Passo a Passo" },
     { id: "curso-basico-csharp", nome: "C#" },
     { id: "curso-sql-completo", nome: "SQL" },
     { id: "curso-sql-para-analistas", nome: "SQL Analistas" },
@@ -130,10 +130,13 @@ export default function Videos() {
   ];
   const [searchParams, setSearchParams] = useSearchParams();
   const trilhaAtualParam = searchParams.get("trilha");
+  const trilhaParamNormalizada =
+    trilhaAtualParam === "sage-passos-rapidos" ? "sage-treinamento" : trilhaAtualParam;
   const trilhasPermitidas = new Set(trilhasDisponiveis.map((t) => t.id));
-  const trilha = trilhasPermitidas.has(trilhaAtualParam) ? trilhaAtualParam : "action-net-certificacao";
+  const trilha = trilhasPermitidas.has(trilhaParamNormalizada) ? trilhaParamNormalizada : "action-net-certificacao";
   // Buscar trilha específica
   const trilhaData = TRILHAS.find(t => t.id === trilha);
+  const isTrilhaSage = trilha === "sage-treinamento";
   
   // Criar lista com informações completas dos vídeos
   let lista = [];
@@ -147,6 +150,13 @@ export default function Videos() {
   } else {
     lista = VIDEOS_ACTION;
   }
+
+  const listaPassosRapidos = isTrilhaSage
+    ? sagePassosRapidos.videos.map(videoId => ({
+        id: videoId,
+        ...getVideoInfo(videoId),
+      }))
+    : [];
 
   return (
     <main className="features">
@@ -195,10 +205,34 @@ export default function Videos() {
           ))}
         </div>
 
+        {isTrilhaSage && listaPassosRapidos.length > 0 && (
+          <section style={{ marginTop: "48px" }}>
+            <h3 style={{ margin: "0 0 10px", textAlign: "center", color: "#374151" }}>
+              Subtrilha Interna: Passo a Passo Rápido
+            </h3>
+            <p style={{ margin: "0 0 24px", textAlign: "center", color: "#6B7280", fontSize: "15px" }}>
+              {sagePassosRapidos.descricao}
+            </p>
+
+            <div className="grid videos-grid">
+              {listaPassosRapidos.map(v => (
+                <div key={v.id} style={{ width: "100%", maxWidth: "400px" }}>
+                  <VideoCard video={v} trilhaId="sage-treinamento" />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         <div style={{ marginTop: "40px", textAlign: "center" }}>
           {trilhaData && (
             <p style={{ color: "#6b7280", marginBottom: "16px" }}>
               {trilhaData.quantidadeVideos} vídeos • Duração total: {trilhaData.duracaoTotal} • Nível: {trilhaData.nivel}
+            </p>
+          )}
+          {isTrilhaSage && (
+            <p style={{ color: "#6b7280", marginBottom: "16px" }}>
+              Subtrilha passo a passo: {sagePassosRapidos.quantidadeVideos} vídeos • Duração total: {sagePassosRapidos.duracaoTotal}
             </p>
           )}
           <Link to="/" className="btn secondary">

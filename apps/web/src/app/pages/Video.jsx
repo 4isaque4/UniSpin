@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { MOCK } from "../../data/videoData.js";
 import { blogVideoIds } from "../../data/blog-videos.js";
 import { useAuth } from "../../features/auth/AuthContext.jsx";
+import { trilha as sagePassosRapidos } from "../../data/trilhas/sage-passos-rapidos.js";
 
 export default function Video() {
   const { id } = useParams();
@@ -70,7 +71,11 @@ export default function Video() {
   };
 
   // Filtrar vídeos apenas da trilha atual ou do blog
-  const orderedIds = isBlogVideo ? blogVideoIds : (trilhaAtual?.videos || Object.keys(MOCK));
+  const orderedIds = isBlogVideo
+    ? blogVideoIds
+    : trilhaId === "sage-treinamento"
+      ? Array.from(new Set([...(trilhaAtual?.videos || []), ...sagePassosRapidos.videos]))
+      : (trilhaAtual?.videos || Object.keys(MOCK));
   const currentIndex = orderedIds.indexOf(id);
 
   return (

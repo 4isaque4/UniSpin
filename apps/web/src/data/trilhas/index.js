@@ -11,7 +11,6 @@ import { trilha as cursoPostgresql } from './curso-postgresql.js';
 import { trilha as cursoSqlParaAnalistas } from './curso-sql-para-analistas.js';
 import { trilha as informacoesGeraisEnergiaEletrica } from './informacoes-gerais-energia-eletrica.js';
 import { trilha as dts } from './dts.js';
-import { trilha as sagePassosRapidos } from './sage-passos-rapidos.js';
 
 export const TRILHAS = [
   actionNetCertificacao,
@@ -25,8 +24,7 @@ export const TRILHAS = [
   cursoPostgresql,
   cursoSqlParaAnalistas,
   informacoesGeraisEnergiaEletrica,
-  dts,
-  sagePassosRapidos
+  dts
 ];
 
 // Função para obter trilha por ID
