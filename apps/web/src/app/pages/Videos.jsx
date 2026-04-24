@@ -121,6 +121,7 @@ export default function Videos() {
     { id: "dts", nome: "DTS" },
     { id: "curso-solar-fotovoltaico", nome: "Energia Solar" },
     { id: "sage-treinamento", nome: "SAGE" },
+    { id: "sage-passos-rapidos", nome: "SAGE Passo a Passo" },
     { id: "curso-basico-csharp", nome: "C#" },
     { id: "curso-sql-completo", nome: "SQL" },
     { id: "curso-sql-para-analistas", nome: "SQL Analistas" },
