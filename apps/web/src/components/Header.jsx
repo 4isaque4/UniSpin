@@ -4,10 +4,10 @@ import { useAuth } from "../features/auth/AuthContext.jsx";
 export default function Header() {
   const { user, logout } = useAuth();
 
-  // Usuários não autenticados vão para login, usuários autenticados vão para videos
-  const trilhasTo = user ? "/trilhas" : "/login";
-  const videosTo = user ? "/videos" : "/login";
-  const ctaTo = user ? "/videos" : "/login";
+  // Usuários não autenticados vão para login, usuários autenticados vão para vídeos
+  const trilhasTo = "/trilhas";
+  const videosTo = "/videos";
+  const ctaTo = "/videos";
 
   return (
     <header className="nav">
