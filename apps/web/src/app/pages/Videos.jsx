@@ -189,27 +189,29 @@ export default function Videos() {
         </div>
 
         {/* Seção de Downloads - apenas para trilhas SAGE e Energia Solar */}
-        {(trilha === "sage-treinamento" || trilha === "curso-solar-fotovoltaico") && (
+        {(trilha === "dts" || trilha === "sage-treinamento" || trilha === "curso-solar-fotovoltaico") && (
           <div style={{ marginTop: "24px", marginBottom: "40px" }}>
             <DownloadList trilhaId={trilha} />
           </div>
         )}
 
-
-
-        <div id="videos-lista" className="grid videos-grid">
-          {lista.map(v => (
-            <div key={v.id} style={{ width: "100%", maxWidth: "400px" }}>
-              <VideoCard video={v} trilhaId={trilha} />
-            </div>
-          ))}
-        </div>
-
         {isTrilhaSage && listaPassosRapidos.length > 0 && (
-          <section style={{ marginTop: "48px" }}>
-            <h3 style={{ margin: "0 0 10px", textAlign: "center", color: "#374151" }}>
-              Subtrilha Interna: Passo a Passo Rápido
+          <section
+            style={{
+              marginTop: "8px",
+              marginBottom: "32px",
+              padding: "18px 16px 24px",
+              borderRadius: "14px",
+              border: "2px solid rgba(68, 210, 242, 0.55)",
+              background: "rgba(255, 255, 255, 0.58)",
+            }}
+          >
+            <h3 style={{ margin: "0 0 6px", textAlign: "center", color: "#0F172A" }}>
+              Subtrilha Interna SAGE: Passo a Passo Rápido
             </h3>
+            <p style={{ margin: "0 0 10px", textAlign: "center", color: "#334155", fontSize: "14px", fontWeight: 600 }}>
+              Estes são os 2 primeiros vídeos da trilha SAGE para revisão rápida.
+            </p>
             <p style={{ margin: "0 0 24px", textAlign: "center", color: "#6B7280", fontSize: "15px" }}>
               {sagePassosRapidos.descricao}
             </p>
@@ -223,6 +225,20 @@ export default function Videos() {
             </div>
           </section>
         )}
+
+        {isTrilhaSage && (
+          <h3 style={{ margin: "0 0 18px", textAlign: "center", color: "#374151" }}>
+            Trilha Principal SAGE
+          </h3>
+        )}
+
+        <div id="videos-lista" className="grid videos-grid">
+          {lista.map(v => (
+            <div key={v.id} style={{ width: "100%", maxWidth: "400px" }}>
+              <VideoCard video={v} trilhaId={trilha} />
+            </div>
+          ))}
+        </div>
 
         <div style={{ marginTop: "40px", textAlign: "center" }}>
           {trilhaData && (
@@ -243,3 +259,5 @@ export default function Videos() {
     </main>
   );
 }
+
+
