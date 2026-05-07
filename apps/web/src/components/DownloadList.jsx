@@ -1,6 +1,15 @@
 import "../styles/DownloadList.css";
 
 const DOWNLOAD_SECTIONS = {
+  dts: {
+    title: "Arquivos de Download - DTS",
+    subtitle: "Materiais de apoio da trilha DTS para uso nas aulas.",
+    folderTitle: "Arquivos do DTS",
+    folderMeta: "Pasta completa • Vários arquivos",
+    folderDescription: "Acesse a pasta centralizada com os materiais do curso.",
+    href: "https://www.dropbox.com/scl/fo/11yimg2n81jxu96i6vdj6/AOrygWvuH1BELvHTKqVOuZs?rlkey=x6drr32mgxd9h8vxufz8rt2lc&st=zlak6ukp&dl=0",
+    tone: "dts",
+  },
   "sage-treinamento": {
     title: "Arquivos de Download - SAGE",
     subtitle: "Materiais e ferramentas da trilha SAGE para uso no treinamento.",
