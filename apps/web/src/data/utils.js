@@ -14,35 +14,10 @@ export const calcularDuracaoTotal = (duracoes) => {
   return `${horas}:${minutos.toString().padStart(2, '0')}:00`;
 };
 
-// Função auxiliar para obter ID do usuário atual
-const getCurrentUserId = () => {
-  try {
-    // Primeiro tenta obter do Supabase localStorage
-    const supabaseSessionKey = 'sb-' + (import.meta.env.VITE_SUPABASE_URL || '').replace(/[^a-zA-Z0-9]/g, '') + '-auth-token';
-    const userData = localStorage.getItem(supabaseSessionKey);
-    
-    if (userData) {
-      const parsed = JSON.parse(userData);
-      return parsed?.currentSession?.user?.id || parsed?.user?.id;
-    }
-    
-    // Fallback: tenta outras chaves comuns
-    const fallbackKeys = ['sb-auth-token', 'supabase.auth.token'];
-    for (const key of fallbackKeys) {
-      const data = localStorage.getItem(key);
-      if (data) {
-        const parsed = JSON.parse(data);
-        const userId = parsed?.currentSession?.user?.id || parsed?.user?.id;
-        if (userId) return userId;
-      }
-    }
-    
-    return null;
-  } catch (error) {
-    console.log('Não foi possível obter ID do usuário do localStorage:', error);
-    return null;
-  }
-};
+// Função auxiliar para obter ID do usuário atual.
+// Com auth desabilitado, sempre retorna null — progresso fica em namespace global no localStorage.
+// Quando o login voltar, atualizar para ler de useAuth() ou de uma chave própria.
+const getCurrentUserId = () => null;
 
 // Funções para gerenciar progresso por usuário
 export const getProgressoTrilha = (trilhaId, userId = null) => {

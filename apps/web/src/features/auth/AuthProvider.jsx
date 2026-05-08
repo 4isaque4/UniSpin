@@ -1,40 +1,50 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabase";
+import { apiFetch } from "../../lib/api";
 import { AuthCtx } from "./AuthContext.jsx";
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let cancelled = false;
     (async () => {
-      console.log("AuthProvider - verificando sessão inicial...");
-      const { data: { session } } = await supabase.auth.getSession();
-      console.log("AuthProvider - sessão inicial:", session);
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-      console.log("AuthProvider - estado inicial definido, user:", session?.user ?? null);
+      try {
+        const res = await apiFetch("/auth/me");
+        if (!cancelled) {
+          if (res.ok) {
+            const me = await res.json();
+            setUser(me);
+          } else {
+            setUser(null);
+          }
+        }
+      } catch {
+        if (!cancelled) setUser(null);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     })();
-
-    const { data: { subscription } } =
-      supabase.auth.onAuthStateChange((_event, session) => {
-        console.log("AuthProvider - mudança de estado de autenticação:", _event, session);
-        setSession(session);
-        setUser(session?.user ?? null);
-      });
-
-    return () => subscription.unsubscribe();
+    return () => { cancelled = true; };
   }, []);
 
   const logout = async () => {
-    await supabase.auth.signOut();
-    setUser(null);
-    setSession(null);
+    try {
+      await apiFetch("/auth/logout", { method: "POST" });
+    } finally {
+      setUser(null);
+    }
   };
 
-  const value = { user, session, loading: loading, ready: !loading, setUser, setSession, logout };
-  console.log("AuthProvider - valor do contexto:", value);
+  const value = {
+    user,
+    session: user ? { user } : null,
+    loading,
+    ready: !loading,
+    setUser,
+    setSession: () => {},
+    logout,
+  };
+
   return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
 }

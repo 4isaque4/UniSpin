@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { supabase } from "../../lib/supabase";
+import { apiFetch } from "../../lib/api";
+import { useAuth } from "../../features/auth/AuthContext.jsx";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -15,26 +17,21 @@ export default function Login() {
     setError("");
 
     try {
-      console.log("Tentando fazer login com:", { email, password });
-      console.log("Supabase URL:", import.meta.env.VITE_SUPABASE_URL);
-      console.log("Supabase Anon Key:", import.meta.env.VITE_SUPABASE_ANON_KEY ? "Configurado" : "Não configurado");
-
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      const res = await apiFetch("/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
       });
+      const data = await res.json().catch(() => ({}));
 
-      if (error) {
-        console.error("Erro no login:", error);
-        throw error;
+      if (!res.ok) {
+        const msg = data?.message || data?.error || `Erro ${res.status}`;
+        throw new Error(msg);
       }
 
-      console.log("Login bem-sucedido:", data);
-      console.log("Navegando para /videos...");
+      setUser(data);
       navigate("/videos");
-    } catch (error) {
-      console.error("Erro capturado:", error);
-      setError(error.message || "Erro desconhecido no login");
+    } catch (err) {
+      setError(err.message || "Erro desconhecido no login");
     } finally {
       setLoading(false);
     }
@@ -45,7 +42,7 @@ export default function Login() {
       <div className="auth-card">
         <h2 className="auth-title">Entrar na UniSpin</h2>
         <p className="auth-subtitle">Acesse sua conta para continuar</p>
-        
+
         {error && (
           <div className="auth-error">
             <strong>Erro:</strong> {error}
@@ -61,7 +58,7 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="seu.email@unispin.com"
+              placeholder="seu.email@spinengenharia.com.br"
             />
           </div>
 
@@ -86,12 +83,6 @@ export default function Login() {
           <Link to="/" className="btn secondary">
             Voltar ao início
           </Link>
-        </div>
-
-        <div className="auth-muted">
-          <p>Credenciais de teste:</p>
-          <p>Email: admin@spinengenharia.com</p>
-          <p>Senha: (verificar no banco)</p>
         </div>
       </div>
     </main>
