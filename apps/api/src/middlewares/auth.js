@@ -1,50 +1,32 @@
 // apps/api/src/middlewares/auth.js
-import { createClient } from "@supabase/supabase-js";
+// Valida o JWT armazenado no cookie httpOnly "token", emitido por /auth/login.
+// Substitui a antiga validação via Supabase Auth.
+import jwt from "jsonwebtoken";
+import { findById } from "../repositories/user.repo.js";
 
-// Lê "Authorization: Bearer <token>" e valida no Supabase
 export async function requireAuth(req, res, next) {
   try {
-    // Debug: verificar se as variáveis estão sendo lidas
-    console.log("[requireAuth] SUPABASE_URL:", process.env.SUPABASE_URL ? "Configurada" : "NÃO CONFIGURADA");
-    console.log("[requireAuth] SUPABASE_SERVICE_ROLE_KEY:", process.env.SUPABASE_SERVICE_ROLE_KEY ? "Configurada" : "NÃO CONFIGURADA");
-    
-    // Criar cliente Supabase apenas quando necessário
-    console.log("[requireAuth] Tentando criar cliente Supabase...");
-    
-    const supabase = createClient(
-      process.env.SUPABASE_URL, 
-      process.env.SUPABASE_SERVICE_ROLE_KEY, 
-      {
-        auth: { persistSession: false, autoRefreshToken: false }
-      }
-    );
-    
-    console.log("[requireAuth] Cliente Supabase criado com sucesso");
-
-    const auth = req.headers.authorization || "";
-    const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
-    
-    console.log("[requireAuth] Token recebido:", token ? `${token.substring(0, 20)}...` : "Nenhum");
-    
-    if (!token) return res.status(401).json({ error: "unauthorized", message: "Token não fornecido" });
-
-    const { data, error } = await supabase.auth.getUser(token);
-    
-    if (error) {
-      console.error("[requireAuth] Erro Supabase:", error);
-      return res.status(401).json({ error: "unauthorized", message: error.message });
+    const token = req.cookies?.token;
+    if (!token) {
+      return res.status(401).json({ error: "unauthorized", message: "Token não fornecido" });
     }
-    
-    if (!data?.user) {
-      console.error("[requireAuth] Usuário não encontrado");
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({ error: "server_misconfig", message: "JWT_SECRET not set" });
+    }
+
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const me = await findById(payload.id);
+    if (!me) {
       return res.status(401).json({ error: "unauthorized", message: "Usuário não encontrado" });
     }
 
-    console.log("[requireAuth] Usuário autenticado:", data.user.email);
-    req.user = data.user;
+    req.user = me;
     next();
-  } catch (e) {
-    console.error("[requireAuth] Erro inesperado:", e);
-    res.status(401).json({ error: "unauthorized", message: e.message });
+  } catch (err) {
+    if (err?.name === "JsonWebTokenError" || err?.name === "TokenExpiredError") {
+      return res.status(401).json({ error: "invalid_token", message: err.message });
+    }
+    console.error("[requireAuth] Erro inesperado:", err);
+    res.status(500).json({ error: "internal_error", message: err.message });
   }
 }

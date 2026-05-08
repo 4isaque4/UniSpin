@@ -25,15 +25,12 @@ const isDev = (process.env.NODE_ENV || 'development') !== 'production';
 if (isDev) {
   app.use((req, res, next) => {
     const origin = req.headers.origin || "http://localhost:5173";
-    console.log(`[CORS] ${req.method} ${req.path} - Origin: ${origin}`);
     res.header("Access-Control-Allow-Origin", origin);
+    res.header("Access-Control-Allow-Credentials", "true");
     res.header("Vary", "Origin");
     res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE,OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Authorization,Content-Type,authorization,content-type");
-    if (req.method === "OPTIONS") {
-      console.log(`[CORS] Respondendo OPTIONS com 204 - Headers: ${JSON.stringify(res.getHeaders())}`);
-      return res.sendStatus(204);
-    }
+    res.header("Access-Control-Allow-Headers", "Content-Type,content-type");
+    if (req.method === "OPTIONS") return res.sendStatus(204);
     next();
   });
 }
@@ -46,8 +43,9 @@ if (!isDev) {
       if (!origin || FRONTEND_ORIGINS.includes(origin)) return callback(null, true);
       return callback(new Error("Not allowed by CORS"));
     },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Authorization", "Content-Type", "authorization", "content-type"],
+    allowedHeaders: ["Content-Type", "content-type"],
   };
   app.use(cors(corsOptions));
   // responder preflight para qualquer rota
